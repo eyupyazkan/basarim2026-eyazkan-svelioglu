@@ -1,0 +1,684 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>MXene Screening Poster 40</title>
+<meta name="description" content="Companion page to BAŞARIM 2026 Poster 40: HPC-driven GCMC screening of hypothetical MXenes for CO2/CH4 separation and a graph-neural-network surrogate.">
+</head><body>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column that mirrors the poster's numbered cards; figures sit on white plates */
+:root {
+  --bg: #F5F7FA; --surface: #FFFFFF; --ink: #1F2937; --ink-2: #374151; --muted: #5B6472;
+  --rule: #CBD5E1; --rule-soft: #E3E8EF; --tint: #EEF3F9;
+  --navy: #1E3A5F; --teal: #0F766E; --orange: #B45309; --link: #1E3A5F;
+  --badge-bg: #1E3A5F; --on-strong: #FFFFFF; --plate: #FFFFFF;
+  --step-a: #1E3A5F; --step-b: #0F766E; --step-c: #B45309;
+  --tag-measured: #0F766E; --tag-derived: #1E3A5F; --tag-reported: #5B6472; --tag-estimate: #B45309;
+  --pending-bg: #FDF3E7; --pending-fg: #8A3F06;
+  --f-body: "Carlito", Calibri, "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --radius: 12px; --measure: 44rem;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0D1520; --surface: #142031; --ink: #E7EDF4; --ink-2: #C9D3DF; --muted: #98A6B8;
+  --rule: #2B3B50; --rule-soft: #22324A; --tint: #1A2A3E;
+  --navy: #A9C4E8; --teal: #5CC7B8; --orange: #F0A866; --link: #A9C4E8;
+  --badge-bg: #2E5A8E; --on-strong: #FFFFFF; --plate: #FFFFFF;
+  --step-a: #2B5283; --step-b: #0E7C72; --step-c: #A9560F;
+  --tag-measured: #5CC7B8; --tag-derived: #A9C4E8; --tag-reported: #98A6B8; --tag-estimate: #F0A866;
+  --pending-bg: #3A2612; --pending-fg: #F7C08C; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0D1520; --surface: #142031; --ink: #E7EDF4; --ink-2: #C9D3DF; --muted: #98A6B8;
+  --rule: #2B3B50; --rule-soft: #22324A; --tint: #1A2A3E;
+  --navy: #A9C4E8; --teal: #5CC7B8; --orange: #F0A866; --link: #A9C4E8;
+  --badge-bg: #2E5A8E; --on-strong: #FFFFFF; --plate: #FFFFFF;
+  --step-a: #2B5283; --step-b: #0E7C72; --step-c: #A9560F;
+  --tag-measured: #5CC7B8; --tag-derived: #A9C4E8; --tag-reported: #98A6B8; --tag-estimate: #F0A866;
+  --pending-bg: #3A2612; --pending-fg: #F7C08C; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 1.0625rem; line-height: 1.55;
+       -webkit-text-size-adjust: 100%; }
+.page { max-width: var(--measure); margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px;
+        display: flex; flex-direction: column; gap: 20px; }
+a { color: var(--link); text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; color: var(--navy); line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(1.75rem, 6vw, 2.6rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.45rem; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+h3 { font-size: 1.08rem; font-weight: 700; }
+p { margin: 0; }
+sub, sup { font-size: 0.72em; line-height: 0; }
+strong { color: var(--ink); }
+
+/* masthead */
+.masthead { display: flex; flex-direction: column; gap: 12px; padding-block: 4px 0; }
+.logos { background: var(--plate); border: 1px solid var(--rule-soft); border-radius: var(--radius);
+         display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; }
+.logos img { height: 52px; width: auto; max-width: 32%; object-fit: contain; }
+.eyebrow { font-family: var(--f-mono); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--teal); }
+.subtitle { font-size: 1.2rem; color: var(--teal); }
+.authors { font-weight: 700; color: var(--ink); }
+.affil { list-style: none; margin: 0; padding: 0; font-size: 0.9rem; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.intro { color: var(--ink-2); }
+.preview-banner { background: var(--pending-bg); color: var(--pending-fg); border-radius: 8px; padding: 10px 14px; font-size: 0.92rem; }
+
+/* 5-step strip, as on the poster (chevrons; stacked and pointing down on phones) */
+.strip ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.strip li { color: var(--on-strong); padding: 10px 18px 10px 20px; min-width: 0; display: flex; flex-direction: column; justify-content: center;
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%); }
+.strip li:first-child { clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%); padding-left: 12px; }
+.strip .s-a { background: var(--step-a); } .strip .s-b { background: var(--step-b); } .strip .s-c { background: var(--step-c); }
+.strip b { font-size: 0.88rem; line-height: 1.2; } .strip span { font-size: 0.78rem; opacity: 0.92; line-height: 1.25; }
+@media (max-width: 720px) {
+  .strip ol { grid-template-columns: 1fr; gap: 2px; }
+  .strip li, .strip li:first-child { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 50% 100%, 0 calc(100% - 8px)); padding: 8px 14px 14px; }
+  .strip li:last-child { clip-path: none; padding-bottom: 8px; border-radius: 0 0 8px 8px; }
+  .strip li:first-child { border-radius: 8px 8px 0 0; }
+}
+
+/* table of contents */
+.toc { background: var(--surface); border: 1px solid var(--rule-soft); border-radius: var(--radius); padding: 12px 16px; }
+.toc h2 { font-size: 0.8rem; font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 8px; }
+.toc ol { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 16px; }
+.toc li { break-inside: avoid; }
+.toc a { text-decoration: none; display: flex; gap: 8px; align-items: baseline; padding: 3px 0; }
+.toc a:hover { text-decoration: underline; }
+.toc .n { font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); min-width: 1.6em; }
+@media (max-width: 520px) { .toc ol { columns: 1; } }
+
+/* sections = the poster's cards */
+.card { background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius); padding: 18px 18px 20px;
+        display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 12px; }
+.badge { flex: none; width: 2rem; height: 2rem; border-radius: 50%; background: var(--badge-bg); color: var(--on-strong);
+         font-size: 1.05rem; display: inline-grid; place-items: center; font-weight: 700; }
+.prose { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.prose ul, .prose ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+.poster-text { color: var(--ink-2); }
+.post-thesis { font-family: var(--f-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+               color: var(--on-strong); background: var(--teal); border-radius: 999px; padding: 2px 8px; margin-left: auto; white-space: nowrap; }
+:root[data-theme="dark"] .post-thesis { color: #0D1520; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .post-thesis { color: #0D1520; } }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.stat { background: var(--tint); border-radius: 10px; padding: 10px 8px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; min-width: 0; }
+.stat-num { font-size: 1.55rem; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat-lab { font-size: 0.82rem; color: var(--muted); line-height: 1.25; }
+@media (max-width: 420px) { .stat-num { font-size: 1.3rem; } }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.plate { background: var(--plate); border: 1px solid var(--rule-soft); border-radius: 10px; padding: 8px; display: block; }
+.plate img { display: block; width: 100%; height: auto; max-width: 100%; }
+figcaption { font-size: 0.9rem; color: var(--muted); font-style: italic; }
+.zoom { font-size: 0.8rem; font-family: var(--f-mono); color: var(--muted); margin-top: 10px; }
+.stat-num .pending { font-size: 0.5em; font-weight: 400; }
+
+details.more { border-top: 1px solid var(--rule-soft); padding-top: 10px; }
+details.more summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; }
+details.more summary::-webkit-details-marker { display: none; }
+details.more summary::before { content: "+"; font-family: var(--f-mono); color: var(--teal); font-weight: 700; width: 1em; }
+details.more[open] summary::before { content: "−"; }
+details.more summary h3 { color: var(--teal); }
+details.more .prose { margin-top: 10px; }
+
+.numbers h3 { font-size: 0.8rem; font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 6px; }
+.numbers { font-size: 0.95rem; }
+.tag { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.02em; border: 1px solid currentColor; border-radius: 999px; padding: 0 6px; white-space: nowrap; }
+.t-measured { color: var(--tag-measured); } .t-derived { color: var(--tag-derived); }
+.t-reported { color: var(--tag-reported); } .t-estimate { color: var(--tag-estimate); }
+.pending { background: var(--pending-bg); color: var(--pending-fg); border-radius: 6px; padding: 1px 6px; font-size: 0.85em; white-space: nowrap; }
+
+.table-scroll { overflow-x: auto; border: 1px solid var(--rule-soft); border-radius: 8px; }
+table { border-collapse: collapse; width: max-content; min-width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+td, th { max-width: 17rem; }
+th { background: var(--navy); color: var(--surface); text-align: left; padding: 6px 8px; font-weight: 700; }
+:root[data-theme="dark"] th { background: var(--tint); color: var(--ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) th { background: var(--tint); color: var(--ink); } }
+td { padding: 6px 8px; border-top: 1px solid var(--rule-soft); vertical-align: top; }
+tr:nth-child(even) td { background: var(--bg); }
+
+.ask { background: var(--tint); border: 1px dashed var(--rule); border-radius: 10px; padding: 12px 14px; }
+.contact-line { font-family: var(--f-mono); font-size: 0.95rem; user-select: all; }
+footer { font-size: 0.82rem; color: var(--muted); display: flex; flex-direction: column; gap: 6px; padding-top: 4px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* AO2-2 · 3D viewer: tabs + white plate in both themes (like the figures) */
+.mx3d { gap: 8px; }
+.mx3d:not([data-js]) .mx-tabs, .mx3d:not([data-js]) .mx-start { display: none; }
+.mx-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.mx-tab { font: inherit; text-align: left; cursor: pointer; background: var(--surface); color: var(--ink-2);
+          border: 1px solid var(--rule); border-radius: 10px; padding: 6px 10px; display: flex; flex-direction: column;
+          gap: 1px; min-width: 0; line-height: 1.25; }
+.mx-tab b { color: var(--navy); font-size: 0.95rem; }
+.mx-tab span { font-size: 0.85rem; overflow-wrap: anywhere; }
+.mx-tab .mx-n { color: var(--muted); font-size: 0.78rem; }
+.mx-tab[aria-pressed="true"] { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); background: var(--tint); }
+.mx-tab:focus-visible, .mx-start:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.mx-wrap { position: relative; padding: 0; overflow: hidden; }
+.mx-wrap img { display: block; width: 100%; height: auto; }
+.mx-stage { position: relative; width: 100%; height: 320px; }
+@media (min-width: 600px) { .mx-stage { height: 400px; } }
+.mx-start { position: absolute; right: 10px; bottom: 10px; font: inherit; font-weight: 700; cursor: pointer;
+            background: var(--badge-bg); color: var(--on-strong); border: 0; border-radius: 999px; padding: 8px 16px; }
+.mx3d figcaption { font-style: normal; color: var(--ink-2); }
+.mx-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.85rem; color: var(--muted); margin: 0; }
+.mx-key { display: inline-flex; align-items: center; gap: 6px; }
+.mx-key i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 1px var(--rule); }
+.mx-note { font-size: 0.88rem; color: var(--pending-fg); background: var(--pending-bg); border-radius: 8px; padding: 6px 10px; margin: 0; }
+@media (max-width: 520px) { .mx-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+<div class="page">
+<header class="masthead">
+<div class="logos"><img src="assets/gtu_en_colour_600dpi.png" alt="Gebze Technical University"><img src="assets/itu_laci_600dpi.png" alt="Istanbul Technical University"><img src="assets/image3.png" alt="MEM-CES: Membrane Materials, Computational and Experimental Studies"></div>
+<p class="eyebrow">BAŞARIM 2026 · Poster 40 · İTÜ, 14–16 October 2026</p>
+<h1>From Grand Canonical Monte Carlo<br>to Graph Neural Networks</h1>
+<p class="subtitle">An HPC-Driven Screening Framework for MXene-Based CO<sub>2</sub>/CH<sub>4</sub> Separation</p>
+<p class="authors">Eyüp YAZKAN<sup>1</sup> · Sadiye VELİOĞLU²</p>
+<ul class="affil"><li><sup>1</sup> Department of Nanoscience and Nanoengineering, Gebze Technical University, Kocaeli, Türkiye · eyazkan@gtu.edu.tr</li><li>² Department of Chemical Engineering, Istanbul Technical University, Istanbul, Türkiye · sadiye.velioglu@itu.edu.tr</li></ul>
+</header>
+<nav class="strip" aria-label="Workflow in five steps"><ol><li class="s-a"><b>1 · Structure library</b><span>20,592 hypothetical MXenes</span></li><li class="s-a"><b>2 · Relaxation · Charges · QC</b><span>18,884 structures kept</span></li><li class="s-b"><b>3 · Distributed GCMC campaign</b><span>56,652 independent runs</span></li><li class="s-b"><b>4 · Hybrid CGCNN surrogate</b><span>R² ≈ 0.97 · 99.79 % accuracy</span></li><li class="s-c"><b>5 · Screening interface</b><span>1.18 s per structure, CPU only</span></li></ol></nav>
+<nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li><a href="#summary"><span class="n">·</span><span>60-second summary</span></a></li><li><a href="#s1"><span class="n">1</span><span>Motivation &amp; objective</span></a></li><li><a href="#s2"><span class="n">2</span><span>Hypothetical MXene library</span></a></li><li><a href="#s3"><span class="n">3</span><span>Automation I: scripted library generation</span></a></li><li><a href="#s4"><span class="n">4</span><span>GCMC protocol &amp; performance metrics</span></a></li><li><a href="#s5"><span class="n">5</span><span>Automation II: MEM-CES Studio</span></a></li><li><a href="#s6"><span class="n">6</span><span>Screening results</span></a></li><li><a href="#s7"><span class="n">7</span><span>ML surrogates: hybrid two-stage scheme</span></a></li><li><a href="#s8"><span class="n">8</span><span>Model performance</span></a></li><li><a href="#s9"><span class="n">9</span><span>Deployed screening interface</span></a></li><li><a href="#s10"><span class="n">10</span><span>Conclusions</span></a></li><li><a href="#numbers"><span class="n">·</span><span>How the numbers were obtained</span></a></li><li><a href="#factory"><span class="n">·</span><span>Since the thesis: extended-library run</span></a></li><li><a href="#references"><span class="n">·</span><span>References</span></a></li><li><a href="#contact"><span class="n">·</span><span>Contact &amp; questions</span></a></li></ol><p class="zoom">Tap any figure to open it at full size.</p></nav>
+<section class="card" id="summary" aria-labelledby="summary-h">
+<h2 id="summary-h"><span>60-second summary</span></h2>
+<div class="prose"><p>Natural-gas sweetening removes CO<sub>2</sub> from CH<sub>4</sub> by pressure- or vacuum-swing adsorption, and the adsorbent sets the performance. Two-dimensional MXenes (M<sub>n+1</sub>X<sub>n</sub>T<sub>x</sub>) can be tuned through the metal, the X element, the layer count and the surface group: tens of thousands of compositions, only a handful ever measured. We screened this space end to end. A scripted workflow generated 20,592 hypothetical MXenes; after relaxation, DFT charges and quality control, 18,884 remained. Each was run through grand-canonical Monte Carlo in RASPA 2.0 at 298 K and three pressures — 56,652 independent runs — driven by an in-house controller, MEM-CES Studio. A hybrid classifier–regressor surrogate, led by a crystal-graph network, reached 99.79 % classification accuracy and R² ≈ 0.97 on a held-out set of 1,886 structures. The deployed tool answers in about one second per structure on a CPU. HPC invested once, amortized forever.</p></div>
+</section>
+<section class="card" id="s1" aria-labelledby="s1-h">
+<h2 id="s1-h"><span class="badge" aria-hidden="true">1</span><span>Motivation &amp; objective</span></h2>
+<div class="prose poster-text"><p>Natural-gas sweetening removes CO<sub>2</sub> from CH<sub>4</sub> by pressure- or vacuum-swing adsorption, and the adsorbent sets the performance. Two-dimensional MXenes (M<sub>n+1</sub>X<sub>n</sub>T<sub>x</sub>) can be tuned through the metal M, the X element, the layer count n and the surface group Tx: tens of thousands of compositions, of which only a handful have ever been measured.</p>
+<p><strong>Objective:</strong> screen this space end to end with automated structure generation, distributed high-throughput GCMC and a hybrid graph-neural-network surrogate that makes every simulation instantly reusable.</p>
+<div class="stats"><div class="stat"><span class="stat-num">20,592</span><span class="stat-lab">structures generated</span></div><div class="stat"><span class="stat-num">18,884</span><span class="stat-lab">MXenes screened</span></div><div class="stat"><span class="stat-num">56,652</span><span class="stat-lab">GCMC simulations</span></div></div></div>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>MXenes are a family of two-dimensional early-transition-metal carbides and nitrides, named for their M–X bonding and their "-ene" sheet morphology (thesis p. 5). The screening space combines eleven metals, two core elements and twelve surface terminations (thesis p. 14, Table 2.1). Natural gas is typically treated by pressure- or vacuum-swing adsorption, and the adsorbent dominates the process economics (thesis p. 4). The central challenge is that the composition space is far too large to explore experimentally, which motivates a computational screen (thesis p. 4).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>20,592 generated <span class="tag t-reported">reported</span> · thesis p. 14</li>
+<li>18,884 kept <span class="tag t-reported">reported</span> · thesis p. 16</li>
+<li>56,652 simulations <span class="tag t-derived">derived</span> · 18,884 × 3 pressures.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s2" aria-labelledby="s2-h">
+<h2 id="s2-h"><span class="badge" aria-hidden="true">2</span><span>Hypothetical MXene library</span></h2>
+<div class="prose poster-text"><ul>
+<li><strong>M:</strong> Sc, Ti, V, Cr, Y, Zr, Nb, Mo, Hf, Ta, W</li>
+<li><strong>X:</strong> C or N</li>
+<li><strong>Tx:</strong> bare, –H, –O, –OH, –F, –Cl, –Br, –I, –S, –Se, –Te, –NH<sub>2</sub></li>
+<li><strong>Layers:</strong> n = 2–5, P63/mmc templates</li>
+</ul>
+<p>Ti<sub>3</sub>C<sub>2</sub>O<sub>2</sub>, a single-metal entry (n = 3)</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Family</th>
+<th>n = 2</th>
+<th>n = 3</th>
+<th>n = 4</th>
+<th>n = 5</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SS · single TM</td>
+<td>264</td>
+<td>264</td>
+<td>264</td>
+<td>264</td>
+<td>1,056</td>
+</tr>
+<tr>
+<td>OPDT · out-of-plane double TM</td>
+<td>2,640</td>
+<td>2,640</td>
+<td>–</td>
+<td>–</td>
+<td>5,280</td>
+</tr>
+<tr>
+<td>IPDT · in-plane double TM</td>
+<td>2,640</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>2,640</td>
+</tr>
+<tr>
+<td>IPV · in-plane vacancy</td>
+<td>264</td>
+<td>–</td>
+<td>–</td>
+<td>–</td>
+<td>264</td>
+</tr>
+<tr>
+<td>SSM · solid solution, M site</td>
+<td>2,640</td>
+<td>2,640</td>
+<td>2,640</td>
+<td>2,640</td>
+<td>10,560</td>
+</tr>
+<tr>
+<td>SSX · solid solution, X site</td>
+<td>264</td>
+<td>264</td>
+<td>264</td>
+<td>–</td>
+<td>792</td>
+</tr>
+<tr>
+<td>Total generated</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>20,592</td>
+</tr>
+</tbody>
+</table></div>
+<p>Columns: metal layers per template (n = 2 → M<sub>2</sub>XT<sub>x</sub> … n = 5 → M<sub>5</sub>X<sub>4</sub>T<sub>x</sub>); each template runs over 11 M × 2 X × 12 Tx = 264 chemistries.<sup>[6]</sup></p>
+<p><strong>M<sub>n+1</sub>X<sub>n</sub>T<sub>x</sub></strong></p>
+<div class="stats"><div class="stat"><span class="stat-num">20,592</span><span class="stat-lab">hypothetical MXenes</span></div><div class="stat"><span class="stat-num">264</span><span class="stat-lab">chemistries per template (11 M × 2 X × 12 Tx)</span></div><div class="stat"><span class="stat-num">6</span><span class="stat-lab">MXene families (SS · OPDT · IPDT · IPV · SSM · SSX)</span></div></div></div>
+<figure class="mx3d" id="mx3d" data-state="static"><div class="mx-tabs" role="group" aria-label="Choose a family to view in 3D"><button type="button" class="mx-tab" data-k="SS" aria-pressed="false"><b>SS</b><span>Ti<sub>3</sub>C<sub>2</sub>O<sub>2</sub></span><span class="mx-n">n = 3</span></button><button type="button" class="mx-tab" data-k="OPDT" aria-pressed="false"><b>OPDT</b><span>Nb<sub>2</sub>TiC<sub>2</sub>O<sub>2</sub></span><span class="mx-n">n = 3</span></button><button type="button" class="mx-tab" data-k="IPDT" aria-pressed="false"><b>IPDT</b><span>(Ti<sub>0.66</sub>Nb<sub>0.33</sub>)<sub>2</sub>CO<sub>2</sub></span><span class="mx-n">n = 2</span></button><button type="button" class="mx-tab" data-k="IPV" aria-pressed="false"><b>IPV</b><span>Ti<sub>1.33</sub>CO<sub>2</sub></span><span class="mx-n">n = 2</span></button><button type="button" class="mx-tab" data-k="SSM" aria-pressed="false"><b>SSM</b><span>(Nb<sub>0.5</sub>Ti<sub>0.5</sub>)<sub>3</sub>C<sub>2</sub>O<sub>2</sub></span><span class="mx-n">n = 3</span></button><button type="button" class="mx-tab" data-k="SSX" aria-pressed="false"><b>SSX</b><span>Ti<sub>3</sub>(C<sub>0.5</sub>N<sub>0.5</sub>)<sub>2</sub>O<sub>2</sub></span><span class="mx-n">n = 3</span></button></div><div class="plate mx-wrap"><img id="mx-static" src="assets/sec2_structure_render.png" alt="Side view of a Ti3C2O2 slab: metal (blue), carbon (grey) and oxygen termination (orange) atoms."><div id="mx-stage" class="mx-stage" hidden></div><button type="button" id="mx-start" class="mx-start">Explore in 3D</button></div><figcaption id="mx-cap" aria-live="polite"><strong>SS</strong> · single TM · Ti<sub>3</sub>C<sub>2</sub>O<sub>2</sub> · n = 3</figcaption><p class="mx-legend" id="mx-legend"><span class="mx-key"><i style="background:#2A78D6"></i><span>Ti (M)</span></span><span class="mx-key"><i style="background:#4B5563"></i><span>C (X)</span></span><span class="mx-key"><i style="background:#B45309"></i><span>O (T<sub>x</sub>)</span></span></p><p class="zoom" id="mx-hint" hidden>Drag to rotate, pinch or scroll to zoom. Each view repeats the unit cell 3 × 3 × 1.</p><p class="mx-note" id="mx-note" hidden></p></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>The library was generated from six MXene families reported in the literature using a Ti<sub>2</sub>CF<sub>2</sub> unit cell as reference (thesis p. 14). Every template runs over 11 early transition metals (Ti, Ta, V, Y, Nb, Zr, Cr, Sc, W, Hf, Mo), two core elements (C, N) and twelve surface groups (thesis p. 14). A Perl workflow inside Materials Studio varied metal, C/N element and functional group in nested loops (thesis p. 16). 20,592 raw structures passed through a quality-control procedure that rejected structures whose terminations collapsed into the metal plane (1,042), whose cell angles deviated by more than ±3° after optimization (402), or whose simulation outputs were incomplete (264): 1,708 removed, 18,884 kept (thesis p. 16). The family distribution is given in thesis Table 2.1 (thesis p. 14).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>20,592 generated <span class="tag t-reported">reported</span> · thesis p. 14</li>
+<li>18,884 kept <span class="tag t-reported">reported</span> · thesis p. 16</li>
+<li>1,708 removed <span class="tag t-reported">reported</span> · thesis p. 16</li>
+<li>264 chemistries per template <span class="tag t-derived">derived</span> · 11 × 2 × 12.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s3" aria-labelledby="s3-h">
+<h2 id="s3-h"><span class="badge" aria-hidden="true">3</span><span>Automation I: scripted library generation</span></h2>
+<div class="prose poster-text"><p>One scripted workflow built the thesis library in the Materials Studio GUI: it sweeps every M, X and Tx over each template, then relaxes, charges and exports. <strong>Since the thesis, the same workflow has run unattended on an extended library: 2,456 structures charged in 82 h.</strong></p>
+<p>Measured · same workflow, extended-library run, 82 h to 29 Sep 2026 · 452 auto-recoveries, no manual intervention</p>
+<div class="stats"><div class="stat"><span class="stat-num">82 h</span><span class="stat-lab">unattended run</span></div><div class="stat"><span class="stat-num">2,456</span><span class="stat-lab">charged structures</span></div><div class="stat"><span class="stat-num">≈ 30 / h</span><span class="stat-lab">largest n = 5 cells</span></div></div></div>
+<figure><a class="plate" href="assets/image5_qc_grey.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/image5_qc_grey.png" alt="Scripted workflow from family templates to exported CIF files, and the quality-control funnel from 20,592 to 18,884 structures." loading="lazy"></a></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>Structure generation, lattice equilibration (Forcite, UFF) and atomic-charge assignment (DMol3 ESP charges, settings as in thesis Table 2.3) were automated in a single Perl workflow (thesis p. 16, p. 18). Since the thesis, the same workflow has run unattended on an extended library; a watchdog skips any structure that exceeds its time limit and restarts the session (run log, 29 Sep 2026).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>82 h unattended <span class="tag t-measured">measured</span> · extended-library run log</li>
+<li>2,456 charged structures <span class="tag t-measured">measured</span> · extended-library run log</li>
+<li>≈ 30 structures/h, largest n = 5 cells <span class="tag t-derived">derived</span> · 2,456 / 82</li>
+<li>452 auto-recoveries, no manual intervention <span class="tag t-measured">measured</span> · extended-library run log.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s4" aria-labelledby="s4-h">
+<h2 id="s4-h"><span class="badge" aria-hidden="true">4</span><span>GCMC protocol &amp; performance metrics</span></h2>
+<div class="prose poster-text"><p><strong>SIMULATION SET-UP</strong></p>
+<p><strong>6 UPTAKES + 15 DERIVED METRICS</strong></p>
+<ul>
+<li><strong>System:</strong> rigid two-layer supercell, channel aperture ≈ 4.5 Å (lamellar Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub>-like)</li>
+<li><strong>Mixture:</strong> equimolar CO<sub>2</sub>/CH<sub>4</sub>, 298 K, 0.1 / 1 / 10 bar</li>
+<li><strong>Force field:</strong> UFF + TraPPE, DFT-ESP charges, Ewald (12 Å cut-off), RASPA 2.0<sup>[2–4]</sup></li>
+<li><strong>Workload:</strong> 56,652 independent runs, embarrassingly parallel</li>
+</ul>
+<p><strong>Selectivity</strong></p>
+<p>S = (xCO2/xCH4) · (yCH4/yCO2)</p>
+<p><strong>Working Capacity, mol/kg</strong></p>
+<p>ΔN = Nads − Ndes</p>
+<p><strong>Regenerability</strong></p>
+<p>R = ΔN / Nads × 100</p>
+<p><strong>Performance Score, mol/kg</strong></p>
+<p>APS = S × ΔN</p>
+<p><strong>PSA:</strong> 10 → 1 bar   <strong>VSA:</strong> 1 → 0.1 bar</p>
+<div class="stats"><div class="stat"><span class="stat-num">56,652</span><span class="stat-lab">independent GCMC runs</span></div><div class="stat"><span class="stat-num">298 K</span><span class="stat-lab">, 0.1 / 1 / 10 bar, equimolar CO<sub>2</sub>/CH<sub>4</sub></span></div><div class="stat"><span class="stat-num">6</span><span class="stat-lab">uptakes + <strong>15</strong> derived metrics</span></div></div></div>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>Adsorption was computed with RASPA 2.0 using the UFF force field for the MXene framework and TraPPE for the gases (thesis p. 22). The CO<sub>2</sub> model follows a TraPPE-like three-site rigid model (thesis p. 22). Every structure was simulated at three pressures, giving three CO<sub>2</sub> and three CH<sub>4</sub> uptakes, from which fifteen derived process metrics (selectivity, working capacity, regenerability, APS, AFM, SSP) are computed (thesis p. 36). Protocol validation: simulated CO<sub>2</sub> isotherms for Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> and Mo<sub>2</sub>CT<sub>x</sub> lie inside the experimental range (poster Section 6; thesis p. 59).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>56,652 runs <span class="tag t-derived">derived</span> · 18,884 × 3 pressures; thesis p. 22</li>
+<li>3 pressures 0.1/1/10 bar</li>
+<li>298 K</li>
+<li>6 uptakes + 15 derived metrics (thesis p. 36).</li>
+</ul></div></div>
+</section>
+<section class="card" id="s5" aria-labelledby="s5-h">
+<h2 id="s5-h"><span class="badge" aria-hidden="true">5</span><span>Automation II: MEM-CES Studio</span></h2>
+<div class="prose poster-text"><p>Our in-house application drives the whole GCMC campaign over pooled TRUBA accounts and the laboratory workstations: it prepares inputs, dispatches and tracks jobs, harvests and analyses results and launches the next batch. <strong>Every run is independent, so throughput scales with the cores allocated.</strong></p>
+<p><strong>Pool:</strong> TRUBA student accounts, 2 × 56 cores each · project account, 4 × 56 cores</p>
+<p>Estimate, not measured: 18,884 structures × 12–18 core-hours each (three pressures, one core per run).</p>
+<div class="stats"><div class="stat"><span class="stat-num">56,652</span><span class="stat-lab">independent GCMC runs</span></div><div class="stat"><span class="stat-num">12–18 h</span><span class="stat-lab">per structure (est.)</span></div><div class="stat"><span class="stat-num">0.23–0.34 M</span><span class="stat-lab">CPU-hours in total (est.)</span></div></div></div>
+<figure><a class="plate" href="assets/sec5_studio_diagram.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/sec5_studio_diagram.png" alt="MEM-CES Studio controller loop (prepare, dispatch, monitor, harvest) driving TRUBA and laboratory back ends." loading="lazy"></a></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>The controller is the second automation layer of the ecosystem; it runs every structure to all three pressures without manual resubmission (poster Section 5). The distributed pool spans pooled TRUBA accounts — student accounts at 2 × 56 cores each and a project account at 4 × 56 cores — and the laboratory workstations. The campaign cost is given on the poster as a thesis estimate, not a metered total: 12–18 core-hours per structure (thesis p. 86), or 0.23–0.34 M CPU-hours for all 18,884 structures (derived from that estimate).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>56,652 independent runs <span class="tag t-derived">derived</span></li>
+<li>12–18 h per structure <span class="tag t-estimate">estimate</span> · thesis p. 86</li>
+<li>0.23–0.34 M CPU-hours (derived from estimate: 18,884 × 12–18 h).</li>
+</ul></div></div>
+</section>
+<section class="card" id="s6" aria-labelledby="s6-h">
+<h2 id="s6-h"><span class="badge" aria-hidden="true">6</span><span>Screening results</span></h2>
+<div class="prose poster-text"><ul>
+<li><strong>Universal trend:</strong> more metal layers → higher selectivity, lower capacity</li>
+<li><strong>Capacity champions:</strong> thin SS2 / SSM2, PSA ΔN(CO<sub>2</sub>) of 2.0–2.5 mol/kg</li>
+<li><strong>Best balance:</strong> SSM3 and SSX3, selectivities approaching 100 at useful ΔN(CO<sub>2</sub>)</li>
+<li><strong>Record holder:</strong> vacancy-ordered Mo<sub>1.33</sub>C, ΔN(CO<sub>2</sub>) = 3.4 mol/kg with S = 262 (PSA), at R = 36 %</li>
+<li><strong>vs. 3,816 MOFs</strong><sup>[5]</sup><strong>:</strong> at R &gt; 90 %, top MXenes reach APS 20–38.5 mol/kg; the best MOFs ≈ 20–30</li>
+<li><strong>Surface chemistry:</strong> –S, –Se, –Te and –I terminations recur among the leaders</li>
+</ul>
+<p>Protocol validation: simulated CO<sub>2</sub> isotherms (this work) vs. experiments for Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> (a, b) and Mo<sub>2</sub>CT<sub>x</sub> (c) lie inside the experimental range.</p>
+<p>The 20 most promising MXenes under PSA (top) and VSA (bottom), 298 K, up to 35 bar: CO<sub>2</sub> uptake (left) approaches 5 mol/kg while CH<sub>4</sub> (right) stays below 0.75 mol/kg; IPV Sc<sub>1.33</sub>CH<sub>2</sub> and Ti<sub>1.33</sub>CO<sub>2</sub> are among the leaders.</p>
+<div class="stats"><div class="stat"><span class="stat-num">3.4 mol/kg</span><span class="stat-lab">ΔN(CO<sub>2</sub>), S = 262 (record holder Mo<sub>1.33</sub>C)</span></div><div class="stat"><span class="stat-num">20–38.5 mol/kg</span><span class="stat-lab">APS at R &gt; 90 % vs. 3,816 MOFs</span></div><div class="stat"><span class="stat-num">≈ 5 / &lt; 0.75 mol/kg</span><span class="stat-lab">CO<sub>2</sub> / CH<sub>4</sub> (top-20)</span></div></div></div>
+<figure><a class="plate" href="assets/validation_isotherms_relayout.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/validation_isotherms_relayout.png" alt="Three panels of simulated versus experimental CO2 isotherms for Ti3C2Tx and Mo2CTx." loading="lazy"></a></figure>
+<figure><a class="plate" href="assets/top20_isotherms.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/top20_isotherms.png" alt="Four panels of CO2 and CH4 uptake up to 35 bar for the PSA and VSA top-20 lists; four leaders in colour." loading="lazy"></a></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>The record holder is vacancy-ordered Mo<sub>1.33</sub>C with ΔN(CO<sub>2</sub>) = 3.4 mol/kg and selectivity S = 262 (PSA) (thesis p. 58; DATA_LOCATIONS §A). At 35 bar the four leaders reach 4.57–4.85 mol/kg CO<sub>2</sub> while CH<sub>4</sub> stays at or below 0.72 mol/kg (thesis Ek Tablo 7). The MXene screen is compared against a published database of 3,816 computationally screened MOFs (thesis p. 57). Experimental validation for Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> and Mo<sub>2</sub>CT<sub>x</sub> appears in the protocol-validation panel (thesis p. 59).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>top-20</li>
+<li>298 K, up to 35 bar</li>
+<li>CO<sub>2</sub> approaches 5 mol/kg</li>
+<li>CH<sub>4</sub> &lt; 0.75 mol/kg</li>
+<li>3,816 MOFs <span class="tag t-reported">reported</span></li>
+<li>APS 20–38.5 mol/kg at R &gt; 90 %</li>
+<li>Mo<sub>1.33</sub>C ΔN 3.4 mol/kg, S = 262, R = 36 % <span class="tag t-derived">derived</span> · DATA_LOCATIONS §A.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s7" aria-labelledby="s7-h">
+<h2 id="s7-h"><span class="badge" aria-hidden="true">7</span><span>ML surrogates: hybrid two-stage scheme</span></h2>
+<div class="prose poster-text"><p>Every model uses the same <strong>hybrid classification–regression scheme</strong>: a classifier first separates adsorbers from non-adsorbers; a regressor trained on adsorbers only predicts the six uptakes. Random Forest (bagging) is compared with XGBoost and LightGBM (boosting) on 97 descriptors, and all three with a crystal-graph network (CGCNN)<sup>[1]</sup> that reads the structure itself.</p>
+<div class="stats"><div class="stat"><span class="stat-num">6</span><span class="stat-lab">uptakes + <strong>15</strong> derived metrics</span></div><div class="stat"><span class="stat-num">97</span><span class="stat-lab">descriptors</span></div><div class="stat"><span class="stat-num">4</span><span class="stat-lab">models (Random Forest · XGBoost · LightGBM · CGCNN)</span></div></div></div>
+<figure><a class="plate" href="assets/image10_stop_grey_layers.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/image10_stop_grey_layers.png" alt="CGCNN encoder feeding a classifier, then a regressor for adsorbers only, then 15 derived metrics." loading="lazy"></a></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>About 15 % of structures adsorb essentially nothing; feeding those zeros to a regressor degrades it, so a gate classifier is applied first (thesis p. 33, p. 36). The regressor predicts CO<sub>2</sub> and CH<sub>4</sub> uptakes at three pressures in one pass (thesis p. 36). CGCNN follows the original architecture of Xie and Grossman, with atoms as nodes and bonds as edges (thesis p. 33). The tree and boosting models use 97 descriptors.</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>6 uptakes (3 pressures × 2 gases)</li>
+<li>97 descriptors</li>
+<li>15 derived metrics.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s8" aria-labelledby="s8-h">
+<h2 id="s8-h"><span class="badge" aria-hidden="true">8</span><span>Model performance</span></h2>
+<div class="prose poster-text"><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Classification · Acc.</th>
+<th>Classification · MCC</th>
+<th>Classification · AUC</th>
+<th>Regression R² · CO<sub>2</sub></th>
+<th>Regression R² · CH<sub>4</sub></th>
+<th>Regression R² · Mean ± σ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CGCNN</td>
+<td>0.9979</td>
+<td>0.9919</td>
+<td>1.0000</td>
+<td>0.951</td>
+<td>0.986</td>
+<td>0.968 ± 0.008</td>
+</tr>
+<tr>
+<td>XGBoost</td>
+<td>0.9958</td>
+<td>0.9841</td>
+<td>1.0000</td>
+<td>0.935</td>
+<td>0.987</td>
+<td>0.961 ± 0.014</td>
+</tr>
+<tr>
+<td>LightGBM</td>
+<td>0.9963</td>
+<td>0.9858</td>
+<td>0.9999</td>
+<td>0.935</td>
+<td>0.987</td>
+<td>0.961 ± 0.013</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>0.9947</td>
+<td>0.9802</td>
+<td>0.9998</td>
+<td>0.877</td>
+<td>0.978</td>
+<td>0.927 ± 0.018</td>
+</tr>
+</tbody>
+</table></div>
+<p>Test split. Acc. = accuracy, MCC = Matthews correlation, AUC = ROC area; R² averaged over 0.1, 1 and 10 bar (± σ over the six targets).</p>
+<p><strong>HELD-OUT SET · 1,886 STRUCTURES · CGCNN vs. GCMC</strong></p>
+<p>Held-out set, 1,886 structures. Left, classification head: 99.79 % accuracy with 1 false positive and 3 false negatives. Right, regression head: CGCNN vs. GCMC for CO<sub>2</sub> uptake at 1 bar (R² = 0.974, MAE = 0.013 mol/kg, n = 1,591 adsorbers); the six uptakes reach R² = 0.972–0.991 with no systematic bias.</p>
+<div class="stats"><div class="stat"><span class="stat-num">99.79 %</span><span class="stat-lab">accuracy, 1 FP / 3 FN</span></div><div class="stat"><span class="stat-num">R² = 0.968 ± 0.008</span><span class="stat-lab">CGCNN mean</span></div><div class="stat"><span class="stat-num">1,886</span><span class="stat-lab">held-out structures</span></div></div></div>
+<figure><a class="plate" href="assets/sec8_confusion_matrix.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/sec8_confusion_matrix.png" alt="Confusion matrix on 1,886 held-out structures: 291 true non-adsorbers, 1,591 true adsorbers, 1 false positive, 3 false negatives." loading="lazy"></a></figure>
+<figure><a class="plate" href="assets/sec8_parity_plot.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/sec8_parity_plot.png" alt="Parity plot of CGCNN versus GCMC CO2 uptake at 1 bar for 1,591 adsorbers." loading="lazy"></a></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>Models were evaluated on a stratified held-out test set of 1,886 structures never seen during training (thesis p. 25). The CGCNN classifier reaches 0.9979 accuracy; regression R² is averaged over 0.1, 1 and 10 bar (thesis p. 68). Boosting (XGBoost, LightGBM) follows closely, showing the hybrid scheme — not a single algorithm — is the main driver of accuracy (thesis p. 68).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>1,886 held-out</li>
+<li>99.79 % accuracy</li>
+<li>1 FP / 3 FN</li>
+<li>R² = 0.968 ± 0.008 (CGCNN mean)</li>
+<li>R² = 0.974 at 1 bar</li>
+<li>MAE 0.013 mol/kg.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s9" aria-labelledby="s9-h">
+<h2 id="s9-h"><span class="badge" aria-hidden="true">9</span><span>Deployed screening interface</span></h2>
+<div class="prose poster-text"><p>Schematic of the deployed Gradio tool; values from the batch run on the held-out set. 1,886 CIFs: 37 min on one 128-thread CPU.</p>
+<div class="stats"><div class="stat"><span class="stat-num">1.18 s</span><span class="stat-lab">per structure, CPU</span></div><div class="stat"><span class="stat-num">&gt; 280×</span><span class="stat-lab">less CPU time (est.)</span></div><div class="stat"><span class="stat-num">≈ 37,000×</span><span class="stat-lab">vs one CPU core (est.)</span></div></div></div>
+<figure><a class="plate" href="assets/interface_schematic.png" target="_blank" rel="noopener" aria-label="Open the figure full size"><img src="assets/interface_schematic.png" alt="Three cards of the screening tool: upload a CIF, classify with CGCNN, predict six uptakes and derived metrics." loading="lazy"></a></figure>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>The deployed Gradio tool labels atoms, builds the crystal graph and returns the prediction in about one second on a CPU (thesis p. 86, p. 91). The 1,886-structure held-out batch ran in 37 minutes on one 128-thread AMD EPYC 7763 (poster Section 9). The "≈ 37,000×" compares per-structure surrogate time against direct GCMC on one CPU core, and the "&gt; 280×" counts all 128 threads of the surrogate (NUMBERS §9); both use the thesis estimate of 12–18 h of single-core GCMC per structure as their base, so they are labeled (est.).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>1.18 s per structure <span class="tag t-derived">derived</span> · 2,219.9 s / 1,886</li>
+<li>≈ 37,000× vs one core (derived from estimate, 12 h base)</li>
+<li>&gt; 280× less CPU time (derived from estimate)</li>
+<li>1,886 CIFs, 37 min, 128-thread CPU.</li>
+</ul></div></div>
+</section>
+<section class="card" id="s10" aria-labelledby="s10-h">
+<h2 id="s10-h"><span class="badge" aria-hidden="true">10</span><span>Conclusions</span></h2>
+<div class="prose poster-text"><ul>
+<li><strong>HPC invested once, amortized forever:</strong> 56,652 GCMC runs become a surrogate that answers in about one second with R² ≈ 0.97.</li>
+<li><strong>Two automation layers made the scale possible:</strong> scripted structure generation and MEM-CES Studio campaign control.</li>
+<li><strong>Hybrid scheme:</strong> non-adsorbers are separated before any uptake is predicted, so every prediction stays physical.</li>
+<li><strong>Next:</strong> ML potentials and charge models to replace relaxation and DFT charges; an extended library is under way.</li>
+</ul>
+<div class="stats"><div class="stat"><span class="stat-num">56,652</span><span class="stat-lab">GCMC runs</span></div><div class="stat"><span class="stat-num">about one second</span><span class="stat-lab">per structure</span></div><div class="stat"><span class="stat-num">R² ≈ 0.97</span><span class="stat-lab"></span></div></div></div>
+<details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>Future work includes relaxation with machine-learned interatomic potentials and load prediction with ML (thesis p. 92). The library is not yet released; it is planned as an open resource of approximately 20,000 structures (thesis p. 90).</p></div></details>
+<div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
+<li>56,652 runs</li>
+<li>about one second</li>
+<li>R² ≈ 0.97.</li>
+</ul></div></div>
+</section>
+<section class="card" id="numbers" aria-labelledby="numbers-h">
+<h2 id="numbers-h"><span>How the numbers were obtained</span></h2>
+<div class="prose"><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Meaning</th>
+<th>Source</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20,592</td>
+<td>generated hypothetical MXenes</td>
+<td>thesis p. 14, Table 2.1</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>18,884</td>
+<td>structures kept after QC</td>
+<td>thesis p. 16</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>1,708</td>
+<td>removed by QC (1,042 + 402 + 264)</td>
+<td>thesis p. 16</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>56,652</td>
+<td>independent GCMC runs (18,884 × 3)</td>
+<td>thesis p. 22</td>
+<td><span class="tag t-derived">derived</span></td>
+</tr>
+<tr>
+<td>1,886 / 16,998</td>
+<td>held-out / development split (10 % / 90 %)</td>
+<td>thesis p. 25</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>82 h · 2,456 · ≈ 30/h · 452</td>
+<td>extended-library run counters, 29 Sep 2026 (after the thesis)</td>
+<td>run log</td>
+<td><span class="tag t-measured">measured</span> (≈ 30/h <span class="tag t-derived">derived</span>)</td>
+</tr>
+<tr>
+<td>12–18 h per structure</td>
+<td>GCMC estimate</td>
+<td>thesis p. 86</td>
+<td><span class="tag t-estimate">estimate</span></td>
+</tr>
+<tr>
+<td>0.23–0.34 M CPU-hours</td>
+<td>18,884 × 12–18 h</td>
+<td>derived from estimate</td>
+<td><span class="tag t-derived">derived</span></td>
+</tr>
+<tr>
+<td>R² = 0.968 ± 0.008 (CGCNN)</td>
+<td>regression mean over six targets</td>
+<td>thesis p. 68</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>99.79 % accuracy, 1 FP / 3 FN</td>
+<td>classifier on held-out</td>
+<td>poster Table 1 / thesis</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>4.85 / 0.72 mol/kg</td>
+<td>top-20 leaders CO<sub>2</sub> / CH<sub>4</sub> at 35 bar</td>
+<td>thesis Ek Tablo 7</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+<tr>
+<td>1.18 s per structure</td>
+<td>interface batch (2,219.9 s / 1,886)</td>
+<td>batch-run summary screen (sekil_66) and Ek_Tablo 6</td>
+<td><span class="tag t-derived">derived</span></td>
+</tr>
+<tr>
+<td>≈ 37,000× · &gt; 280×</td>
+<td>speed-up vs one core / vs 128 threads</td>
+<td>NUMBERS §9</td>
+<td>derived from estimate (12 h base)</td>
+</tr>
+<tr>
+<td>R = 36 % (Mo<sub>1.33</sub>C)</td>
+<td>PSA regenerability</td>
+<td>DATA_LOCATIONS §A</td>
+<td><span class="tag t-derived">derived</span></td>
+</tr>
+<tr>
+<td>3,816 MOFs</td>
+<td>comparison database size</td>
+<td>thesis p. 57</td>
+<td><span class="tag t-reported">reported</span></td>
+</tr>
+</tbody>
+</table></div></div>
+</section>
+<section class="card" id="factory" aria-labelledby="factory-h">
+<h2 id="factory-h"><span>Since the thesis: extended-library run</span><span class="post-thesis">after the thesis</span></h2>
+<div class="prose"><p>After the thesis, the same structure-generation workflow was set up to run unattended on an extended library. A watchdog skips any structure that exceeds its time limit and restarts the session: 452 automatic recoveries with no manual intervention. Over 82 hours (to 29 Sep 2026) the run charged 2,456 structures, about 30 per hour on the largest n = 5 cells. (Measured from the run log; after the thesis; no result from this run is used elsewhere on the poster.)</p></div>
+</section>
+<section class="card" id="references" aria-labelledby="references-h">
+<h2 id="references-h"><span>References</span></h2>
+<div class="prose"><ol>
+<li>Xie, T., Grossman, J. C., 2018. <em>Physical Review Letters</em>, 120(14), 145301 (CGCNN).</li>
+<li>Dubbeldam, D., et al., 2016. <em>Molecular Simulation</em>, 42(2), 81-101 (RASPA).</li>
+<li>Rappé, A. K., et al., 1992. <em>JACS</em>, 114(25), 10024-10035 (UFF).</li>
+<li>Potoff, J. J., Siepmann, J. I., 2001. <em>AIChE Journal</em>, 47(7), 1676-1682 (TraPPE).</li>
+<li>Altintas, C., et al., 2018. <em>ACS Appl. Mater. Interfaces</em>, 10(20), 17257-17268 (3,816 MOFs).</li>
+<li>Ahmed, B., et al., 2020. <em>Adv. Funct. Mater.</em>, 30(47), 2000894 (MXene families).</li>
+</ol></div>
+</section>
+<section class="card" id="contact" aria-labelledby="contact-h">
+<h2 id="contact-h"><span>Contact &amp; questions</span></h2>
+<div class="prose"><ul>
+<li><strong>Contact:</strong> eyazkan@gtu.edu.tr (Eyüp Yazkan) · sadiye.velioglu@itu.edu.tr (Sadiye Velioğlu)</li>
+</ul></div>
+<div class="ask"><p><strong>Ask about this poster</strong></p><p>Coming soon: questions about any section, answered from the thesis.</p></div>
+</section>
+<footer><p>Acknowledgment: computational resources were provided in part by the TÜBİTAK ULAKBİM High Performance and Grid Computing Center (TRUBA). Supported by TÜBİTAK 1001 Grant No. 123M410.  ·  BAŞARIM 2026 · Poster 40  ·  eyazkan@gtu.edu.tr</p><p>Poster and page: Eyüp Yazkan (Gebze Technical University) and Sadiye Velioğlu (Istanbul Technical University).</p></footer>
+</div>
+<script type="application/json" id="mx-structures">{"colors": {"Ti": "#2A78D6", "Nb": "#1E3A5F", "C": "#4B5563", "N": "#9CA3AF", "O": "#B45309"}, "roles": {"Ti": "M", "Nb": "M", "C": "X", "N": "X", "O": "T<sub>x<\/sub>"}, "structures": {"SS": {"code": "SS", "family": "single TM", "n": 3, "formula_html": "Ti<sub>3<\/sub>C<sub>2<\/sub>O<sub>2<\/sub>", "cell_note": "", "elements": ["Ti", "C", "O"], "cif": "data_Ti3C2O2\n_audit_creation_date              2022-07-30\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n_cell_length_a                    2.8900\n_cell_length_b                    2.8900\n_cell_length_c                    15.0000\n_cell_angle_alpha                 89.4573\n_cell_angle_beta                  83.3389\n_cell_angle_gamma                 119.9951\nloop_\n_atom_site_label\n_atom_site_type_symbol\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n_atom_site_adp_type\n_atom_site_occupancy\nF1     O    -0.02053   0.88673   0.22001   0.00000  Uiso   1.00\nTi1    Ti    0.78614   0.77875   0.45097   0.00000  Uiso   1.00\nTi2    Ti    0.31630   0.03593   0.61412   0.00000  Uiso   1.00\nTi3    Ti    0.25610   0.52172   0.28783   0.00000  Uiso   1.00\nC1     C     0.52109   0.15022   0.36942   0.00000  Uiso   1.00\nC2     C     0.05121   0.40733   0.53253   0.00000  Uiso   1.00\nF2     O     0.59299   0.67100   0.68194   0.00000  Uiso   1.00\nloop_\n_geom_bond_atom_site_label_1\n_geom_bond_atom_site_label_2\n_geom_bond_distance\n_geom_bond_site_symmetry_2\n_ccdc_geom_bond_type\nF1     Ti3     1.949   .     S\nF1     Ti3     1.949   1_455 S\nF1     Ti3     1.949   1_565 S\nTi1    C1      2.062   .     S\nTi1    C2      2.062   .     S\nTi1    Ti1     2.890   1_455 S\nTi1    Ti1     2.890   1_655 S\nTi1    Ti1     2.890   1_665 S\nTi1    Ti1     2.890   1_445 S\nTi1    Ti1     2.890   1_565 S\nTi1    Ti1     2.890   1_545 S\nTi1    C1      2.062   1_565 S\nTi1    C1      2.062   1_665 S\nTi1    C2      2.062   1_655 S\nTi1    C2      2.062   1_665 S\nTi2    C2      2.062   .     S\nTi2    F2      1.949   .     S\nTi2    Ti2     2.890   1_445 S\nTi2    Ti2     2.890   1_665 S\nTi2    Ti2     2.890   1_655 S\nTi2    Ti2     2.890   1_455 S\nTi2    Ti2     2.890   1_565 S\nTi2    Ti2     2.890   1_545 S\nTi2    C2      2.062   1_545 S\nTi2    C2      2.062   1_655 S\nTi2    F2      1.949   1_545 S\nTi2    F2      1.949   1_445 S\nTi3    C1      2.062   .     S\nTi3    F1      1.949   1_655 S\nTi3    Ti3     2.890   1_455 S\nTi3    Ti3     2.890   1_655 S\nTi3    Ti3     2.890   1_665 S\nTi3    Ti3     2.890   1_445 S\nTi3    Ti3     2.890   1_565 S\nTi3    Ti3     2.890   1_545 S\nTi3    F1      1.949   1_545 S\nTi3    C1      2.062   1_565 S\nTi3    C1      2.063   1_455 S\nC1     Ti3     2.062   1_545 S\nC1     Ti3     2.063   1_655 S\nC1     Ti1     2.062   1_545 S\nC1     Ti1     2.062   1_445 S\nC2     Ti1     2.062   1_455 S\nC2     Ti1     2.062   1_445 S\nC2     Ti2     2.062   1_565 S\nC2     Ti2     2.062   1_455 S\nF2     Ti2     1.949   1_565 S\nF2     Ti2     1.949   1_665 S\n"}, "OPDT": {"code": "OPDT", "family": "out-of-plane double TM", "n": 3, "formula_html": "Nb<sub>2<\/sub>TiC<sub>2<\/sub>O<sub>2<\/sub>", "cell_note": "", "elements": ["Ti", "Nb", "C", "O"], "cif": "data_Nb2TiC2O2\n_audit_creation_date              2022-03-24\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n_cell_length_a                    2.9321\n_cell_length_b                    2.9322\n_cell_length_c                    15.0000\n_cell_angle_alpha                 90.0759\n_cell_angle_beta                  81.5931\n_cell_angle_gamma                 120.0014\nloop_\n_atom_site_label\n_atom_site_type_symbol\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n_atom_site_adp_type\n_atom_site_occupancy\nTi1    Ti    0.80319   0.77834   0.44706   0.01267  Uiso   1.00\nTi2    Nb    0.30434   0.03007   0.61383   0.01267  Uiso   1.00\nTi3    Nb    0.30213   0.52671   0.28029   0.01267  Uiso   1.00\nC1     C     0.55001   0.15124   0.36637   0.01267  Uiso   1.00\nC2     C     0.05647   0.40556   0.52774   0.01267  Uiso   1.00\nF1     O     1.04636   0.89828   0.20215   0.01267  Uiso   1.00\nF2     O     0.56009   0.65845   0.69197   0.01267  Uiso   1.00\nloop_\n_geom_bond_atom_site_label_1\n_geom_bond_atom_site_label_2\n_geom_bond_distance\n_geom_bond_site_symmetry_2\n_ccdc_geom_bond_type\nTi1    C1      2.071   .     S\nTi1    C2      2.071   .     S\nTi1    C1      2.071   1_565 S\nTi1    C1      2.071   1_665 S\nTi1    C2      2.071   1_655 S\nTi1    C2      2.071   1_665 S\nTi2    C2      2.118   .     S\nTi2    F2      2.050   .     S\nTi2    Ti2     2.932   1_655 S\nTi2    Ti2     2.932   1_455 S\nTi2    Ti2     2.932   1_565 S\nTi2    Ti2     2.932   1_545 S\nTi2    Ti2     2.932   1_665 S\nTi2    Ti2     2.932   1_445 S\nTi2    C2      2.118   1_655 S\nTi2    C2      2.118   1_545 S\nTi2    F2      2.050   1_545 S\nTi2    F2      2.050   1_445 S\nTi3    F1      2.050   .     S\nTi3    C1      2.118   .     S\nTi3    Ti3     2.932   1_455 S\nTi3    Ti3     2.932   1_655 S\nTi3    Ti3     2.932   1_665 S\nTi3    Ti3     2.932   1_445 S\nTi3    Ti3     2.932   1_565 S\nTi3    Ti3     2.932   1_545 S\nTi3    C1      2.118   1_565 S\nTi3    C1      2.118   1_455 S\nTi3    F1      2.050   1_455 S\nTi3    F1      2.050   1_445 S\nC1     Ti3     2.118   1_545 S\nC1     Ti3     2.118   1_655 S\nC1     Ti1     2.071   1_545 S\nC1     Ti1     2.071   1_445 S\nC2     Ti1     2.071   1_455 S\nC2     Ti2     2.118   1_455 S\nC2     Ti1     2.071   1_445 S\nC2     Ti2     2.118   1_565 S\nF1     Ti3     2.050   1_655 S\nF1     Ti3     2.050   1_665 S\nF2     Ti2     2.050   1_565 S\nF2     Ti2     2.050   1_665 S\n"}, "IPDT": {"code": "IPDT", "family": "in-plane double TM", "n": 2, "formula_html": "(Ti<sub>0.66<\/sub>Nb<sub>0.33<\/sub>)<sub>2<\/sub>CO<sub>2<\/sub>", "cell_note": "", "elements": ["Ti", "Nb", "C", "O"], "cif": "data_(Ti0.66Nb0.33)2CO2\n_audit_creation_date              2024-10-07\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n_cell_length_a                    9.1213\n_cell_length_b                    9.1417\n_cell_length_c                    14.0000\n_cell_angle_alpha                 89.9931\n_cell_angle_beta                  90.1153\n_cell_angle_gamma                 120.0737\nloop_\n_atom_site_label\n_atom_site_type_symbol\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n_atom_site_adp_type\n_atom_site_occupancy\nTi1    Ti    0.11370   0.22353   0.05304   0.01267  Uiso   1.00\nNb2    Nb    0.22219   0.11108   0.21937   0.01267  Uiso   1.00\nC3     C     0.00000   0.00000   0.13421   0.01267  Uiso   1.00\nO4     O     0.22199   0.11102  -0.01918   0.01267  Uiso   1.00\nO5     O     0.10314   0.21821   0.28776   0.01267  Uiso   1.00\nTi6    Ti    0.44113   0.22058   0.05274   0.01267  Uiso   1.00\nTi7    Ti    0.55887   0.11276   0.21569   0.01267  Uiso   1.00\nC8     C     0.33575   0.00121   0.13996   0.01267  Uiso   1.00\nO9     O     0.54631   0.10652  -0.01963   0.01267  Uiso   1.00\nO10    O     0.45368   0.22681   0.28808   0.01267  Uiso   1.00\nNb11   Nb    0.77781   0.22225   0.04905   0.01267  Uiso   1.00\nTi12   Ti    0.88629   0.10980   0.21539   0.01267  Uiso   1.00\nC13    C     0.66425  -0.00120   0.12846   0.01267  Uiso   1.00\nO14    O     0.89685   0.11512  -0.01933   0.01267  Uiso   1.00\nO15    O     0.77801   0.22231   0.28760   0.01267  Uiso   1.00\nTi16   Ti    0.11370   0.55687   0.05304   0.01267  Uiso   1.00\nNb17   Nb    0.22219   0.44441   0.21937   0.01267  Uiso   1.00\nC18    C     0.00000   0.33334   0.13421   0.01267  Uiso   1.00\nO19    O     0.22199   0.44435  -0.01917   0.01267  Uiso   1.00\nO20    O     0.10315   0.55155   0.28777   0.01267  Uiso   1.00\nTi21   Ti    0.44113   0.55391   0.05274   0.01267  Uiso   1.00\nTi22   Ti    0.55887   0.44608   0.21570   0.01267  Uiso   1.00\nC23    C     0.33575   0.33454   0.13997   0.01267  Uiso   1.00\nO24    O     0.54632   0.43986  -0.01964   0.01267  Uiso   1.00\nO25    O     0.45368   0.56014   0.28807   0.01267  Uiso   1.00\nNb26   Nb    0.77781   0.55559   0.04906   0.01267  Uiso   1.00\nTi27   Ti    0.88629   0.44313   0.21538   0.01267  Uiso   1.00\nC28    C     0.66425   0.33213   0.12846   0.01267  Uiso   1.00\nO29    O     0.89686   0.44846  -0.01934   0.01267  Uiso   1.00\nO30    O     0.77802   0.55565   0.28760   0.01267  Uiso   1.00\nTi31   Ti    0.11370   0.89020   0.05304   0.01267  Uiso   1.00\nNb32   Nb    0.22220   0.77775   0.21937   0.01267  Uiso   1.00\nC33    C    -0.00000   0.66667   0.13421   0.01267  Uiso   1.00\nO34    O     0.22199   0.77769  -0.01916   0.01267  Uiso   1.00\nO35    O     0.10315   0.88488   0.28775   0.01267  Uiso   1.00\nTi36   Ti    0.44113   0.88725   0.05274   0.01267  Uiso   1.00\nTi37   Ti    0.55887   0.77942   0.21570   0.01267  Uiso   1.00\nC38    C     0.33576   0.66787   0.13998   0.01267  Uiso   1.00\nO39    O     0.54632   0.77318  -0.01963   0.01267  Uiso   1.00\nO40    O     0.45368   0.89348   0.28806   0.01267  Uiso   1.00\nNb41   Nb    0.77781   0.88892   0.04906   0.01267  Uiso   1.00\nTi42   Ti    0.88629   0.77647   0.21539   0.01267  Uiso   1.00\nC43    C     0.66425   0.66546   0.12847   0.01267  Uiso   1.00\nO44    O     0.89685   0.78179  -0.01933   0.01267  Uiso   1.00\nO45    O     0.77802   0.88898   0.28761   0.01267  Uiso   1.00\nloop_\n_geom_bond_atom_site_label_1\n_geom_bond_atom_site_label_2\n_geom_bond_distance\n_geom_bond_site_symmetry_2\n_ccdc_geom_bond_type\nTi1    Nb2     2.910   .     S\nTi1    C3      2.103   .     S\nTi1    Nb17    2.910   .     S\nTi1    C23     2.132   .     S\nTi1    C18     2.103   .     S\nTi1    O19     2.019   .     S\nTi1    O4      2.019   .     S\nTi1    O14     1.987   1_455 S\nNb2    Ti6     2.906   .     S\nNb2    C8      2.089   .     S\nNb2    C23     2.089   .     S\nNb2    O10     2.063   .     S\nNb2    C3      2.119   .     S\nNb2    O5      2.031   .     S\nNb2    Ti31    2.910   1_545 S\nNb2    O35     2.031   1_545 S\nC3     Ti12    2.103   1_455 S\nC3     Ti31    2.103   1_545 S\nC3     Nb41    2.118   1_445 S\nC3     Ti42    2.103   1_445 S\nO4     Ti6     1.999   .     S\nO4     Ti31    2.019   1_545 S\nO5     Nb17    2.031   .     S\nO5     Ti12    1.987   1_455 S\nTi6    Ti7     2.895   .     S\nTi6    C8      2.123   .     S\nTi6    Ti22    2.895   .     S\nTi6    C28     2.054   .     S\nTi6    C23     2.124   .     S\nTi6    O24     2.010   .     S\nTi6    O9      2.010   .     S\nTi7    Nb11    2.906   .     S\nTi7    C13     2.124   .     S\nTi7    C28     2.124   .     S\nTi7    O15     1.999   .     S\nTi7    C8      2.054   .     S\nTi7    O10     2.010   .     S\nTi7    Ti36    2.895   1_545 S\nTi7    O40     2.010   1_545 S\nC8     Ti31    2.131   1_545 S\nC8     Nb32    2.089   1_545 S\nC8     Ti36    2.123   1_545 S\nO9     Nb11    2.063   .     S\nO9     Ti36    2.010   1_545 S\nO10    Ti22    2.010   .     S\nNb11   Ti12    2.910   .     S\nNb11   C13     2.089   .     S\nNb11   Ti27    2.910   .     S\nNb11   C28     2.089   .     S\nNb11   O29     2.031   .     S\nNb11   O14     2.031   .     S\nNb11   C18     2.118   1_655 S\nTi12   C13     2.132   .     S\nTi12   O15     2.019   .     S\nTi12   C3      2.103   1_655 S\nTi12   O5      1.987   1_655 S\nTi12   C18     2.103   1_655 S\nTi12   Nb41    2.910   1_545 S\nTi12   O45     2.019   1_545 S\nC13    Ti36    2.053   1_545 S\nC13    Ti37    2.124   1_545 S\nC13    Nb41    2.089   1_545 S\nO14    Ti1     1.987   1_655 S\nO14    Nb41    2.031   1_545 S\nO15    Ti27    2.019   .     S\nTi16   Nb17    2.910   .     S\nTi16   C18     2.103   .     S\nTi16   Nb32    2.910   .     S\nTi16   C38     2.132   .     S\nTi16   C33     2.103   .     S\nTi16   O34     2.019   .     S\nTi16   O19     2.019   .     S\nTi16   O29     1.987   1_455 S\nNb17   Ti21    2.906   .     S\nNb17   C23     2.089   .     S\nNb17   C38     2.089   .     S\nNb17   O25     2.063   .     S\nNb17   C18     2.119   .     S\nNb17   O20     2.031   .     S\nC18    Nb11    2.118   1_455 S\nC18    Ti12    2.103   1_455 S\nC18    Ti27    2.103   1_455 S\nO19    Ti21    2.000   .     S\nO20    Nb32    2.031   .     S\nO20    Ti27    1.987   1_455 S\nTi21   Ti22    2.895   .     S\nTi21   C23     2.124   .     S\nTi21   Ti37    2.895   .     S\nTi21   C43     2.054   .     S\nTi21   C38     2.124   .     S\nTi21   O39     2.010   .     S\nTi21   O24     2.010   .     S\nTi22   Nb26    2.907   .     S\nTi22   C28     2.124   .     S\nTi22   C43     2.123   .     S\nTi22   O30     1.999   .     S\nTi22   C23     2.054   .     S\nTi22   O25     2.010   .     S\nO24    Nb26    2.063   .     S\nO25    Ti37    2.010   .     S\nNb26   Ti27    2.910   .     S\nNb26   C28     2.089   .     S\nNb26   Ti42    2.910   .     S\nNb26   C43     2.089   .     S\nNb26   O44     2.031   .     S\nNb26   O29     2.031   .     S\nNb26   C33     2.118   1_655 S\nTi27   C28     2.131   .     S\nTi27   O30     2.019   .     S\nTi27   C18     2.103   1_655 S\nTi27   O20     1.987   1_655 S\nTi27   C33     2.103   1_655 S\nO29    Ti16    1.987   1_655 S\nO30    Ti42    2.019   .     S\nTi31   Nb32    2.910   .     S\nTi31   C33     2.103   .     S\nTi31   O34     2.019   .     S\nTi31   C8      2.131   1_565 S\nTi31   C3      2.103   1_565 S\nTi31   O4      2.019   1_565 S\nTi31   Nb2     2.910   1_565 S\nTi31   O44     1.987   1_455 S\nNb32   Ti36    2.906   .     S\nNb32   C38     2.089   .     S\nNb32   O40     2.063   .     S\nNb32   C33     2.118   .     S\nNb32   O35     2.031   .     S\nNb32   C8      2.089   1_565 S\nC33    Nb26    2.118   1_455 S\nC33    Ti27    2.103   1_455 S\nC33    Ti42    2.103   1_455 S\nO34    Ti36    1.999   .     S\nO35    Nb2     2.031   1_565 S\nO35    Ti42    1.987   1_455 S\nTi36   Ti37    2.895   .     S\nTi36   C38     2.124   .     S\nTi36   O39     2.010   .     S\nTi36   Ti7     2.895   1_565 S\nTi36   C13     2.053   1_565 S\nTi36   C8      2.123   1_565 S\nTi36   O9      2.010   1_565 S\nTi37   Nb41    2.906   .     S\nTi37   C43     2.123   .     S\nTi37   O45     1.999   .     S\nTi37   C38     2.054   .     S\nTi37   O40     2.010   .     S\nTi37   C13     2.124   1_565 S\nO39    Nb41    2.063   .     S\nO40    Ti7     2.010   1_565 S\nNb41   Ti42    2.910   .     S\nNb41   C43     2.089   .     S\nNb41   O44     2.031   .     S\nNb41   C3      2.118   1_665 S\nNb41   Ti12    2.910   1_565 S\nNb41   C13     2.089   1_565 S\nNb41   O14     2.031   1_565 S\nTi42   C43     2.131   .     S\nTi42   O45     2.019   .     S\nTi42   C3      2.103   1_665 S\nTi42   C33     2.103   1_655 S\nTi42   O35     1.987   1_655 S\nO44    Ti31    1.987   1_655 S\nO45    Ti12    2.019   1_565 S\n"}, "IPV": {"code": "IPV", "family": "in-plane vacancy", "n": 2, "formula_html": "Ti<sub>1.33<\/sub>CO<sub>2<\/sub>", "cell_note": "", "elements": ["Ti", "C", "O"], "cif": "data_Ti1.33CO2\n_audit_creation_date              2025-04-15\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n_cell_length_a                    7.9068\n_cell_length_b                    7.9068\n_cell_length_c                    14.0000\n_cell_angle_alpha                 89.6463\n_cell_angle_beta                  90.3558\n_cell_angle_gamma                 119.9996\nloop_\n_atom_site_label\n_atom_site_type_symbol\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n_atom_site_adp_type\n_atom_site_occupancy\nTi1    Ti    0.20599   0.10177   0.64144   0.00000  Uiso   1.00\nC2     C     0.31652   0.32456   0.56332   0.00000  Uiso   1.00\nO3     O     0.09541   0.21236   0.71290   0.00000  Uiso   1.00\nTi4    Ti    0.42707   0.21401   0.48527   0.00000  Uiso   1.00\nTi5    Ti    0.53932   0.10177   0.64144   0.00000  Uiso   1.00\nC6     C     0.64986   0.32456   0.56332   0.00000  Uiso   1.00\nO7     O     0.53765   0.10341   0.41371   0.00000  Uiso   1.00\nO8     O     0.42875   0.21236   0.71290   0.00000  Uiso   1.00\nTi9    Ti    0.76040   0.21401   0.48527   0.00000  Uiso   1.00\nC10    C     0.98319   0.32456   0.56332   0.00000  Uiso   1.00\nO11    O     0.87099   0.10341   0.41371   0.00000  Uiso   1.00\nTi12   Ti    0.20599   0.43510   0.64144   0.00000  Uiso   1.00\nC13    C     0.31652   0.65789   0.56332   0.00000  Uiso   1.00\nO14    O     0.09541   0.54569   0.71290   0.00000  Uiso   1.00\nTi15   Ti    0.42707   0.54734   0.48527   0.00000  Uiso   1.00\nTi16   Ti    0.53932   0.43510   0.64144   0.00000  Uiso   1.00\nC17    C     0.64986   0.65789   0.56332   0.00000  Uiso   1.00\nO18    O     0.53765   0.43674   0.41371   0.00000  Uiso   1.00\nO19    O     0.42875   0.54569   0.71290   0.00000  Uiso   1.00\nTi20   Ti    0.76040   0.54734   0.48527   0.00000  Uiso   1.00\nC21    C     0.98319   0.65789   0.56332   0.00000  Uiso   1.00\nO22    O     0.87099   0.43674   0.41371   0.00000  Uiso   1.00\nTi23   Ti    0.20599   0.76843   0.64144   0.00000  Uiso   1.00\nC24    C     0.31652   0.99122   0.56332   0.00000  Uiso   1.00\nO25    O     0.09541   0.87902   0.71290   0.00000  Uiso   1.00\nTi26   Ti    0.42707   0.88067   0.48527   0.00000  Uiso   1.00\nTi27   Ti    0.53932   0.76843   0.64144   0.00000  Uiso   1.00\nC28    C     0.64986   0.99122   0.56332   0.00000  Uiso   1.00\nO29    O     0.53765   0.77008   0.41371   0.00000  Uiso   1.00\nO30    O     0.42875   0.87902   0.71290   0.00000  Uiso   1.00\nTi31   Ti    0.76040   0.88067   0.48527   0.00000  Uiso   1.00\nC32    C     0.98319   0.99122   0.56332   0.00000  Uiso   1.00\nO33    O     0.87099   0.77008   0.41371   0.00000  Uiso   1.00\nloop_\n_geom_bond_atom_site_label_1\n_geom_bond_atom_site_label_2\n_geom_bond_distance\n_geom_bond_site_symmetry_2\n_ccdc_geom_bond_type\nTi1    C2      1.874   .     S\nTi1    O3      1.821   .     S\nTi1    O8      1.821   .     S\nTi1    Ti4     2.664   .     S\nTi1    Ti5     2.636   .     S\nTi1    Ti12    2.636   .     S\nTi1    Ti16    2.636   .     S\nTi1    Ti23    2.636   1_545 S\nTi1    C24     1.874   1_545 S\nTi1    O25     1.821   1_545 S\nTi1    C32     1.874   1_445 S\nC2     Ti15    1.873   .     S\nC2     Ti4     1.873   .     S\nC2     Ti12    1.874   .     S\nC2     Ti16    1.874   .     S\nO3     Ti12    1.821   .     S\nTi4    C6      1.873   .     S\nTi4    O7      1.822   .     S\nTi4    O18     1.822   .     S\nTi4    Ti5     2.664   .     S\nTi4    Ti9     2.636   .     S\nTi4    Ti15    2.636   .     S\nTi4    Ti16    2.664   .     S\nTi4    Ti20    2.636   .     S\nTi4    C24     1.873   1_545 S\nTi4    Ti26    2.636   1_545 S\nTi5    C6      1.874   .     S\nTi5    O8      1.821   .     S\nTi5    Ti9     2.664   .     S\nTi5    Ti16    2.636   .     S\nTi5    Ti23    2.636   1_545 S\nTi5    C24     1.874   1_545 S\nTi5    Ti26    2.664   1_545 S\nTi5    Ti27    2.636   1_545 S\nTi5    C28     1.874   1_545 S\nTi5    O30     1.821   1_545 S\nC6     Ti20    1.873   .     S\nC6     Ti9     1.873   .     S\nC6     Ti16    1.874   .     S\nO7     Ti9     1.822   .     S\nO7     Ti26    1.822   1_545 S\nO8     Ti16    1.821   .     S\nTi9    C10     1.873   .     S\nTi9    O11     1.822   .     S\nTi9    O22     1.822   .     S\nTi9    Ti20    2.636   .     S\nTi9    Ti26    2.636   1_545 S\nTi9    C28     1.873   1_545 S\nTi9    Ti31    2.636   1_545 S\nC10    Ti12    1.874   1_655 S\nO11    Ti31    1.822   1_545 S\nTi12   C13     1.874   .     S\nTi12   O14     1.821   .     S\nTi12   O19     1.821   .     S\nTi12   C10     1.874   1_455 S\nTi12   Ti15    2.664   .     S\nTi12   Ti16    2.636   .     S\nTi12   Ti23    2.636   .     S\nTi12   Ti27    2.636   .     S\nC13    Ti26    1.873   .     S\nC13    Ti15    1.873   .     S\nC13    Ti23    1.874   .     S\nC13    Ti27    1.874   .     S\nO14    Ti23    1.821   .     S\nTi15   C17     1.873   .     S\nTi15   O18     1.822   .     S\nTi15   O29     1.822   .     S\nTi15   Ti16    2.664   .     S\nTi15   Ti20    2.636   .     S\nTi15   Ti26    2.636   .     S\nTi15   Ti27    2.664   .     S\nTi15   Ti31    2.636   .     S\nTi16   C17     1.874   .     S\nTi16   O19     1.821   .     S\nTi16   Ti20    2.664   .     S\nTi16   Ti27    2.636   .     S\nC17    Ti31    1.873   .     S\nC17    Ti20    1.873   .     S\nC17    Ti27    1.874   .     S\nO18    Ti20    1.822   .     S\nO19    Ti27    1.821   .     S\nTi20   C21     1.873   .     S\nTi20   O22     1.822   .     S\nTi20   O33     1.822   .     S\nTi20   Ti31    2.636   .     S\nC21    Ti23    1.874   1_655 S\nTi23   C24     1.874   .     S\nTi23   O25     1.821   .     S\nTi23   O30     1.821   .     S\nTi23   Ti1     2.636   1_565 S\nTi23   Ti5     2.636   1_565 S\nTi23   C21     1.874   1_455 S\nTi23   Ti26    2.664   .     S\nTi23   Ti27    2.636   .     S\nC24    Ti26    1.873   .     S\nC24    Ti4     1.873   1_565 S\nC24    Ti1     1.874   1_565 S\nC24    Ti5     1.874   1_565 S\nO25    Ti1     1.821   1_565 S\nTi26   C28     1.873   .     S\nTi26   O29     1.822   .     S\nTi26   Ti4     2.636   1_565 S\nTi26   O7      1.822   1_565 S\nTi26   Ti9     2.636   1_565 S\nTi26   Ti5     2.664   1_565 S\nTi26   Ti27    2.664   .     S\nTi26   Ti31    2.636   .     S\nTi27   C28     1.874   .     S\nTi27   O30     1.821   .     S\nTi27   Ti5     2.636   1_565 S\nTi27   Ti31    2.664   .     S\nC28    Ti31    1.873   .     S\nC28    Ti9     1.873   1_565 S\nC28    Ti5     1.874   1_565 S\nO29    Ti31    1.822   .     S\nO30    Ti5     1.821   1_565 S\nTi31   C32     1.873   .     S\nTi31   O33     1.822   .     S\nTi31   O11     1.822   1_565 S\nTi31   Ti9     2.636   1_565 S\nC32    Ti1     1.874   1_665 S\n"}, "SSM": {"code": "SSM", "family": "solid solution, M site", "n": 3, "formula_html": "(Nb<sub>0.5<\/sub>Ti<sub>0.5<\/sub>)<sub>3<\/sub>C<sub>2<\/sub>O<sub>2<\/sub>", "cell_note": "2×1 cell", "elements": ["Ti", "Nb", "C", "O"], "cif": "data_(Nb0.5Ti0.5)3C2O2_(2x1)\n_audit_creation_date              2025-01-09\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n_cell_length_a                    6.2841\n_cell_length_b                    3.1551\n_cell_length_c                    15.0000\n_cell_angle_alpha                 90.0493\n_cell_angle_beta                  79.9850\n_cell_angle_gamma                 120.1382\nloop_\n_atom_site_label\n_atom_site_type_symbol\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n_atom_site_adp_type\n_atom_site_occupancy\nTi1    Nb    0.40162   0.77839   0.36909   0.01267  Uiso   1.00\nTi2    Nb    0.15152   0.02891   0.52219   0.01267  Uiso   1.00\nMo3    Ti    0.15000   0.52615   0.21731   0.01267  Uiso   1.00\nC4     C     0.26781   0.14427   0.29563   0.01267  Uiso   1.00\nC5     C     0.01808   0.39514   0.44768   0.01267  Uiso   1.00\nF6     O     0.51343   0.88931   0.15077   0.01267  Uiso   1.00\nF7     O     0.28980   0.66745   0.58741   0.01267  Uiso   1.00\nMo8    Ti    0.90161   0.77837   0.36909   0.01267  Uiso   1.00\nMo9    Ti    0.65324   0.03061   0.52087   0.01267  Uiso   1.00\nTi10   Nb    0.65171   0.52784   0.21599   0.01267  Uiso   1.00\nC11    C     0.78513   0.16158   0.29050   0.01267  Uiso   1.00\nC12    C     0.53543   0.41251   0.44256   0.01267  Uiso   1.00\nF13    O     1.02914   0.90501   0.15045   0.01267  Uiso   1.00\nF14    O     0.77410   0.65175   0.58773   0.01267  Uiso   1.00\nloop_\n_geom_bond_atom_site_label_1\n_geom_bond_atom_site_label_2\n_geom_bond_distance\n_geom_bond_site_symmetry_2\n_ccdc_geom_bond_type\nTi1    C4      2.134   .     S\nTi1    C5      2.179   .     S\nTi1    C12     2.134   .     S\nTi1    Ti2     2.891   .     S\nTi1    Mo3     2.881   .     S\nTi1    Ti10    2.891   .     S\nTi1    Ti2     2.891   1_565 S\nTi1    C4      2.134   1_565 S\nTi1    Mo9     2.881   1_565 S\nTi1    Ti10    2.891   1_565 S\nTi1    C11     2.179   1_565 S\nTi1    C12     2.134   1_565 S\nTi2    C12     2.186   .     S\nTi2    C5      2.142   .     S\nTi2    F7      2.075   .     S\nTi2    Ti1     2.891   1_545 S\nTi2    C5      2.142   1_545 S\nTi2    F7      2.075   1_545 S\nTi2    Mo8     2.893   1_445 S\nTi2    F14     2.089   1_445 S\nMo3    F6      2.026   .     S\nMo3    C4      2.140   .     S\nMo3    C4      2.140   1_565 S\nMo3    Mo8     2.874   1_445 S\nMo3    Mo8     2.874   1_455 S\nMo3    C11     2.065   1_455 S\nMo3    F13     2.047   1_445 S\nMo3    F13     2.047   1_455 S\nC4     Ti10    2.186   .     S\nC4     Ti1     2.134   1_545 S\nC4     Mo3     2.140   1_545 S\nC4     Mo8     2.072   1_445 S\nC5     Ti2     2.142   1_565 S\nC5     Mo8     2.140   1_455 S\nC5     Mo8     2.140   1_445 S\nC5     Mo9     2.065   1_455 S\nF6     Ti10    2.075   .     S\nF6     Ti10    2.075   1_565 S\nF7     Ti2     2.075   1_565 S\nF7     Mo9     2.026   1_565 S\nMo8    C11     2.140   .     S\nMo8    C12     2.072   .     S\nMo8    Mo9     2.874   .     S\nMo8    Ti10    2.893   .     S\nMo8    C5      2.140   1_655 S\nMo8    C5      2.140   1_665 S\nMo8    Mo3     2.874   1_665 S\nMo8    Mo3     2.874   1_655 S\nMo8    C4      2.072   1_665 S\nMo8    Ti2     2.893   1_665 S\nMo8    Mo9     2.874   1_565 S\nMo8    C11     2.140   1_565 S\nMo9    C12     2.140   .     S\nMo9    F14     2.047   .     S\nMo9    C5      2.065   1_655 S\nMo9    Mo8     2.874   1_545 S\nMo9    Ti1     2.881   1_545 S\nMo9    F7      2.026   1_545 S\nMo9    C12     2.140   1_545 S\nMo9    F14     2.047   1_545 S\nTi10   F13     2.089   .     S\nTi10   C11     2.142   .     S\nTi10   Ti1     2.891   1_545 S\nTi10   F6      2.075   1_545 S\nTi10   C11     2.142   1_565 S\nC11    Ti1     2.179   1_545 S\nC11    Mo3     2.065   1_655 S\nC11    Ti10    2.142   1_545 S\nC11    Mo8     2.140   1_545 S\nC12    Mo9     2.140   1_565 S\nC12    Ti1     2.134   1_545 S\nF13    Mo3     2.047   1_665 S\nF13    Mo3     2.047   1_655 S\nF14    Ti2     2.089   1_665 S\nF14    Mo9     2.047   1_565 S\n"}, "SSX": {"code": "SSX", "family": "solid solution, X site", "n": 3, "formula_html": "Ti<sub>3<\/sub>(C<sub>0.5<\/sub>N<sub>0.5<\/sub>)<sub>2<\/sub>O<sub>2<\/sub>", "cell_note": "2×1 cell", "elements": ["Ti", "C", "N", "O"], "cif": "data_Ti3(C0.5N0.5)2O2_(2x1)\n_audit_creation_date              2025-06-24\n_audit_creation_method            'Materials Studio'\n_symmetry_space_group_name_H-M    'P1'\n_symmetry_Int_Tables_number       1\n_symmetry_cell_setting            triclinic\nloop_\n_symmetry_equiv_pos_as_xyz\n  x,y,z\n_cell_length_a                    5.9470\n_cell_length_b                    2.9783\n_cell_length_c                    15.0000\n_cell_angle_alpha                 89.2502\n_cell_angle_beta                  89.1866\n_cell_angle_gamma                 122.6222\nloop_\n_atom_site_label\n_atom_site_type_symbol\n_atom_site_fract_x\n_atom_site_fract_y\n_atom_site_fract_z\n_atom_site_U_iso_or_equiv\n_atom_site_adp_type\n_atom_site_occupancy\nTi1    Ti    0.46755   0.98149   0.31000   0.00000  Uiso   1.00\nTi2    Ti    0.41398   0.07119   0.48629   0.00000  Uiso   1.00\nTi3    Ti    0.13251   0.63297   0.14543   0.00000  Uiso   1.00\nC4     C     0.31613   0.33155   0.22694   0.00000  Uiso   1.00\nC5     C     0.11777   0.65466   0.38761   0.00000  Uiso   1.00\nO6     O     0.33271   0.35444   0.08594   0.00000  Uiso   1.00\nO7     O     0.14442   0.40955   0.55232   0.00000  Uiso   1.00\nTi8    Ti    0.96751   0.98767   0.31133   0.00000  Uiso   1.00\nTi9    Ti    0.81769   0.18316   0.48854   0.00000  Uiso   1.00\nTi10   Ti    0.69266   0.71369   0.14581   0.00000  Uiso   1.00\nN11    N     0.80374   0.32438   0.23349   0.00000  Uiso   1.00\nN12    N     0.62658   0.64803   0.38533   0.00000  Uiso   1.00\nO13    O     0.81414   0.34617   0.06894   0.00000  Uiso   1.00\nO14    O     0.59549   0.61432   0.57645   0.00000  Uiso   1.00\nloop_\n_geom_bond_atom_site_label_1\n_geom_bond_atom_site_label_2\n_geom_bond_distance\n_geom_bond_site_symmetry_2\n_ccdc_geom_bond_type\nTi1    C5      2.085   .     S\nTi1    C4      2.080   .     S\nTi1    N12     2.042   .     S\nTi1    Ti2     2.693   1_565 S\nTi1    C4      2.112   1_565 S\nTi1    Ti8     2.867   1_565 S\nTi1    Ti8     2.848   1_445 S\nTi1    N11     2.015   1_565 S\nTi1    N12     2.044   1_565 S\nTi2    N12     2.093   .     S\nTi2    O14     1.956   .     S\nTi2    Ti1     2.693   1_545 S\nTi2    C5      2.145   1_545 S\nTi2    O7      1.983   1_545 S\nTi2    Ti9     2.240   .     S\nTi2    Ti9     2.858   1_565 S\nTi3    C4      2.135   .     S\nTi3    O6      1.989   .     S\nTi3    C4      2.161   1_565 S\nTi3    O6      1.998   1_565 S\nTi3    Ti10    2.753   1_455 S\nTi3    Ti10    2.572   1_445 S\nTi3    N11     2.090   1_455 S\nTi3    O13     1.994   1_455 S\nC4     Ti10    2.220   .     S\nC4     Ti1     2.112   1_545 S\nC4     Ti3     2.161   1_545 S\nC4     Ti8     2.134   1_445 S\nC5     Ti2     2.145   1_565 S\nC5     Ti8     2.056   1_445 S\nC5     Ti8     2.012   1_455 S\nC5     Ti9     2.148   1_455 S\nO6     Ti10    2.036   .     S\nO6     Ti3     1.998   1_545 S\nO7     Ti2     1.983   1_565 S\nO7     Ti9     1.950   1_455 S\nTi8    N12     2.015   .     S\nTi8    N11     2.057   .     S\nTi8    Ti1     2.867   1_545 S\nTi8    C4      2.134   1_665 S\nTi8    Ti1     2.848   1_665 S\nTi8    C5      2.056   1_665 S\nTi8    C5      2.012   1_655 S\nTi8    Ti10    2.869   .     S\nTi8    N11     2.091   1_565 S\nTi9    C5      2.148   1_655 S\nTi9    O7      1.950   1_655 S\nTi9    Ti2     2.858   1_545 S\nTi9    N12     2.095   1_545 S\nTi9    O14     1.958   1_545 S\nTi10   N11     2.079   .     S\nTi10   O13     1.978   .     S\nTi10   Ti3     2.753   1_655 S\nTi10   Ti3     2.572   1_665 S\nTi10   N11     2.065   1_565 S\nTi10   O13     1.963   1_565 S\nN11    Ti1     2.015   1_545 S\nN11    Ti8     2.091   1_545 S\nN11    Ti3     2.090   1_655 S\nN11    Ti10    2.065   1_545 S\nN12    Ti9     2.095   1_565 S\nN12    Ti1     2.044   1_545 S\nO13    Ti3     1.994   1_655 S\nO13    Ti10    1.963   1_545 S\nO14    Ti9     1.958   1_565 S\n"}}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js" integrity="sha512-rk2gI8FYzSbiZnDZ9M70SEhemyYIDwQQhb1zH9eK8kglMsp7bKJdu5+akb+wlTQxC9DiMmoMTNUQ0Z0Q/trdyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script>
+(function () {
+  var root = document.getElementById('mx3d');
+  if (!root) return;
+  root.setAttribute('data-js', '1');                 // tabs and the start button only exist for script-enabled viewers
+  var data = {};
+  try { data = JSON.parse(document.getElementById('mx-structures').textContent); } catch (e) { return; }
+  var COLORS = data.colors, ROLE = data.roles, S = data.structures;
+  var stage = document.getElementById('mx-stage'), img = document.getElementById('mx-static');
+  var start = document.getElementById('mx-start'), cap = document.getElementById('mx-cap');
+  var legend = document.getElementById('mx-legend'), note = document.getElementById('mx-note');
+  var tabs = root.querySelectorAll('.mx-tab'), hint = document.getElementById('mx-hint');
+  var viewer = null, current = 'SS', baseView = null;
+  function hasWebGL() {
+    try { var c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+    catch (e) { return false; }
+  }
+  function fallback(msg) {
+    note.textContent = msg; note.hidden = false; start.hidden = true; hint.hidden = true;
+    root.querySelector('.mx-tabs').hidden = true; stage.hidden = true; img.hidden = false;
+    root.setAttribute('data-state', 'fallback');
+  }
+  function label(k) {
+    var s = S[k];
+    cap.innerHTML = '<strong>' + s.code + '</strong> · ' + s.family + ' · ' + s.formula_html +
+      (s.cell_note ? ', ' + s.cell_note : '') + ' · n = ' + s.n;
+    legend.innerHTML = s.elements.map(function (el) {
+      return '<span class="mx-key"><i style="background:' + COLORS[el] + '"></i><span>' + el + ' (' + ROLE[el] + ')</span></span>';
+    }).join('');
+    for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute('aria-pressed', tabs[i].getAttribute('data-k') === k ? 'true' : 'false');
+  }
+  function show(k) {
+    current = k; label(k);
+    if (!viewer) return;
+    viewer.clear();
+    var m = viewer.addModel(S[k].cif, 'cif');
+    viewer.replicateUnitCell(3, 3, 1, m, true);
+    // keep only metal-to-X / metal-to-Tx bonds (distance bonding also joins metal pairs, which clutters the view)
+    var atoms = m.selectedAtoms({}), byIdx = {}, METAL = { Ti: 1, Nb: 1 };
+    for (var i = 0; i < atoms.length; i++) byIdx[atoms[i].index] = atoms[i];
+    for (var j = 0; j < atoms.length; j++) {
+      var a = atoms[j], keep = [], order = [];
+      for (var b = 0; b < a.bonds.length; b++) {
+        var o = byIdx[a.bonds[b]];
+        if (o && (!!METAL[a.elem] !== !!METAL[o.elem])) { keep.push(a.bonds[b]); order.push(a.bondOrder ? a.bondOrder[b] : 1); }
+      }
+      a.bonds = keep; a.bondOrder = order;
+    }
+    var col = function (at) { return COLORS[at.elem] || '#888888'; };
+    viewer.setStyle({}, { sphere: { scale: 0.3, colorfunc: col }, stick: { radius: 0.14, colorfunc: col } });
+    viewer.setView(baseView);                        // same starting angle for every family
+    viewer.zoomTo(); viewer.rotate(-58, 'x'); viewer.rotate(18, 'y'); viewer.zoomTo(); viewer.zoom(0.95); viewer.render();
+  }
+  function begin(k) {
+    if (!viewer) {
+      if (!window.$3Dmol) { fallback('The 3D viewer could not load here, so the poster render is shown.'); return; }
+      if (!hasWebGL()) { fallback('3D needs WebGL, which this browser has switched off, so the poster render is shown.'); return; }
+      img.hidden = true; start.hidden = true; stage.hidden = false;
+      try { viewer = $3Dmol.createViewer(stage, { backgroundColor: 'white', antialias: true }); }
+      catch (e) { viewer = null; }
+      if (!viewer) { fallback('The 3D viewer could not start here, so the poster render is shown.'); return; }
+      baseView = viewer.getView();
+      root.setAttribute('data-state', 'live'); hint.hidden = false;
+      window.addEventListener('resize', function () { if (viewer) { viewer.resize(); viewer.render(); } });
+    }
+    show(k);
+  }
+  start.addEventListener('click', function () { begin(current); });
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', function (ev) { begin(ev.currentTarget.getAttribute('data-k')); });
+  }
+  label(current);
+})();
+</script>
+
+</body></html>
