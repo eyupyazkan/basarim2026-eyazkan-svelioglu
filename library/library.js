@@ -141,14 +141,52 @@
     return { fam: 'MXene family', tpl: 'Metal layers and cell', m1: DOUBLE[sel.fam] ? 'M site · ' + mRole(sel.fam, 1) : 'M site · transition metal', m2: 'M site · ' + mRole(sel.fam, 2),
              x: sel.fam === 'SSX' ? 'X site · C/N arrangement' : 'X site · carbide or nitride', t: 'T<sub>x</sub> site · surface termination' }[step];
   }
-  function chipText(k, sel) {
-    var v = sel[k];
-    if (k === 'fam') return '<b>' + esc(v) + '</b>';
-    if (k === 'tpl') return TPL[v] ? TPL[v].f + (TPL[v].cell ? ' · ' + TPL[v].cell : '') : esc(v);
-    if (k === 'm1') return (DOUBLE[sel.fam] ? 'M′ ' : 'M ') + '<b>' + esc(v) + '</b>';
-    if (k === 'm2') return 'M″ <b>' + esc(v) + '</b>';
-    if (k === 'x') return 'X <b>' + (v === 'CN' ? 'C<sub>0.5</sub>N<sub>0.5</sub>' : v === 'NC' ? 'N<sub>0.5</sub>C<sub>0.5</sub>' : esc(v)) + '</b>';
-    return esc(v);
+  // the choices panel (round 2): one card per choice (label, value, pencil) that reopens that step, plus
+  // Previous step and Start over as real buttons; the same panel heads the structure screen
+  var SINGLE_TPL = { IPDT: 1, IPV: 1 };              // one template: the wizard passes that step on its own
+  function stepsFor(fam) {
+    return ORDER.filter(function (k) { return !(k === 'm2' && !DOUBLE[fam]) && !(k === 'tpl' && SINGLE_TPL[fam]); });
+  }
+  function upTo(sel, k) {
+    var s = {};
+    for (var i = 0; i < ORDER.indexOf(k); i++) if (sel[ORDER[i]]) s[ORDER[i]] = sel[ORDER[i]];
+    return s;
+  }
+  function prevSel(sel) {
+    var keys = ORDER.filter(function (k) { return sel[k]; }), last = keys[keys.length - 1];
+    return last === 'tpl' && SINGLE_TPL[sel.fam] ? {} : upTo(sel, last);
+  }
+  function crumb(k, sel) {
+    var v = sel[k], lab, val, say;
+    if (k === 'fam') { lab = 'Family'; val = esc(v); say = 'family'; }
+    else if (k === 'tpl') { lab = 'Layers'; val = TPL[v] ? TPL[v].f + (TPL[v].cell ? ' · ' + TPL[v].cell : '') : esc(v); say = 'layers'; }
+    else if (k === 'm1') { lab = DOUBLE[sel.fam] ? 'M′' : 'M'; val = esc(v); say = 'metal'; }
+    else if (k === 'm2') { lab = 'M″'; val = esc(v); say = 'second metal'; }
+    else if (k === 'x') { lab = 'X'; val = v === 'CN' ? 'C<sub>0.5</sub>N<sub>0.5</sub>' : v === 'NC' ? 'N<sub>0.5</sub>C<sub>0.5</sub>' : esc(v); say = 'X site'; }
+    else { lab = 'T<sub>x</sub>'; val = T_LABEL[v] || esc(v); say = 'termination'; }
+    var b = h('button', { 'class': 'crumb', type: 'button', 'aria-label': 'Change the ' + say + ' (' + v + ')' },
+      '<span class="cw"><span class="ck">' + lab + '</span><span class="cv">' + val + '</span></span><span class="ce" aria-hidden="true">✎</span>');
+    b.addEventListener('click', function () { go(upTo(sel, k)); });
+    return b;
+  }
+  function selPanel(sel, current) {
+    var keys = ORDER.filter(function (k) {
+      return sel[k] && k !== current && !(k === 'm2' && !DOUBLE[sel.fam]) && !(k === 'tpl' && SINGLE_TPL[sel.fam]);
+    });
+    if (!keys.length) return null;
+    var box = h('nav', { 'class': 'selpanel', 'aria-label': 'Your choices' });
+    box.appendChild(h('p', { 'class': 'sp-h' }, 'Your choices <span>· tap one to change it</span>'));
+    var row = h('div', { 'class': 'crumbs' });
+    keys.forEach(function (k) { row.appendChild(crumb(k, sel)); });
+    box.appendChild(row);
+    var act = h('div', { 'class': 'sp-actions' });
+    var pv = h('button', { 'class': 'btn2 prev', type: 'button' }, '<span class="ico" aria-hidden="true">←</span> Previous step');
+    pv.addEventListener('click', function () { go(prevSel(sel)); });
+    var so = h('button', { 'class': 'btn2 reset', type: 'button' }, '<span class="ico" aria-hidden="true">↺</span> Start over');
+    so.addEventListener('click', function () { go({}); });
+    act.appendChild(pv); act.appendChild(so);
+    box.appendChild(act);
+    return box;
   }
 
   function renderWizard(sel) {
@@ -156,28 +194,15 @@
     var step = nextStep(sel);
     if (!step) step = 't';
     app.innerHTML = '';
-    var path = h('div', { 'class': 'path' });
-    var stepNo = 1;
-    ORDER.forEach(function (k) {
-      if (k === step || !sel[k] || (k === 'm2' && !DOUBLE[sel.fam])) return;
-      stepNo++;
-      var c = h('button', { 'class': 'chip', type: 'button', title: 'Change this choice' }, chipText(k, sel));
-      c.addEventListener('click', function () {
-        var s = {}; for (var i = 0; i < ORDER.indexOf(k); i++) if (sel[ORDER[i]]) s[ORDER[i]] = sel[ORDER[i]];
-        go(s);
-      });
-      path.appendChild(c);
-    });
-    if (path.children.length) {
-      var r = h('button', { 'class': 'chip reset', type: 'button' }, 'Start over');
-      r.addEventListener('click', function () { go({}); });
-      path.appendChild(r);
-    }
+    var panel = selPanel(sel, step), steps = sel.fam ? stepsFor(sel.fam) : null;
+    var k = steps ? Math.max(1, steps.indexOf(step) + 1) : 1;
     var card = h('section', { 'class': 'card' });
-    card.appendChild(h('div', { 'class': 'step-h' }, '<span class="k">Step ' + stepNo + '</span><h2>' + stepTitle(step, sel) + '</h2>'));
+    card.appendChild(h('div', { 'class': 'step-h' }, '<span class="k">Step ' + k + (steps ? ' of ' + steps.length : '') + '</span>' +
+      (steps ? '<span class="prog" aria-hidden="true"><i style="width:' + Math.round(100 * k / steps.length) + '%"></i></span>' : '') +
+      '<h2>' + stepTitle(step, sel) + '</h2>'));
     var body = h('div', null, '<p class="loading">Loading…</p>');
     card.appendChild(body);
-    if (path.children.length) app.appendChild(path);
+    if (panel) app.appendChild(panel);
     app.appendChild(card);
 
     fetchJSON(optsQuery(sel)).then(function (r) {
@@ -499,7 +524,7 @@
       });
       var rep = p.cell.a < 4.5 ? 3 : 2;
       app.innerHTML =
-        '<button class="back" type="button" id="back">‹ Change the selection</button>' +
+        '<div id="selp"></div>' +
         '<div class="title"><h1>' + pn.html + '</h1><p class="muted">' + esc(f.code) + ' · ' + (t.f || '') + ' · n = ' + p.layers +
         (pn.cell ? ' · ' + pn.cell + ' cell' : '') + '</p></div>' +
         '<div class="viewer-wrap" id="vwrap"><div class="vbar"><button class="btn" type="button" id="reset">Reset view</button>' +
@@ -517,7 +542,7 @@
         '<dt>Bonds in the unit cell</dt><dd>' + p.bonds.length + '</dd></dl>' +
         '<p class="muted small">c includes the vacuum gap between periodic sheets.</p></section>' +
         gcmcCard(p.gcmc) + mlCard(p.ml, p.gcmc);
-      document.getElementById('back').addEventListener('click', function () { go(back); });
+      document.getElementById('selp').replaceWith(selPanel(Object.assign({}, back, { t: p.t }), null));
       var lg = document.getElementById('legend');
       els.forEach(function (e) {
         var s = Object.keys(siteOf[e]).map(function (k) { return k === 'T' ? 'T<sub>x</sub>' : k; }).join('/');
@@ -542,7 +567,8 @@
         });
       });
     }, function (e) {
-      app.innerHTML = '<button class="back" type="button" onclick="history.back()">‹ Back</button>' + errorCard(e);
+      app.innerHTML = errorCard(e) + '<div class="sp-actions"><button class="btn2 prev" type="button" onclick="history.back()">' +
+        '<span class="ico" aria-hidden="true">←</span> Back</button><a class="btn2 reset" href="#/"><span class="ico" aria-hidden="true">↺</span> Start over</a></div>';
     });
   }
 
