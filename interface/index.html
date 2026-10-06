@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>MXene Screening Interface</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app.css">
+  <script>window.MXSI_SOURCE='replay';</script>
+  <script src="js/boot.js"></script>
+</head>
+<body>
+  <a class="skip" href="#work" data-i18n="skip">Skip to results</a>
+
+  <header class="top">
+    <div class="top-in">
+      <a class="brand" href="#analyze" aria-label="MXene Screening Interface">
+        <svg class="ico brand-ico" aria-hidden="true"><use href="icons.svg#i-logo"/></svg>
+        <span class="brand-name">MXene <span class="long">Screening Interface</span></span>
+        <span class="brand-tag" id="brand-tag" hidden><svg class="ico s" aria-hidden="true"><use href="icons.svg#i-lock"/></svg><span data-i18n="private_tag">Private · local</span></span>
+      </a>
+      <nav class="tabs" aria-label="Screens" data-i18n-aria="nav_label">
+        <a class="tab" href="#analyze" data-screen="analyze" data-i18n="nav_analyze">Analyze</a>
+        <a class="tab" href="#about" data-screen="about" data-i18n="nav_about">About</a>
+      </nav>
+      <div class="top-tools">
+        <span class="tool static" id="model-chip"><span class="status-dot" id="model-dot"></span><span class="lbl" id="model-lbl" data-i18n="models_loading">Loading</span></span>
+        <div class="seg lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="tr" aria-pressed="false">TR</button>
+        </div>
+        <button class="tool icon" id="btn-theme" type="button" aria-label="Theme">
+          <svg class="ico" aria-hidden="true"><use id="theme-ico" href="icons.svg#i-monitor"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell" id="screen-analyze">
+    <aside class="rail" id="rail" aria-labelledby="rail-title">
+      <div class="rail-head">
+        <h2 id="rail-title" data-i18n="rail_title">Analyze MXene</h2>
+        <button class="tool icon rail-close" id="rail-close" type="button" aria-label="Close" data-i18n-aria="close">
+          <svg class="ico" aria-hidden="true"><use href="icons.svg#i-close"/></svg>
+        </button>
+      </div>
+      <div class="rail-body">
+        <div class="seg-mode" role="tablist" aria-labelledby="rail-title" id="mode-seg"></div>
+        <p class="rail-lead" id="rail-lead"></p>
+      </div>
+      <ul class="list" id="list" aria-labelledby="rail-title"></ul>
+      <div class="rail-foot" id="rail-foot"></div>
+    </aside>
+
+    <main class="work" id="work" tabindex="-1">
+      <button class="picker-btn" id="picker-btn" type="button" aria-controls="rail">
+        <svg class="ico" aria-hidden="true"><use href="icons.svg#i-list"/></svg>
+        <b data-i18n="rail_title">Analyze MXene</b><span id="picker-cur"></span>
+        <svg class="ico s" aria-hidden="true"><use href="icons.svg#i-chev-r"/></svg>
+      </button>
+
+      <div id="view-single">
+        <section class="head" id="head" aria-live="polite"></section>
+        <div class="notes" id="notes"></div>
+        <div class="strip-bar" id="strip-bar"></div>
+        <div class="strip" id="strip"></div>
+        <div class="grid">
+          <section class="card scene" id="scene" aria-labelledby="scene-title">
+            <h2 class="sr" id="scene-title" data-i18n="scene_title">3D structure</h2>
+            <div class="scene-bar" id="scene-bar"></div>
+            <div class="viewer-wrap">
+              <div class="viewer" id="viewer"></div>
+              <canvas class="overlay" id="overlay" aria-hidden="true"></canvas>
+              <div class="tip" id="tip" hidden></div>
+              <div class="selcard" id="selcard" hidden></div>
+              <div class="vmsg" id="vmsg"><span class="spinner"></span><span data-i18n="loading_scene">Loading</span></div>
+              <div class="vstage" id="vstage" hidden></div>
+              <div class="vhint" id="vhint" data-i18n="scene_hint">Drag to rotate · scroll to zoom · click an atom or bond</div>
+            </div>
+            <div class="legend" id="legend"></div>
+            <div class="idgrid" id="idgrid"></div>
+          </section>
+          <div class="col results" id="results"></div>
+        </div>
+        <section class="card fp" id="fingerprint" aria-labelledby="fp-title"></section>
+      </div>
+
+      <div id="view-batch" hidden>
+        <section class="head" id="bhead"></section>
+        <div class="bprog" id="bprog"></div>
+        <div class="tiles" id="btiles"></div>
+        <div class="bgrid">
+          <section class="card" id="bchart" aria-labelledby="bchart-h"></section>
+          <section class="card" id="btable" aria-labelledby="btable-h"></section>
+        </div>
+      </div>
+
+      <footer class="foot" id="foot"></footer>
+    </main>
+  </div>
+
+  <div class="about" id="screen-about" hidden></div>
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="vendor/3Dmol-min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
