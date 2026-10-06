@@ -1309,7 +1309,7 @@
     return s.replace(/\{([A-Za-z0-9 ]+)\}/g, function (_, keys) {
       var ks = keys.split(' ');                          // each label keeps its bracket or semicolon on its own line
       return ks.map(function (k, i) {
-        var b = MK_SRC[k] ? '<button type="button" class="mk-ref" data-ref="' + k + '">' + esc(MK_SRC[k][0]) + '</button>' : esc(k);
+        var b = MK_SRC[k] ? '<a class="mk-ref" href="#mk-src-' + k + '" data-ref="' + k + '">' + esc(MK_SRC[k][0]) + '</a>' : esc(k);   // inline text: wraps with the sentence
         return '<span class="mk-c">' + (i ? '' : '(') + b + (i < ks.length - 1 ? ';' : ')') + '</span>';
       }).join(' ');
     });
@@ -1611,6 +1611,7 @@
   function refJump(e) {                                  // a citation scrolls to its entry in the source list
     var b = e.target.closest && e.target.closest('.mk-ref');
     if (!b) return;
+    e.preventDefault();                                  // the hash is the page's router: scroll instead of navigating
     var li = document.getElementById('mk-src-' + b.getAttribute('data-ref'));
     if (!li) return;
     li.scrollIntoView({ behavior: mkStill() ? 'auto' : 'smooth', block: 'center' });

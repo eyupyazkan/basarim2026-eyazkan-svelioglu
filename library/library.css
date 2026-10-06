@@ -226,7 +226,6 @@ details[open] summary { margin-bottom: 8px; }
 .mk-sb { flex: none; font-size: 0.75rem; color: var(--muted); }
 .mk-note { font-size: 0.86rem; line-height: 1.4; color: var(--muted); }
 
-.mk-c { white-space: nowrap; }
 .mk-ref { display: inline; margin: 0; padding: 0; border: 0; background: none; color: var(--link); font: inherit; text-decoration: underline;
           text-underline-offset: 2px; cursor: pointer; }
 .mk-ref:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
@@ -342,3 +341,12 @@ dialog.mk-doc::backdrop { background: rgba(8, 15, 25, 0.72); }
 .mk-page .doc-run { margin: 0 0 10px; padding-bottom: 6px; border-bottom: 1px solid #E3E8EF; font-family: var(--f-mono); font-size: 0.66rem; letter-spacing: 0.04em;
                     text-transform: uppercase; color: #5B6472; }
 @media print { dialog.mk-doc, .mk-page { display: none !important; } }
+
+/* Eyüp, 06.10: running text justified on the library pages and in the procedure documents (numbers, buttons,
+   headings, equations and the line over the scene keep their alignment) */
+.top .sub, .foot, .note, .loading, .choice .desc, .mk-ed,
+.page p:not(.mk-flow):not(.mk-cap):not(.mk-key):not(.mk-banner):not(.mk-status):not(.sp-h):not(.mk-lib-h),
+.page li, .mk-kv dd, .defs p,
+.mk-page p:not(.mk-page-no):not(.doc-eyebrow):not(.doc-run):not(.doc-eq):not(.doc-ptitle):not(.doc-pauth), .mk-page li, .mk-page td,
+.mk-page figcaption, .mk-page .doc-ft span {
+  text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
