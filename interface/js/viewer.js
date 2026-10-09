@@ -127,7 +127,7 @@ export class Scene {
     [...new Set(D.map((d) => d.elem))].forEach((e) => {
       m.setStyle({ elem: e }, { sphere: { radius: this._radius(e), color: this._color(e) } });
     });
-    m.setClickable({}, true, (atom) => { this._picked = true; this.onPick({ kind: 'atom', k: atom.properties.k }); });
+    m.setClickable({}, true, (atom) => { this._picked = true; this.onPick({ kind: 'atom', k: atom.properties.k, p: atom.properties.p, q: atom.properties.q }); });
     m.setHoverable({}, true, (atom) => this._showTip(atom), () => this._hideTip());
     this.model = m;
 

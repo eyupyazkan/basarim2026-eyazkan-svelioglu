@@ -44,6 +44,19 @@
   --gas-ch4: #7B4FB8;
 
   
+  --psa: #2F6FD0;
+  --vsa: #D9661E;
+  --sel-series: #0F766E;
+  
+  --hero-bg: #1E3A5F;
+  --strong: #1E3A5F;
+  --hero-ink: #FFFFFF;
+  --hero-sub: #C9D7E8;
+  --hero-line: rgba(255, 255, 255, 0.22);
+  --pipe-bg: #E6EEF7;
+  --pipe-ink: #1E3A5F;
+
+  
   --div-neg: #1E3A5F;
   --div-mid: #E5E7EB;
   --div-pos: #B45309;
@@ -128,6 +141,16 @@
     --badge-rule-fg: #C9D3DF;
     --gas-co2: #2FAA9B;
     --gas-ch4: #9A7EE3;
+    --psa: #3E7FDB;
+    --vsa: #CC6F2B;
+    --sel-series: #5CC7B8;
+    --hero-bg: #112238;
+    --strong: #3A6EA5;
+    --hero-ink: #E7EDF4;
+    --hero-sub: #A9B8CB;
+    --hero-line: rgba(255, 255, 255, 0.16);
+    --pipe-bg: #1A2A3E;
+    --pipe-ink: #C4D7F0;
     --div-neg: #6AA7F0;
     --div-mid: #2B3B50;
     --div-pos: #F0A866;
@@ -187,6 +210,16 @@
   --badge-rule-fg: #C9D3DF;
   --gas-co2: #2FAA9B;
   --gas-ch4: #9A7EE3;
+  --psa: #3E7FDB;
+  --vsa: #CC6F2B;
+  --sel-series: #5CC7B8;
+  --hero-bg: #112238;
+  --strong: #3A6EA5;
+  --hero-ink: #E7EDF4;
+  --hero-sub: #A9B8CB;
+  --hero-line: rgba(255, 255, 255, 0.16);
+  --pipe-bg: #1A2A3E;
+  --pipe-ink: #C4D7F0;
   --div-neg: #6AA7F0;
   --div-mid: #2B3B50;
   --div-pos: #F0A866;

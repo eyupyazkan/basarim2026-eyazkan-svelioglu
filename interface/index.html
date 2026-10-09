@@ -12,21 +12,22 @@
   <script src="js/boot.js"></script>
 </head>
 <body>
+  
   <a class="skip" href="#work" data-i18n="skip">Skip to results</a>
+<!--mx-return--><nav class="mx-return" aria-label="Back to the poster page"><a class="mx-return-home" href="../#s9">‹ Poster page</a><span class="mx-return-t">Section 9 · Model Performance &amp; Screening Interface</span></nav><!--/mx-return-->
 
-  <header class="top">
-    <div class="top-in">
+  <header class="hero">
+    <div class="hero-bar">
       <a class="brand" href="#analyze" aria-label="MXene Screening Interface">
         <svg class="ico brand-ico" aria-hidden="true"><use href="icons.svg#i-logo"/></svg>
-        <span class="brand-name">MXene <span class="long">Screening Interface</span></span>
         <span class="brand-tag" id="brand-tag" hidden><svg class="ico s" aria-hidden="true"><use href="icons.svg#i-lock"/></svg><span data-i18n="private_tag">Private · local</span></span>
       </a>
-      <nav class="tabs" aria-label="Screens" data-i18n-aria="nav_label">
-        <a class="tab" href="#analyze" data-screen="analyze" data-i18n="nav_analyze">Analyze</a>
-        <a class="tab" href="#about" data-screen="about" data-i18n="nav_about">About</a>
-      </nav>
-      <div class="top-tools">
-        <span class="tool static" id="model-chip"><span class="status-dot" id="model-dot"></span><span class="lbl" id="model-lbl" data-i18n="models_loading">Loading</span></span>
+      <div class="hero-tools">
+        <span class="chip-status" id="model-chip"><span class="status-dot" id="model-dot"></span><span class="lbl" id="model-lbl" data-i18n="models_loading">Loading</span></span>
+        <nav class="tabs" aria-label="Screens" data-i18n-aria="nav_label">
+          <a class="tab" href="#analyze" data-screen="analyze" data-i18n="nav_analyze">Analyze</a>
+          <a class="tab" href="#about" data-screen="about" data-i18n="nav_about">About</a>
+        </nav>
         <div class="seg lang" role="group" aria-label="Language" data-i18n-aria="lang_label">
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="tr" aria-pressed="false">TR</button>
@@ -36,76 +37,55 @@
         </button>
       </div>
     </div>
+    <div class="hero-title">
+      <h1 data-i18n="app_name">MXene Screening Interface</h1>
+      <p data-i18n="app_sub">From a crystal structure to CGCNN classification, GCMC uptakes and process metrics</p>
+    </div>
   </header>
 
-  <div class="shell" id="screen-analyze">
-    <aside class="rail" id="rail" aria-labelledby="rail-title">
-      <div class="rail-head">
-        <h2 id="rail-title" data-i18n="rail_title">Analyze MXene</h2>
-        <button class="tool icon rail-close" id="rail-close" type="button" aria-label="Close" data-i18n-aria="close">
-          <svg class="ico" aria-hidden="true"><use href="icons.svg#i-close"/></svg>
-        </button>
-      </div>
-      <div class="rail-body">
-        <div class="seg-mode" role="tablist" aria-labelledby="rail-title" id="mode-seg"></div>
-        <p class="rail-lead" id="rail-lead"></p>
-      </div>
-      <ul class="list" id="list" aria-labelledby="rail-title"></ul>
-      <div class="rail-foot" id="rail-foot"></div>
-    </aside>
+  <main class="work" id="work" tabindex="-1">
+    <ol class="pipe" id="pipe" aria-label="Analysis steps"></ol>
+    <p class="pipe-sub" id="pipe-sub" aria-live="polite"></p>
 
-    <main class="work" id="work" tabindex="-1">
-      <button class="picker-btn" id="picker-btn" type="button" aria-controls="rail">
-        <svg class="ico" aria-hidden="true"><use href="icons.svg#i-list"/></svg>
-        <b data-i18n="rail_title">Analyze MXene</b><span id="picker-cur"></span>
-        <svg class="ico s" aria-hidden="true"><use href="icons.svg#i-chev-r"/></svg>
-      </button>
+    <div class="dash" id="screen-analyze">
+      
+      <section class="card a-sel" id="card-sel" aria-labelledby="sel-h"></section>
 
-      <div id="view-single">
-        <section class="head" id="head" aria-live="polite"></section>
-        <div class="notes" id="notes"></div>
-        <div class="strip-bar" id="strip-bar"></div>
-        <div class="strip" id="strip"></div>
-        <div class="grid">
-          <section class="card scene" id="scene" aria-labelledby="scene-title">
-            <h2 class="sr" id="scene-title" data-i18n="scene_title">3D structure</h2>
-            <div class="scene-bar" id="scene-bar"></div>
-            <div class="viewer-wrap">
-              <div class="viewer" id="viewer"></div>
-              <canvas class="overlay" id="overlay" aria-hidden="true"></canvas>
-              <div class="tip" id="tip" hidden></div>
-              <div class="selcard" id="selcard" hidden></div>
-              <div class="vmsg" id="vmsg"><span class="spinner"></span><span data-i18n="loading_scene">Loading</span></div>
-              <div class="vstage" id="vstage" hidden></div>
-              <div class="vhint" id="vhint" data-i18n="scene_hint">Drag to rotate · scroll to zoom · click an atom or bond</div>
-            </div>
-            <div class="legend" id="legend"></div>
-            <div class="idgrid" id="idgrid"></div>
-          </section>
-          <div class="col results" id="results"></div>
+      
+      <section class="card a-info single-only" id="card-info" aria-labelledby="info-h"></section>
+      <section class="card a-scene single-only" id="scene" aria-labelledby="scene-title">
+        <div class="card-h"><h2 id="scene-title" data-i18n="scene_title">3D crystal structure</h2></div>
+        <div class="scene-bar" id="scene-bar"></div>
+        <div class="viewer-wrap">
+          <div class="viewer" id="viewer"></div>
+          <canvas class="overlay" id="overlay" aria-hidden="true"></canvas>
+          <div class="tip" id="tip" hidden></div>
+          <div class="selcard" id="selcard" hidden></div>
+          <div class="vmsg" id="vmsg"><span class="spinner"></span><span data-i18n="loading_scene">Loading</span></div>
+          <div class="vstage" id="vstage" hidden></div>
+          <div class="vhint" id="vhint" data-i18n="scene_hint">Drag to rotate · scroll to zoom · click an atom or bond</div>
         </div>
-        <section class="card fp" id="fingerprint" aria-labelledby="fp-title"></section>
-      </div>
+        <div class="legend" id="legend"></div>
+      </section>
+      <section class="card a-gauge single-only" id="card-cls" aria-labelledby="card-cls-h"></section>
+      <section class="card a-gcmc single-only" id="card-up" aria-labelledby="card-up-h"></section>
+      <section class="card a-proc single-only" id="card-proc" aria-labelledby="card-proc-h"></section>
+      <section class="card a-fp single-only" id="fingerprint" aria-labelledby="fp-title"></section>
 
-      <div id="view-batch" hidden>
-        <section class="head" id="bhead"></section>
-        <div class="bprog" id="bprog"></div>
-        <div class="tiles" id="btiles"></div>
-        <div class="bgrid">
-          <section class="card" id="bchart" aria-labelledby="bchart-h"></section>
-          <section class="card" id="btable" aria-labelledby="btable-h"></section>
-        </div>
-      </div>
+      
+      <section class="card a-bsum batch-only" id="bsum" aria-labelledby="bsum-h"></section>
+      <section class="card a-bchart batch-only" id="bchart" aria-labelledby="bchart-h"></section>
+      <section class="card a-btable batch-only" id="btable" aria-labelledby="btable-h"></section>
+    </div>
 
-      <footer class="foot" id="foot"></footer>
-    </main>
-  </div>
+    <div class="about" id="screen-about" hidden></div>
+    <footer class="foot" id="foot"></footer>
+  </main>
 
-  <div class="about" id="screen-about" hidden></div>
-  <div class="scrim" id="scrim" hidden></div>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="vendor/3Dmol-min.js"></script>
   <script type="module" src="js/app.js"></script>
+<!--mx-return-foot--><nav class="mx-return-foot" aria-label="Page navigation"><a class="mx-rbtn" id="mx-return-back" href="../#s9">‹ Back</a><a class="mx-rbtn" href="../#s9">Return to poster page</a></nav><style>.mx-return{display:flex;align-items:center;gap:12px;padding:6px 14px;background:var(--hero-bg,#1E3A5F);color:var(--hero-ink,#FFFFFF);font:600 14px/1.3 system-ui,"Segoe UI",sans-serif;border-bottom:1px solid rgba(255,255,255,.15)}.mx-return-home{display:inline-flex;align-items:center;min-height:36px;padding:4px 12px;border-radius:999px;background:rgba(255,255,255,.14);color:inherit;text-decoration:none;white-space:nowrap}.mx-return-home:hover{background:rgba(255,255,255,.26)}.mx-return-t{opacity:.85;font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mx-return-foot{display:grid;grid-template-columns:auto auto;justify-content:start;gap:8px;padding:12px 16px 24px;max-width:1280px;margin:0 auto}.mx-rbtn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;border-radius:10px;border:1px solid var(--line,#CBD5E1);background:var(--surface,#FFFFFF);color:var(--ink,#1F2937);font:700 15px/1.25 system-ui,"Segoe UI",sans-serif;text-decoration:none}.mx-rbtn:hover{border-color:var(--hero-bg,#1E3A5F)}@media (max-width:560px){.mx-return-foot{grid-template-columns:1fr 1fr}.mx-return-t{display:none}}</style><script>(function(){var b=document.getElementById('mx-return-back');if(b)b.addEventListener('click',function(e){if(history.length>1){e.preventDefault();history.back();}});})();</script><!--/mx-return-foot-->
 </body>
 </html>

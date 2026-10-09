@@ -1,63 +1,62 @@
-import { esc, up as fmtUp } from './format.js';
-
-const P = ['0.1', '1', '10'];
-const GAS = [{ k: 'CO2', lab: 'CO₂', col: 'var(--gas-co2)' }, { k: 'CH4', lab: 'CH₄', col: 'var(--gas-ch4)' }];
+import { esc } from './format.js';
 
 function niceLin(max) {
   const raw = max / 4, mag = 10 ** Math.floor(Math.log10(raw || 1)), n = raw / mag;
   const step = (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * mag;
-  const ticks = []; for (let v = 0; v <= max * 1.0001 + step; v += step) { ticks.push(v); if (v >= max) break; }
+  const ticks = []; for (let v = 0; v <= max * 1.0001 + step; v += step) { ticks.push(Number(v.toPrecision(10))); if (v >= max) break; }
   return ticks;
 }
 
-export function uptakeChart(o) {
-  const W = 440, H = 228, ml = 48, mr = 46, mt = 24, mb = 40;
+export function gauge(o) {
+  const W = 320, H = 200, cx = 160, cy = 168, r = 124, sw = 26, L = Math.PI * r;
+  const p = Math.max(0, Math.min(1, o.p)), th = Math.PI * (1 - o.thr);
+  const tx = (rr) => cx + rr * Math.cos(th), ty = (rr) => cy - rr * Math.sin(th);
+  const arc = `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`;
+  let s = `<svg class="gauge${o.grow ? ' grow' : ''}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria)}" style="--arc-len:${L.toFixed(1)}">`;
+  s += `<path class="track" d="${arc}" fill="none" stroke-width="${sw}" stroke-linecap="butt"/>`;
+  s += `<path class="fillarc ${o.kind}" d="${arc}" fill="none" stroke-width="${sw}" stroke-linecap="butt" stroke-dasharray="${(p * L).toFixed(2)} ${L.toFixed(2)}" stroke-dashoffset="0"/>`;
+  s += `<line class="thr" x1="${tx(r - sw / 2 - 6).toFixed(1)}" y1="${ty(r - sw / 2 - 6).toFixed(1)}" x2="${tx(r + sw / 2 + 6).toFixed(1)}" y2="${ty(r + sw / 2 + 6).toFixed(1)}" stroke-width="2.5"/>`;
+  s += `<text x="${tx(r + sw / 2 + 12).toFixed(1)}" y="${(ty(r + sw / 2 + 12) - 2).toFixed(1)}" text-anchor="middle">${esc(o.thrLabel)}</text>`;
+  s += `<text class="gv" x="${cx}" y="${cy - 34}" text-anchor="middle">${esc(o.value)}</text>`;
+  s += `<text class="gl" x="${cx}" y="${cy - 10}" text-anchor="middle">${esc(o.sub)}</text>`;
+  s += `<text x="${cx - r}" y="${cy + 22}" text-anchor="middle">0</text><text x="${cx + r}" y="${cy + 22}" text-anchor="middle">1</text>`;
+  return `${s}</svg>`;
+}
+
+function colPath(x, y, w, y0) {
+  const h = y0 - y, r = Math.max(0, Math.min(4, h, w / 2));
+  if (h <= 0) return '';
+  return `M${x.toFixed(2)} ${y0.toFixed(2)}V${(y + r).toFixed(2)}Q${x.toFixed(2)} ${y.toFixed(2)} ${(x + r).toFixed(2)} ${y.toFixed(2)}`
+    + `H${(x + w - r).toFixed(2)}Q${(x + w).toFixed(2)} ${y.toFixed(2)} ${(x + w).toFixed(2)} ${(y + r).toFixed(2)}V${y0.toFixed(2)}Z`;
+}
+
+export function barChart(o) {
+  const W = 264, H = 196, ml = 30, mr = 4, mt = 22, mb = 24;
   const vals = [];
-  for (const src of [o.pred, o.gcmc]) if (src) for (const g of GAS) for (const p of P) { const v = src[g.k][p]; if (v !== null && v !== undefined) vals.push(v); }
-  if (!vals.length) return { svg: '', log: true };
-  const log = vals.every((v) => v > 0);
-  let y0, y1, ticks;
-  if (log) {
-    const lo = Math.log10(Math.min(...vals)), hi = Math.log10(Math.max(...vals));
-    y0 = Math.floor((lo - 0.12) * 2) / 2; y1 = Math.ceil((hi + 0.12) * 2) / 2;
-    if (y1 - y0 < 1) y1 = y0 + 1;
-    ticks = []; for (let e = Math.ceil(y0); e <= Math.floor(y1); e++) ticks.push(e);
-    if (ticks.length < 2) ticks = [y0, y1];
-  } else {
-    const mx = Math.max(...vals.map((v) => Math.max(v, 0)));
-    ticks = niceLin(mx || 1); y0 = Math.min(0, Math.min(...vals)); y1 = ticks[ticks.length - 1];
-  }
-  const X = (p) => ml + (Math.log10(Number(p)) + 1.15) / 2.3 * (W - ml - mr);
-  const Y = (v) => { const u = log ? Math.log10(v) : v; return mt + (1 - (u - y0) / (y1 - y0)) * (H - mt - mb); };
-  const tickLab = (e) => (log ? o.fmtTick(10 ** e) : o.fmtTick(e));
-  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.labels.aria || '')}">`;
-  for (const e of ticks) {
-    const y = Y(log ? 10 ** e : e);
-    s += `<line class="grid" x1="${ml}" x2="${W - mr}" y1="${y}" y2="${y}"/><text x="${ml - 8}" y="${y + 4}" text-anchor="end">${esc(tickLab(e))}</text>`;
-  }
-  s += `<line class="axis" x1="${ml}" x2="${W - mr}" y1="${H - mb}" y2="${H - mb}"/>`;
-  for (const p of P) s += `<line class="axis" x1="${X(p)}" x2="${X(p)}" y1="${H - mb}" y2="${H - mb + 4}"/><text x="${X(p)}" y="${H - mb + 17}" text-anchor="middle">${esc(o.fmtTick(Number(p)))}</text>`;
-  s += `<text x="${(ml + W - mr) / 2}" y="${H - 4}" text-anchor="middle">${esc(o.labels.x)}</text>`;
-  s += `<text x="${ml - 8}" y="${mt - 10}" text-anchor="end">${esc(o.labels.y)}</text>`;
-  const ends = [];
-  for (const g of GAS) {
-    if (o.pred) {
-      const pts = P.map((p) => [X(p), Y(o.pred[g.k][p]), o.pred[g.k][p], p]).filter((q) => Number.isFinite(q[1]));
-      s += `<polyline points="${pts.map((q) => `${q[0]},${q[1]}`).join(' ')}" fill="none" stroke="${g.col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
-      for (const q of pts) s += `<circle cx="${q[0]}" cy="${q[1]}" r="4.6" fill="var(--surface)" stroke="${g.col}" stroke-width="2.2"><title>${esc(`${g.lab} · ${q[3]} bar · ${o.labels.pred}: ${fmtUp(q[2])} mol/kg`)}</title></circle>`;
-      if (pts.length) ends.push({ y: pts[pts.length - 1][1], lab: g.lab });
-    }
-    if (o.gcmc) {
-      const pts = P.map((p) => [X(p), Y(o.gcmc[g.k][p]), o.gcmc[g.k][p], p]).filter((q) => Number.isFinite(q[1]));
-      for (const q of pts) s += `<circle cx="${q[0]}" cy="${q[1]}" r="4.2" fill="${g.col}" stroke="var(--surface)" stroke-width="1.6"><title>${esc(`${g.lab} · ${q[3]} bar · ${o.labels.gcmc}: ${fmtUp(q[2])} mol/kg`)}</title></circle>`;
-      if (!o.pred && pts.length) ends.push({ y: pts[pts.length - 1][1], lab: g.lab });
-    }
-  }
-  ends.sort((a, b) => a.y - b.y);
-  for (let i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 14) ends[i].y = ends[i - 1].y + 14;
-  for (const e of ends) s += `<text class="lab" x="${W - mr + 9}" y="${e.y + 4}">${esc(e.lab)}</text>`;
-  s += '</svg>';
-  return { svg: s, log };
+  for (const g of o.groups) for (const b of g.bars) for (const v of [b.value, b.ref]) if (v !== null && v !== undefined && Number.isFinite(v)) vals.push(v);
+  if (!vals.length) return '';
+  const ticks = niceLin(Math.max(...vals) * 1.08 || 1), top = ticks[ticks.length - 1];
+  const Y = (v) => mt + (1 - v / top) * (H - mt - mb), y0 = Y(0);
+  const band = (W - ml - mr) / o.groups.length;
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria)}">`;
+  for (const t of ticks) s += `<line class="grid" x1="${ml}" x2="${W - mr}" y1="${Y(t).toFixed(1)}" y2="${Y(t).toFixed(1)}"/><text x="${ml - 5}" y="${(Y(t) + 4).toFixed(1)}" text-anchor="end">${esc(o.fmtTick(t))}</text>`;
+  o.groups.forEach((g, gi) => {
+    const k = g.bars.length, gap = k > 1 ? 7 : 0, bw = Math.min(24, (band * 0.62 - gap * (k - 1)) / k);
+    const x0 = ml + gi * band + (band - (bw * k + gap * (k - 1))) / 2;
+    g.bars.forEach((b, bi) => {
+      const x = x0 + bi * (bw + gap), has = b.value !== null && b.value !== undefined && Number.isFinite(b.value);
+      const hasRef = b.ref !== null && b.ref !== undefined && Number.isFinite(b.ref);
+      s += `<g class="bar"><title>${esc(b.title)}</title><rect class="hit" x="${(x - gap / 2).toFixed(1)}" y="${mt}" width="${(bw + gap).toFixed(1)}" height="${(y0 - mt).toFixed(1)}"/>`;
+      if (has) s += `<path class="mark" d="${colPath(x, Y(Math.max(b.value, 0)), bw, y0)}" fill="${b.color}"/>`;
+      if (hasRef) s += `<circle cx="${(x + bw / 2).toFixed(1)}" cy="${Y(b.ref).toFixed(1)}" r="4.5" fill="var(--prov-gcmc)" stroke="var(--surface)" stroke-width="2"/>`;
+      const ly = Math.min(has ? Y(Math.max(b.value, 0)) : y0, hasRef ? Y(b.ref) - 5 : y0) - 6;
+      if (has) s += `<text class="val" x="${(x + bw / 2).toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle">${esc(o.fmt(b.value))}</text>`;
+      s += '</g>';
+    });
+    s += `<text x="${(ml + gi * band + band / 2).toFixed(1)}" y="${H - 6}" text-anchor="middle">${esc(g.label)}</text>`;
+  });
+  s += `<line class="axis" x1="${ml}" x2="${W - mr}" y1="${y0.toFixed(1)}" y2="${y0.toFixed(1)}"/>`;
+  return `${s}</svg>`;
 }
 
 function hex2rgb(hx) {
@@ -84,7 +83,6 @@ export function barcode(o) {
     const col = divColor(it.z, o.colors.neg, o.colors.mid, o.colors.pos) || o.colors.na;
     s += `<rect data-i="${i}" x="${(i * bw + 0.5).toFixed(2)}" y="2" width="${Math.max(bw - 1.2, 0.8).toFixed(2)}" height="${bh}" rx="1.2" fill="${col}"${o.reveal ? ` style="animation-delay:${Math.round(i * 9)}ms"` : ''}/>`;
   });
-
   let i0 = 0, row = 0;
   const spans = [];
   items.forEach((it, i) => {
@@ -98,8 +96,7 @@ export function barcode(o) {
     s += `<text class="blk" x="${xm}" y="${ly}" text-anchor="middle">${esc(o.blockLabel(sp.b))}</text>`;
   }
   s += `<rect class="hov" x="0" y="0" width="0" height="${bh + 4}" fill="none" stroke="var(--ink)" stroke-width="1.6" rx="2" visibility="hidden"/>`;
-  s += '</svg>';
-  return { svg: s, spans, n, bw };
+  return { svg: `${s}</svg>`, spans, n, bw };
 }
 
 export function parityChart(o) {
@@ -127,6 +124,5 @@ export function parityChart(o) {
     const col = p.gas === 'CO2' ? 'var(--gas-co2)' : 'var(--gas-ch4)';
     s += `<circle cx="${X(p.x).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="4" fill="${col}" stroke="var(--surface)" stroke-width="1.4"><title>${esc(p.title)}</title></circle>`;
   }
-  s += '</svg>';
-  return s;
+  return `${s}</svg>`;
 }
