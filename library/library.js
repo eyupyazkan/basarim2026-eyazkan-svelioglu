@@ -205,7 +205,7 @@
     var body = h('div', null, '<p class="loading">Loading…</p>');
     card.appendChild(body);
     if (panel) app.appendChild(panel);
-    if (step === 'fam') app.appendChild(makeEntry());       // the way into "See how MXenes are made"
+    // AF6 (09.10, Eyüp): the "See how MXenes are made" card moved to the poster page's Section 2 (library/?from=poster#/make)
     app.appendChild(card);
 
     fetchJSON(optsQuery(sel)).then(function (r) {
@@ -1412,6 +1412,9 @@
   MK_BY["echem"].plain = ["The starting material is a solid piece of the MAX phase Ti<sub>3</sub>AlC<sub>2</sub>, not a powder. The lump is cut into pieces about 1 × 3 × 0.5 cm (about 5 g). {Y18} In the paper's computer (DFT) model, Ti<sub>3</sub>AlC<sub>2</sub> is one layer of aluminium atoms sandwiched between two Ti<sub>3</sub>C<sub>2</sub> layers. {Y18} The paper's DFT bonding analysis (electron localisation function) finds Ti–C bonds very strong (ELF 0.8–0.9) and Ti–Al bonds relatively weak (ELF 0.4–0.6). {Y18}", "The Ti<sub>3</sub>AlC<sub>2</sub> piece is the positive electrode (anode) of a two-electrode cell. A second Ti<sub>3</sub>AlC<sub>2</sub> piece is the counter electrode and is not etched. {Y18} A computer (DFT) simulation shows how: when the anode is positively charged, chloride ions attack its exposed edges and pull aluminium out as AlCl<sub>3</sub>. {Y18} Chloride works because it binds strongly to aluminium. {Y18}", "The black sediment at the bottom of the cell is collected, ground, and washed with deionized water three times until the water above it reaches pH 7. {Y18} This washing starts from a basic electrolyte (pH above 9). {Y18}", "The etched solid is now multilayer Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub>. Unlike HF-etched MXene it does not puff up into an accordion shape; it stays tightly stacked, like the original MAX phase. {Y18} The authors think this is because the conditions are mild, with no violent gas release. {Y18} Not seeing the accordion shape does not necessarily mean etching failed (background, review). {V21}", "Intercalation is not a separate step here: the paper states, citing earlier work, that Al etching and the intercalation of ammonium species take place simultaneously. {Y18} The paper calls this the in situ intercalation of ammonium hydroxide, which follows the dissolution of aluminium and leads to the extraction of the carbide flakes. {Y18} Why it is needed: with chloride alone, etching happens preferentially at the surfaces. Cations entering the etched anode expand the interlayer spacing so the electrolyte ions can diffuse inside. {Y18}", "The washed powder is stirred for 12 hours in concentrated (25 wt%) TMAOH. {Y18} The positively charged TMA+ ions weaken the attraction between the 2D layers. This is the key step for separating single sheets. {Y18} X-ray diffraction confirms the layers lose their regular stacking after this treatment. {Y18}", "A first spin (5000 rpm, 10 min) separates the solid from the dark-brown solution, which is thrown away. {Y18} The solid is then washed with plenty of deionized water to remove leftover salts. {Y18} After sonication, a gentler spin (2000 rpm, 30 min) makes un-exfoliated particles and thick flakes sink. {Y18}", "The supernatant is a colloidal dispersion of separated Ti<sub>3</sub>C<sub>2</sub>T<sub>x</sub> sheets: it shows a clear Tyndall effect and has a zeta potential of −37.9 mV. {Y18} For comparison, a review notes that delaminated MXenes from wet chemical etching, with their anionic surface terminations, have zeta potentials below −30 mV and form stable colloids. {V21} Most flakes (over 90 % of the more than 50 measured by AFM) are about 1.2 nm thick, i.e. single layers. {Y18}", "Pulling the dispersion (~1 mg/mL) through a PTFE membrane by vacuum filtration stacks the flakes into a thin film. {Y18} These stacked films conduct electricity well (1330 ± 110 S/cm), close to films from the LiF/HCl route. {Y18} The moist film is moved onto gold-coated plastic (PET) and used as a supercapacitor electrode. {Y18}"];
   MK_BY["echem"].scene.caps = {"0": [[0, "A solid piece of Ti₃AlC₂ is the anode (+) of an electrochemical cell"]], "1": [[0, "At +5 V, chloride ions attack the anode and pull the Al out as AlCl₃"], [0.4, "Ammonium species slip in between the layers and open the edges"], [0.68, "The surfaces carry –O and –OH, no fluorine"]], "2": [[0, "The black sediment is washed with water until pH 7"]], "3": [[0, "Multilayer Ti₃C₂Tₓ stays tightly stacked: no accordion"], [0.5, "Yet the layers moved apart: c grows from 18.0 to 22.6 Å"]], "4": [[0, "In 25 wt % TMAOH, TMA⁺ ions weaken the attraction between the layers"]], "5": [[0, "Sonication in degassed water under argon disperses the sheets"]], "6": [[0, "A gentle spin: 2000 rpm, 30 min"], [0.45, "Unexfoliated particles sink; the flakes stay in the liquid"]], "7": [[0, "Over 90 % of the flakes measured are single layers, about 1.2 nm thick"], [0.5, "The colloid shows the Tyndall effect"]], "8": [[0, "Vacuum filtration stacks the flakes into a thin film on a PTFE membrane"]]};
   // ---- /MK_DOC
+  // AF6 (09.10, Eyüp): the poster page's Section 2 card opens this page as library/?from=poster#/make; the way back then
+  // leads to the poster page (its Section 2 view), not to the library's family step
+  function fromPoster() { return /(^|[?&])from=poster(&|$)/.test(location.search); }
   function renderMake(id) {
     detachViewer();
     var m = (Object.prototype.hasOwnProperty.call(MK_BY, id) && MK_BY[id]) || MK_METHODS[0];
@@ -1436,7 +1439,8 @@
       '<p class="mk-note">Interactive illustration, not a simulation — atoms are not to scale, times are compressed and the mix of terminations is drawn schematically. Every condition and number comes from the paper cited next to it.</p></section>' +
       '<section class="card mk-proc" id="mk-proc" hidden></section>' +
       '<section class="card mk-card" id="mk-card"></section><section class="card mk-refs" id="mk-refs"></section>' +
-      '<div class="sp-actions"><a class="btn2 prev" href="#/"><span class="ico" aria-hidden="true">←</span> Back to the library</a></div>';
+      (fromPoster() ? ''                                   // from the poster page: the page's own bar under the content (index.html) is the way back
+        : '<div class="sp-actions"><a class="btn2 prev" href="#/"><span class="ico" aria-hidden="true">←</span> Back to the library</a></div>');
     var $ = function (i) { return document.getElementById(i); };
     var stage = $('mk-stage'), E = mkEngine($('mk-cv'));
     var C = { k: 0, t: 1, running: false, anim: false, raf: 0, timer: 0, last: 0, frames: 0, f: 1 };
@@ -1625,6 +1629,10 @@
                      make: function () { return mk ? mk.state() : null; } };
   window.addEventListener('hashchange', route);
   window.addEventListener('resize', function () { if (scene) { viewer.resize(); viewer.render(); } });
+  // AF6 (09.10, Eyüp): the bar under every library view = the poster page's: ‹ Back (one step back in the history, or the
+  // poster page's Section 2 when there is none) · Return to poster page
+  var libBack = document.getElementById('lib-back');
+  if (libBack) libBack.addEventListener('click', function (ev) { if (history.length > 1) { ev.preventDefault(); history.back(); } });
   fetch('elements.json').then(function (r) { return r.json(); }).then(function (j) { EL = j.elements; route(); },
     function () { app.innerHTML = errorCard(new Error('offline')); });
 })();

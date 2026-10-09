@@ -350,3 +350,12 @@ dialog.mk-doc::backdrop { background: rgba(8, 15, 25, 0.72); }
 .mk-page p:not(.mk-page-no):not(.doc-eyebrow):not(.doc-run):not(.doc-eq):not(.doc-ptitle):not(.doc-pauth), .mk-page li, .mk-page td,
 .mk-page figcaption, .mk-page .doc-ft span {
   text-align: justify; -webkit-hyphens: auto; hyphens: auto; }
+
+/* AF6 (09.10, Eyüp): on the synthesis page opened from the poster page, the bar at the bottom is the poster page's own
+   (library.js renderMake, fromPoster): ‹ Back · Return to poster page; same look as the page's .sec-nav */
+.sec-nav { display: grid; grid-template-columns: auto auto; justify-content: start; gap: 8px; margin-top: 16px; }
+.sec-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 10px;
+           border: 1px solid var(--rule); background: var(--surface); color: var(--navy); font-weight: 700; text-decoration: none; line-height: 1.25; }
+.sec-btn:hover { background: var(--tint); border-color: var(--navy); }
+.sec-btn:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+@media (max-width: 560px) { .sec-nav { grid-template-columns: 1fr 1fr; } }
