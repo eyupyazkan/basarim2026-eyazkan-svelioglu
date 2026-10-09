@@ -1110,70 +1110,64 @@ html:not(.hub) .sec-nav .sec-back { display: none; }
 @media (max-height: 700px) { #s4-try .mx-cockpit .mx-scene-dialog .mx-explain { display: none; } }
 </style>
 <style>
-.mxm { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--rule-soft); padding-top: 14px; outline: none; }
-.mxm-head { display: flex; flex-direction: column; gap: 4px; }
-.mxm-kicker { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); }
-.mxm-title { font-size: 1.08rem; color: var(--navy); margin: 0; }
-.mxm-lead { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
-.mxm-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 1px; }
-.mxm-tabs::-webkit-scrollbar { display: none; }
-.mxm-tab { flex: 1 0 auto; min-width: 190px; min-height: 56px; padding: 6px 12px 6px 8px; border-radius: 12px; border: 1px solid var(--rule);
-           background: var(--surface); color: var(--ink-2); font: inherit; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 10px; }
-.mxm-tab > span:last-child { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.mxm-tab-i { flex: none; width: 1.75rem; height: 1.75rem; border-radius: 50%; background: var(--tint); color: var(--navy); display: inline-grid; place-items: center; font-weight: 700; font-size: 0.9rem; }
-.mxm-tab-n { font-weight: 700; color: var(--navy); font-size: 0.95rem; line-height: 1.2; }
-.mxm-tab-s { font-size: 0.78rem; color: var(--muted); line-height: 1.2; }
-.mxm-tab[aria-selected="true"] { border-color: var(--teal); box-shadow: inset 0 0 0 1px var(--teal); background: var(--tint); }
-.mxm-tab[aria-selected="true"] .mxm-tab-i { background: var(--teal); color: var(--bg); }
-.mxm-tab:focus-visible, .mxm-btn:focus-visible, .mxm-st-b:focus-visible, .mxm-slider:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
-.mxm-intro { margin: 0; padding: 10px 14px; border-left: 3px solid var(--teal); background: var(--tint); border-radius: 0 10px 10px 0; color: var(--ink); font-size: 0.95rem; line-height: 1.5; }
-.mxm-stage { position: relative; width: 100%; aspect-ratio: 1000 / 560; background: #FFFFFF; border: 1px solid var(--rule-soft); border-radius: 12px; overflow: hidden; }
+.mxm { display: flex; flex-direction: column; gap: 12px; outline: none; }
+.mxm-kicker { margin: 0 0 -6px; font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); }
+.mxm-lead { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.mxm-methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (min-width: 640px) { .mxm-methods { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.mxm-m { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 56px; padding: 9px 10px; text-align: left; cursor: pointer;
+         border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; }
+.mxm-m:hover { border-color: var(--teal); }
+.mxm-m[aria-pressed="true"] { border: 2px solid var(--teal); padding: 8px 9px; background: var(--tint); }
+.mxm-m:focus-visible, .mxm-btn:focus-visible, .mxm-sp:focus-visible, .mxm-st:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.mxm-mn { font-weight: 700; font-size: 0.98rem; line-height: 1.2; color: var(--navy); }
+.mxm-ms { font-size: 0.8rem; line-height: 1.3; color: var(--muted); }
+.mxm-route { display: flex; flex-direction: column; gap: 4px; }
+.mxm-rn { margin: 0; font-size: 1.15rem; color: var(--navy); }
+.mxm-intro { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.mxm-stage { position: relative; width: 100%; aspect-ratio: 1000 / 560; border: 1px solid var(--rule); border-radius: 10px; background: #FFFFFF; overflow: hidden; }
 .mxm-stage canvas { display: block; width: 100%; height: 100%; }
-.mxm-chip { position: absolute; top: 8px; right: 10px; font-family: var(--f-mono); font-size: 0.72rem; color: #5B6472; background: rgba(238, 243, 249, 0.92); border: 1px solid #E3E8EF;
-            border-radius: 999px; padding: 2px 10px; }
-.mxm-segs { display: flex; gap: 4px; }
-.mxm-seg { flex: 1; height: 5px; border-radius: 3px; background: var(--rule-soft); overflow: hidden; }
-.mxm-seg i { display: block; height: 100%; width: 0; background: var(--teal); }
-.mxm-expl { display: flex; flex-direction: column; gap: 8px; }
-.mxm-h { margin: 0; font-size: 1.02rem; color: var(--navy); }
-.mxm-cap { margin: 0; font-size: 0.97rem; color: var(--ink); line-height: 1.5; }
+.mxm-prog { display: flex; gap: 4px; }
+.mxm-prog i { flex: 1; display: block; height: 6px; border-radius: 3px; background: var(--rule-soft); }
+.mxm-prog i.cur { background: var(--teal); opacity: 0.45; }
+.mxm-prog i.on { background: var(--teal); }
+.mxm-seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--rule); border-radius: 9px; overflow: hidden; }
+.mxm-btn { min-width: 0; height: 44px; margin: 0; padding: 0 8px; border: 0; background: var(--surface); color: var(--ink-2); font: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.mxm-btn + .mxm-btn { border-left: 1px solid var(--rule); }
+.mxm-btn.mxm-run { background: #0F766E; color: #FFFFFF; }
+.mxm-btn:disabled { opacity: 0.45; cursor: default; }
+.mxm-btn:hover:not(:disabled) { filter: brightness(1.06); }
+.mxm-btn:focus-visible { outline-offset: -3px; }
+.mxm-btn.mxm-run:focus-visible { outline: 3px solid #FFFFFF; outline-offset: -5px; box-shadow: inset 0 0 0 2px #0B4F4A; }
+.mxm-speed { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mxm-speed-l { font-size: 0.85rem; color: var(--muted); margin-right: 2px; }
+.mxm-sp { min-height: 40px; padding: 6px 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--surface); color: var(--ink-2); font: inherit; font-weight: 600; cursor: pointer; }
+.mxm-sp[aria-pressed="true"] { border-color: var(--teal); background: var(--tint); color: var(--teal); font-weight: 700; }
+.mxm-status { margin: 0; min-height: 1.3em; font-size: 1.02rem; font-weight: 700; color: var(--teal); }
+.mxm-now { display: flex; flex-direction: column; gap: 6px; padding: 2px 0 2px 12px; border-left: 4px solid var(--teal); }
+.mxm-h { margin: 0; font-size: 1.05rem; color: var(--navy); }
+.mxm-cap { margin: 0; line-height: 1.5; color: var(--ink); }
 .mxm-formula { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: baseline; padding: 8px 12px; border-radius: 10px;
                background: var(--tint); border: 1px solid var(--rule-soft); font-size: 0.95rem; color: var(--ink); line-height: 1.6; }
 .mxm-f-l { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal); white-space: nowrap; }
 .mxm-f-t { font-family: "Cambria Math", Cambria, "Times New Roman", Georgia, serif; font-style: italic; font-size: 1.02rem; overflow-x: auto; }
 .mxm-f-t sub, .mxm-f-t sup { font-style: normal; }
 .mxm-f-r { grid-column: 2; font-size: 0.88rem; color: var(--muted); line-height: 1.45; }
-.mxm-ctrl { display: flex; flex-direction: column; gap: 10px; }
-.mxm-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.mxm-btn { font: inherit; font-weight: 700; min-height: 44px; min-width: 44px; padding: 8px 16px; border-radius: 10px; border: 1px solid var(--rule);
-           background: var(--surface); color: var(--navy); cursor: pointer; }
-.mxm-btn:hover:not(:disabled) { background: var(--tint); border-color: var(--navy); }
-.mxm-btn:disabled { opacity: 0.4; cursor: default; }
-.mxm-run { background: var(--teal); color: var(--bg); border-color: transparent; min-width: 118px; }
-.mxm-run:hover:not(:disabled) { background: var(--teal); filter: brightness(1.06); border-color: transparent; }
-.mxm-time { gap: 10px; }
-.mxm-t { font-family: var(--f-mono); font-size: 0.82rem; color: var(--muted); min-width: 2.6em; text-align: center; font-variant-numeric: tabular-nums; }
-.mxm-slider { flex: 1 1 160px; min-width: 120px; height: 44px; margin: 0; accent-color: var(--teal); cursor: pointer; }
-.mxm-speed { display: flex; align-items: center; gap: 6px; margin-left: auto; }
-.mxm-speed-l { font-size: 0.85rem; color: var(--muted); margin-right: 2px; }
-.mxm-sp { padding: 8px 12px; font-weight: 500; }
-.mxm-sp[aria-pressed="true"] { background: var(--tint); border-color: var(--teal); color: var(--teal); font-weight: 700; }
-.mxm-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-.mxm-st-b { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 0.88rem; line-height: 1.25; min-height: 40px; padding: 4px 12px 4px 6px;
-            border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); cursor: pointer; text-align: left; }
-.mxm-st[aria-current="step"] .mxm-st-b { border-color: var(--teal); background: var(--tint); color: var(--ink); font-weight: 700; }
-.mxm-st-n { flex: none; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--badge-bg); color: var(--on-strong); display: inline-grid;
-            place-items: center; font-weight: 700; font-size: 0.8rem; }
-.mxm-note { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
-.page .mxm-tabs, .page .mxm-steps, .page .mxm-ctrl, .page .mxm-cap, .page .mxm-intro, .page .mxm-formula, .page .mxm-lead { text-align: left; -webkit-hyphens: manual; hyphens: manual; }
+.mxm-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+@media (min-width: 640px) { .mxm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mxm-st { width: 100%; min-height: 44px; display: flex; align-items: center; gap: 10px; padding: 4px 10px; text-align: left; cursor: pointer;
+          border: 1px solid var(--rule-soft); border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; }
+.mxm-st:hover { border-color: var(--teal); }
+.mxm-st[aria-current="step"] { border: 2px solid var(--teal); padding: 3px 9px; background: var(--tint); font-weight: 700; }
+.mxm-sn { flex: none; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;
+          background: var(--navy); color: var(--surface); font-weight: 700; font-size: 0.85rem; }
+.mxm-stt { flex: 1; min-width: 0; }
+.mxm-note { margin: 0; font-size: 0.86rem; line-height: 1.4; color: var(--muted); }
+.page .mxm-methods, .page .mxm-steps, .page .mxm-cap, .page .mxm-intro, .page .mxm-formula, .page .mxm-lead, .page .mxm-status, .page .mxm-note { text-align: left; -webkit-hyphens: manual; hyphens: manual; }
 @media (max-width: 520px) {
-  .mxm-tab { min-width: 170px; }
-  .mxm-chip { display: none; }              
-  .mxm-row:first-child { display: grid; grid-template-columns: 1fr 1fr; }
-  .mxm-run { grid-column: 1 / -1; }
-  .mxm-speed { margin-left: 0; width: 100%; justify-content: flex-start; }
   .mxm-formula { grid-template-columns: 1fr; }
   .mxm-f-r { grid-column: 1; }
+  .mxm-btn { font-size: 0.9rem; }
 }
 .mxm-nojs { margin: 0; color: var(--muted); font-size: 0.95rem; }</style>
 </head>
@@ -1387,7 +1381,7 @@ html:not(.hub) .sec-nav .sec-back { display: none; }
 <h2 id="s8-h"><span class="badge" aria-hidden="true">8</span><span>Hybrid ML Surrogates: Two-Stage Scheme</span></h2>
 <div class="prose poster-text"><p>Every surrogate uses the same two-stage hybrid scheme: a classifier first separates adsorbers from non-adsorbers, then a regressor trained on adsorbers only predicts the six uptakes. Three tree-based models (Random Forest, XGBoost, LightGBM) read the 97-descriptor fingerprint and are compared with one another; a graph model (CGCNN)<sup>[6]</sup> reads the crystal graph and is compared against all three. Data split: 15,298 structures for training, 1,700 for testing and a held-out set of 1,886 that no model saw.</p></div>
 <figure><div class="plate"><img src="assets/sec8_cgcnn.png" alt="CGCNN encoder: crystal structure from the CIF, crystal graph (nodes and edges), graph convolution over 3–4 layers, readout to a pooled embedding; then 1 CLASSIFICATION, adsorber or not (99.79 % accuracy, MCC 0.99, AUC 1.00); adsorbers only go to 2 REGRESSION, six uptakes, CO2 and CH4 (R² = 0.968 ± 0.008); OUTPUT: selectivity (S), working capacity (ΔN), regenerability (R %), APS, PSA / VSA. Non-adsorbers stop." loading="lazy"></div><figcaption>Adsorber label: CH<sub>4</sub> uptake at 10 bar ≥ 0.01 mol/kg (thesis criterion).</figcaption></figure>
-<div class="mx-models-host" id="s8-models"><div id="mx-models"></div><p class="mxm-nojs" id="mx-models-nojs">This interactive illustration needs JavaScript.</p></div>
+<a class="mk-entry" href="#models"><span class="mk-ei"><svg viewBox="0 0 66 40" width="66" height="40" aria-hidden="true" focusable="false"><path d="M16 8L8 20" stroke="#9AA3AE" stroke-width="1.6" stroke-linecap="round"/><path d="M16 8L24 20" stroke="#9AA3AE" stroke-width="1.6" stroke-linecap="round"/><path d="M8 20L4 32" stroke="#9AA3AE" stroke-width="1.6" stroke-linecap="round"/><path d="M8 20L12 32" stroke="#9AA3AE" stroke-width="1.6" stroke-linecap="round"/><path d="M24 20L20 32" stroke="#9AA3AE" stroke-width="1.6" stroke-linecap="round"/><path d="M24 20L28 32" stroke="#9AA3AE" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="8" r="3.2" fill="#1E3A5F" stroke="#FFFFFF" stroke-width="1"/><circle cx="8" cy="20" r="3.2" fill="#1E3A5F" stroke="#FFFFFF" stroke-width="1"/><circle cx="24" cy="20" r="3.2" fill="#1E3A5F" stroke="#FFFFFF" stroke-width="1"/><rect x="1" y="29.5" width="6" height="5" rx="1.5" fill="#0F766E"/><rect x="9" y="29.5" width="6" height="5" rx="1.5" fill="#9AA3AE"/><rect x="17" y="29.5" width="6" height="5" rx="1.5" fill="#0F766E"/><rect x="25" y="29.5" width="6" height="5" rx="1.5" fill="#0F766E"/><path d="M35 20h8m-3-3.5 3.5 3.5-3.5 3.5" fill="none" stroke="#0F766E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="48" y="20" width="2.2" height="14" rx="0.6" fill="#0F766E"/><rect x="51" y="12" width="2.2" height="22" rx="0.6" fill="#0F766E"/><rect x="54" y="25" width="2.2" height="9" rx="0.6" fill="#0F766E"/><rect x="57" y="17" width="2.2" height="17" rx="0.6" fill="#B45309"/><rect x="60" y="23" width="2.2" height="11" rx="0.6" fill="#B45309"/><rect x="63" y="28" width="2.2" height="6" rx="0.6" fill="#B45309"/><path d="M47 34.5h18" stroke="#5B6472" stroke-width="0.8"/></svg></span><span class="mk-et"><span class="mk-eh">See how the surrogate models work</span><span class="mk-ed">Four short animated stories: the two-stage scheme, Random Forest, gradient boosting and CGCNN, step by step, each with a simple formula.</span></span><span class="mk-ea" aria-hidden="true">→</span></a>
 <div class="tg" data-tg role="region" aria-roledescription="carousel" aria-label="From the thesis: 2 figures for Section 8"><div class="tg-head"><div><span class="tg-kicker">From the M.Sc. thesis</span><h3>More analyses<span class="tg-count">2 figures</span></h3></div><div class="tg-nav" hidden><button type="button" class="tg-btn" data-dir="-1" aria-label="Previous figure">‹</button><span class="tg-pos" aria-live="polite">1 / 2</span><button type="button" class="tg-btn" data-dir="1" aria-label="Next figure">›</button></div></div><div class="tg-track" tabindex="0" aria-label="Thesis figures, scroll sideways"><figure class="tg-slide" aria-roledescription="slide" aria-label="1 of 2"><div class="plate"><img src="assets/thesis_fig_3_1.webp" alt="Thesis Figure 3.1: Three-stage data-splitting strategy: Stage 1, stratified sampling yields a 90% model-development set (16,998) and a 10% held-out test set (1,886); Stage 2, a 90/10 train/test split inside the development set; Stage 3, 5-fold stratified cross-validation." width="1600" height="747" loading="eager" decoding="async"></div><figcaption><span class="tg-fig">Fig. 3.1</span> Three-stage data-splitting strategy: Stage 1, stratified sampling yields a 90% model-development set (16,998) and a 10% held-out test set (1,886); Stage 2, a 90/10 train/test split inside the development set; Stage 3, 5-fold stratified cross-validation. <span class="tg-src">· thesis p. 27</span></figcaption><div class="tg-more" hidden><p class="tg-more-h">From the thesis text</p><blockquote class="tg-q"><p>The comprehensive data-splitting workflow designed to ensure robust model evaluation and eliminate data leakage is systematically illustrated in Figure 3.1. The strategy is executed in three distinct phases: first, partitioning the global dataset into independent development and production-testing pools (Stage 1); second, optimizing model hyperparameters via an internal hold-out split (Stage 2); and finally, validating generalizability across architectures using 5-fold cross-validation before executing final production training (Stage 3). …</p><cite>thesis p. 26</cite></blockquote></div></figure><figure class="tg-slide" aria-roledescription="slide" aria-label="2 of 2"><div class="plate"><img src="assets/thesis_fig_3_6.webp" alt="Thesis Figure 3.6: Schematic of the three-phase cascaded ML architecture: Phase 1, CGCNN adsorber/non-adsorber classification; Phase 2, CGCNN regressor for six GCMC uptake targets and 15 derived parameters; Phase 3, GUI-based interpretation of all predictions." width="1600" height="597" loading="eager" decoding="async"></div><figcaption><span class="tg-fig">Fig. 3.6</span> Schematic of the three-phase cascaded ML architecture: Phase 1, CGCNN adsorber/non-adsorber classification; Phase 2, CGCNN regressor for six GCMC uptake targets and 15 derived parameters; Phase 3, GUI-based interpretation of all predictions. <span class="tg-src">· thesis p. 35</span></figcaption><div class="tg-more" hidden><p class="tg-more-h">From the thesis text</p><blockquote class="tg-q"><p>The most important design decision of the cascaded architecture is that each stage consumes the output of the preceding one. This brings two principal advantages: (i) the classification stage eliminates the non-adsorber structures early, so that the regression model operates only on physically meaningful samples; and (ii) the six uptake values predicted by the regression stage are propagated forward into the analytical computation of the derived performance parameters and into the graphical interface, enriching the information available downstream. The arrows in Figure 3.6 represent precisely this sequential flow of information.</p><cite>thesis p. 35</cite></blockquote></div></figure></div><div class="tg-bar" aria-hidden="true"><span></span></div></div>
 <details class="more"><summary><h3>Read more from the thesis</h3></summary><div class="prose"><p>About 15 % of structures adsorb essentially nothing; feeding them to a regressor degrades it, so a gate classifier is applied first (thesis p. 34: 15.5 % non-adsorbers, CH<sub>4</sub> &lt; 0.01 mol/kg at 10 bar). The regressor predicts CO<sub>2</sub> and CH<sub>4</sub> uptakes at three pressures in one pass (thesis p. 36). CGCNN follows the original architecture of Xie and Grossman, with atoms as nodes and bonds as edges (thesis p. 33). The tree and boosting models use 97 descriptors (thesis p. 28). The data were split in three stages, stratified by family and adsorber label: a development set for training and testing and a held-out set of 1,886 structures that no model saw (thesis p. 27, Figure 3.1).</p></div></details>
 <div class="numbers"><h3>Numbers in this section</h3><div class="prose"><ul>
@@ -1398,6 +1392,7 @@ html:not(.hub) .sec-nav .sec-back { display: none; }
 </ul></div></div>
 <nav class="sec-nav" aria-label="Page navigation"><a class="sec-btn sec-back" href="#home" data-back>‹ Back</a><a class="sec-btn sec-home" href="#home">Return to poster page</a><a class="sec-btn sec-next" href="#s9"><small>Next</small><span>9 · Model Performance &amp; Screening Interface</span><span aria-hidden="true">›</span></a></nav>
 </section>
+<section class="card" id="models" aria-labelledby="models-h"><p class="mxm-kicker">Section 8 · Interactive illustration</p><h2 id="models-h"><span>How the Surrogate Models Work</span></h2><div class="mx-models-host" id="s8-models"><div id="mx-models"></div><p class="mxm-nojs" id="mx-models-nojs">This interactive illustration needs JavaScript.</p></div><nav class="sec-nav" aria-label="Page navigation"><a class="sec-btn sec-back" href="#home" data-back>‹ Back</a><a class="sec-btn sec-home" href="#home">Return to poster page</a></nav></section>
 <section class="card" id="s9" aria-labelledby="s9-h" data-n="9">
 <h2 id="s9-h"><span class="badge" aria-hidden="true">9</span><span>Model Performance &amp; Screening Interface</span></h2>
 <div class="prose poster-text"><div class="table-scroll"><table>
@@ -3817,10 +3812,10 @@ window.enhanceSweetening = function (host) {
             soft: '#E3E8EF', tint: '#EEF3F9', white: '#FFFFFF', grey: '#9AA3AE', tealSoft: '#D7ECE9', orangeSoft: '#F7E6D8',
             navySoft: '#DCE6F0', shadow: 'rgba(15, 23, 42, 0.10)' };
   var FONT = 'Carlito, Calibri, "Segoe UI", system-ui, sans-serif';
-  var SPEEDS = [['½×', 0.5], ['1×', 1], ['2×', 2]];
+  var SPEEDS = [['Slow', 1.6], ['Normal', 1], ['Fast', 0.55]];   
   var NOTE = 'Interactive illustration, not the models themselves — the shapes, counts and motions are schematic, ' +
              'drawn to show the mechanism. No number on the poster comes from this panel.';
-  var TS = 1.3;                                           
+  var SX = 1, TS = 1.3, COMPACT = false;                  
 
   
   function rnd(seed) { var s = seed >>> 0; return function () { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
@@ -3833,6 +3828,10 @@ window.enhanceSweetening = function (host) {
     for (var sh = 16; sh >= 0; sh -= 8) { var ca = (pa >> sh) & 255, cb = (pb >> sh) & 255; o |= Math.round(lerp(ca, cb, clamp(t))) << sh; }
     return '#' + ('000000' + o.toString(16)).slice(-6);
   }
+  function local(g, x, y, fn) {                           
+    if (SX === 1) { fn(x, y); return; }
+    g.save(); g.translate(x, y); g.scale(1 / SX, 1); fn(0, 0); g.restore();
+  }
   function rrect(g, x, y, w, h, r) {
     r = Math.max(0, Math.min(r, w / 2, h / 2));
     g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r);
@@ -3840,24 +3839,40 @@ window.enhanceSweetening = function (host) {
   }
   function card(g, x, y, w, h, opts) {                   
     opts = opts || {};
+    var r = opts.r == null ? 14 : opts.r;
     g.save(); g.shadowColor = C.shadow; g.shadowBlur = 14; g.shadowOffsetY = 4;
-    rrect(g, x, y, w, h, opts.r == null ? 14 : opts.r); g.fillStyle = opts.fill || C.white; g.fill(); g.restore();
-    rrect(g, x, y, w, h, opts.r == null ? 14 : opts.r); g.strokeStyle = opts.stroke || C.rule; g.lineWidth = opts.lw || 1.5; g.stroke();
+    rrect(g, x, y, w, h, r); g.fillStyle = opts.fill || C.white; g.fill(); g.restore();
+    rrect(g, x, y, w, h, r); g.strokeStyle = opts.stroke || C.rule; g.lineWidth = opts.lw || 1.5; g.stroke();
     if (opts.band) {
-      g.save(); rrect(g, x, y, w, h, opts.r == null ? 14 : opts.r); g.clip(); g.fillStyle = opts.band; g.fillRect(x, y, w, 34); g.restore();
-      if (opts.title) text(g, opts.title, x + 14, y + 17, 13, C.white, 'left', true);
-    } else if (opts.title) text(g, opts.title, x + w / 2, y + 22, 14, C.navy, 'center', true);
+      g.save(); rrect(g, x, y, w, h, r); g.clip(); g.fillStyle = opts.band; g.fillRect(x, y, w, 34); g.restore();
+      text(g, opts.title, x + 14, y + 17, 13, C.white, 'left', true, w - 28);
+    } else if (opts.title) text(g, opts.title, x + w / 2, y + 22, 14, C.navy, 'center', true, w - 20);
   }
-  function text(g, s, x, y, size, color, align, bold, maxW) {
-    g.font = (bold ? '700 ' : '400 ') + Math.round(size * TS) + 'px ' + FONT; g.fillStyle = color || C.ink; g.textAlign = align || 'left'; g.textBaseline = 'middle';
-    if (maxW) g.fillText(s, x, y, maxW); else g.fillText(s, x, y);
+  function font(g, size, bold) { g.font = (bold ? '700 ' : '400 ') + Math.round(size * TS) + 'px ' + FONT; }
+  function text(g, s, x, y, size, color, align, bold, maxW) {   
+    local(g, x, y, function (lx, ly) {
+      font(g, size, bold); g.fillStyle = color || C.ink; g.textAlign = align || 'left'; g.textBaseline = 'middle';
+      if (maxW) g.fillText(s, lx, ly, maxW * SX); else g.fillText(s, lx, ly);
+    });
+  }
+  function note(g, s, x, y, size, color, align, maxW) {   
+    size = size || 12; maxW = (maxW || 940) * SX; align = align || 'center';
+    local(g, x, y, function (lx, ly) {
+      font(g, size, false); g.fillStyle = color || C.muted; g.textAlign = align; g.textBaseline = 'middle';
+      var words = s.split(' '), lines = [], cur = '';
+      for (var i = 0; i < words.length; i++) { var t = cur ? cur + ' ' + words[i] : words[i]; if (g.measureText(t).width > maxW && cur) { lines.push(cur); cur = words[i]; } else cur = t; }
+      if (cur) lines.push(cur);
+      var lh = Math.round(size * TS * 1.3);
+      for (var j = 0; j < lines.length; j++) g.fillText(lines[j], lx, ly + j * lh);
+    });
   }
   function pill(g, s, x, y, colour, size, bg) {           
-    size = size || 12; g.font = '700 ' + Math.round(size * TS) + 'px ' + FONT;
-    var w = g.measureText(s).width + 20, h = Math.round(size * TS) + 10;
-    rrect(g, x - w / 2, y - h / 2, w, h, h / 2); g.fillStyle = bg || colour; g.fill();
-    text(g, s, x, y + 1, size, bg ? colour : C.white, 'center', true);
-    return w;
+    size = size || 12;
+    local(g, x, y, function (lx, ly) {
+      font(g, size, true); var w = g.measureText(s).width + 20, h = Math.round(size * TS) + 10;
+      rrect(g, lx - w / 2, ly - h / 2, w, h, h / 2); g.fillStyle = bg || colour; g.fill();
+      g.fillStyle = bg ? colour : C.white; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(s, lx, ly + 1);
+    });
   }
   function arrow(g, x1, y1, x2, y2, color, width, t) {
     t = t == null ? 1 : t; if (t <= 0) return;
@@ -3867,35 +3882,46 @@ window.enhanceSweetening = function (host) {
     g.fillStyle = color; g.beginPath(); g.moveTo(xe, ye); g.lineTo(xe - hs * Math.cos(a - 0.45), ye - hs * Math.sin(a - 0.45));
     g.lineTo(xe - hs * Math.cos(a + 0.45), ye - hs * Math.sin(a + 0.45)); g.closePath(); g.fill();
   }
-  function dot(g, x, y, r, fill, stroke) { g.beginPath(); g.arc(x, y, r, 0, 6.2832); g.fillStyle = fill; g.fill(); if (stroke) { g.strokeStyle = stroke; g.lineWidth = 2; g.stroke(); } }
+  function dot(g, x, y, r, fill, stroke) {
+    local(g, x, y, function (lx, ly) { g.beginPath(); g.arc(lx, ly, r, 0, 6.2832); g.fillStyle = fill; g.fill(); if (stroke) { g.strokeStyle = stroke; g.lineWidth = 2; g.stroke(); } });
+  }
   function token(g, x, y, colour, s) {                    
-    s = s || 18; rrect(g, x - s / 2, y - s / 2, s, s, 5); g.fillStyle = colour; g.fill(); dot(g, x, y, s * 0.18, C.white);
+    s = s || 18;
+    local(g, x, y, function (lx, ly) { rrect(g, lx - s / 2, ly - s / 2, s, s, 5); g.fillStyle = colour; g.fill(); g.beginPath(); g.arc(lx, ly, s * 0.18, 0, 6.2832); g.fillStyle = C.white; g.fill(); });
   }
   function barcode(g, x, y, w, h, n, seed, t, colour) {
     var r = rnd(seed), bw = w / n, k = Math.floor(n * clamp(t));
     for (var i = 0; i < n; i++) {
       var v = r(), on = i < k, bh = on ? h * (0.35 + 0.65 * v) : h * 0.25;
-      g.fillStyle = on ? (colour || mix(C.navy, C.orange, v)) : C.soft; g.fillRect(x + i * bw + 0.5, y + h - bh, Math.max(1, bw - 1), bh);
+      g.fillStyle = on ? (colour || mix(C.navy, C.orange, v)) : C.soft; g.fillRect(x + i * bw + 0.5, y + h - bh, Math.max(0.6, bw - 1), bh);
     }
   }
   function gauge(g, cx, cy, R, value, colour, t, label) {
-    g.lineWidth = 18; g.lineCap = 'butt';
-    g.strokeStyle = C.soft; g.beginPath(); g.arc(cx, cy, R, Math.PI, 2 * Math.PI); g.stroke();
-    g.strokeStyle = colour; g.beginPath(); g.arc(cx, cy, R, Math.PI, Math.PI + Math.PI * value * clamp(t)); g.stroke();
-    g.strokeStyle = C.ink; g.lineWidth = 3; g.beginPath(); g.moveTo(cx, cy - R - 16); g.lineTo(cx, cy - R + 14); g.stroke();
-    text(g, 'threshold', cx, cy - R - 32, 12, C.muted, 'center');
-    text(g, 'no', cx - R, cy + 18, 12, C.muted, 'center'); text(g, 'yes', cx + R, cy + 18, 12, C.muted, 'center');
-    if (label) text(g, label, cx, cy - 22, 14, C.muted, 'center');
+    local(g, cx, cy, function (lx, ly) {
+      g.lineWidth = 18; g.lineCap = 'butt';
+      g.strokeStyle = C.soft; g.beginPath(); g.arc(lx, ly, R, Math.PI, 2 * Math.PI); g.stroke();
+      g.strokeStyle = colour; g.beginPath(); g.arc(lx, ly, R, Math.PI, Math.PI + Math.PI * value * clamp(t)); g.stroke();
+      g.strokeStyle = C.ink; g.lineWidth = 3; g.beginPath(); g.moveTo(lx, ly - R - 16); g.lineTo(lx, ly - R + 14); g.stroke();
+      font(g, 12, false); g.fillStyle = C.muted; g.textAlign = 'center'; g.textBaseline = 'middle';
+      if (R >= 60) g.fillText('threshold', lx, ly - R - 32);
+      g.fillText('no', lx - R, ly + 18); g.fillText('yes', lx + R, ly + 18);
+      if (label) { font(g, 14, false); g.fillText(label, lx, ly - 22); }
+    });
   }
-  function legend(g, items, x, y) {                       
-    var cx = x;
-    for (var i = 0; i < items.length; i++) {
-      var it = items[i];
-      if (it[2] === 'line') { g.strokeStyle = it[0]; g.lineWidth = 4; g.beginPath(); g.moveTo(cx, y); g.lineTo(cx + 26, y); g.stroke(); cx += 34; }
-      else if (it[2] === 'dash') { g.strokeStyle = it[0]; g.lineWidth = 3; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(cx, y); g.lineTo(cx + 26, y); g.stroke(); g.setLineDash([]); cx += 34; }
-      else { dot(g, cx + 7, y, 7, it[0]); cx += 22; }
-      g.font = '400 ' + Math.round(12 * TS) + 'px ' + FONT; text(g, it[1], cx, y, 12, C.ink2, 'left'); cx += g.measureText(it[1]).width + 26;
-    }
+  function legend(g, items, x, y, maxW) {                 
+    maxW = (maxW || (W - x - 20)) * SX;
+    local(g, x, y, function (lx, ly) {
+      var cx = lx, cy = ly;
+      for (var i = 0; i < items.length; i++) {
+        var it = items[i], sym = it[2] === 'line' || it[2] === 'dash' ? 34 : 22;
+        font(g, 12, false); var tw = g.measureText(it[1]).width;
+        if (i && cx + sym + tw > lx + maxW) { cx = lx; cy += Math.round(12 * TS) + 8; }
+        if (it[2] === 'line') { g.strokeStyle = it[0]; g.lineWidth = 4; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + 26, cy); g.stroke(); }
+        else if (it[2] === 'dash') { g.strokeStyle = it[0]; g.lineWidth = 3; g.setLineDash([6, 6]); g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + 26, cy); g.stroke(); g.setLineDash([]); }
+        else { g.beginPath(); g.arc(cx + 7, cy, 7, 0, 6.2832); g.fillStyle = it[0]; g.fill(); }
+        cx += sym; g.fillStyle = C.ink2; g.textAlign = 'left'; g.textBaseline = 'middle'; g.fillText(it[1], cx, cy); cx += tw + 26;
+      }
+    });
   }
   function graphIcon(g, x, y, s, t, colours) {
     var P = [[0, 0], [1, 0.1], [0.5, 0.75], [1.5, 0.8], [0.2, 1.5], [1.1, 1.6], [1.9, 1.5]];
@@ -3904,6 +3930,10 @@ window.enhanceSweetening = function (host) {
     g.strokeStyle = C.grey; g.lineWidth = 2.5;
     for (var e = 0; e < k; e++) { var a = P[E[e][0]], b = P[E[e][1]]; g.beginPath(); g.moveTo(x + a[0] * s, y + a[1] * s); g.lineTo(x + b[0] * s, y + b[1] * s); g.stroke(); }
     for (var i = 0; i < P.length; i++) dot(g, x + P[i][0] * s, y + P[i][1] * s, s * 0.17, colours ? colours[i % colours.length] : (i % 3 === 0 ? C.navy : i % 3 === 1 ? C.teal : C.orange), C.white);
+  }
+  function leaf(g, x, y, colour, stroke) {
+    var lw = COMPACT ? 14 : 22;
+    local(g, x, y, function (lx, ly) { rrect(g, lx - lw / 2, ly - 8, lw, 16, 5); g.fillStyle = colour; g.fill(); if (stroke) { g.strokeStyle = stroke; g.lineWidth = 2.5; g.stroke(); } });
   }
   function tree(g, x, y, w, h, depth, t, path, leafColours, seed) {
     var levels = depth + 1, dy = h / depth, nodes = [];
@@ -3918,8 +3948,8 @@ window.enhanceSweetening = function (host) {
     }
     for (var l4 = 0; l4 < levels; l4++) for (var k = 0; k < nodes[l4].length; k++) {
       var nd = nodes[l4][k]; if (!nd.on) continue;
-      var leaf = l4 === depth, hot2 = onPath[l4 + ':' + k];
-      if (leaf) { var lc = leafColours ? leafColours[(k + (seed || 0)) % leafColours.length] : C.teal; rrect(g, nd.x - 11, nd.y - 8, 22, 16, 5); g.fillStyle = lc; g.fill(); if (hot2) { g.strokeStyle = C.orange; g.lineWidth = 3; g.stroke(); } }
+      var isLeaf = l4 === depth, hot2 = onPath[l4 + ':' + k];
+      if (isLeaf) leaf(g, nd.x, nd.y, leafColours ? leafColours[(k + (seed || 0)) % leafColours.length] : C.teal, hot2 ? C.orange : null);
       else dot(g, nd.x, nd.y, hot2 ? 10 : 8, hot2 ? C.orange : C.navy, C.white);
     }
     return nodes;
@@ -3930,24 +3960,27 @@ window.enhanceSweetening = function (host) {
     for (var i = 0; i < 6; i++) {
       var v = 0.25 + 0.7 * r(), hh = h * v * ease(sub(t, i / 6, (i + 1) / 6 + 0.3));
       g.fillStyle = i < 3 ? C.teal : C.orange; rrect(g, x + i * bw + bw * 0.22, y + h - hh, bw * 0.56, hh, 5); g.fill();
-      if (!small) { text(g, gas[i], x + i * bw + bw / 2, y + h + 15, 12, C.ink, 'center', true); text(g, pres[i], x + i * bw + bw / 2, y + h + 32, 11, C.muted, 'center'); }
+      if (!small) { text(g, gas[i], x + i * bw + bw / 2, y + h + 15, 12, C.ink, 'center', true, bw); text(g, pres[i], x + i * bw + bw / 2, y + h + 32, 11, C.muted, 'center', false, bw); }
     }
   }
-  function metricTiles(g, x, y, w, t) {
+  function metricTiles(g, x, y, w, t) {                   
     var names = [['S', 'selectivity', 'how much it prefers CO₂'], ['ΔN', 'working capacity', 'how much comes out per cycle'],
-                 ['R %', 'regenerability', 'how fully it lets go'], ['APS', 'performance score', 'both in one number']], tw = (w - 36) / 4;
+                 ['R %', 'regenerability', 'how fully it lets go'], ['APS', 'performance score', 'both in one number']];
+    var cols = COMPACT ? 2 : 4, tw = (w - 12 * (cols - 1)) / cols, th = 96;
     for (var i = 0; i < 4; i++) {
-      var on = sub(t, i / 4, (i + 1) / 4) > 0.5, tx = x + i * (tw + 12);
-      card(g, tx, y, tw, 96, { fill: on ? C.tint : C.white, stroke: on ? C.teal : C.rule, r: 12 });
-      text(g, names[i][0], tx + tw / 2, y + 26, 20, on ? C.navy : C.grey, 'center', true);
-      text(g, names[i][1], tx + tw / 2, y + 54, 12, on ? C.ink : C.grey, 'center', true);
-      text(g, names[i][2], tx + tw / 2, y + 76, 11, on ? C.muted : C.grey, 'center');
+      var on = sub(t, i / 4, (i + 1) / 4) > 0.5, tx = x + (i % cols) * (tw + 12), ty = y + Math.floor(i / cols) * (th + 12);
+      card(g, tx, ty, tw, th, { fill: on ? C.tint : C.white, stroke: on ? C.teal : C.rule, r: 12 });
+      text(g, names[i][0], tx + tw / 2, ty + 26, 20, on ? C.navy : C.grey, 'center', true, tw - 12);
+      text(g, names[i][1], tx + tw / 2, ty + 54, 12, on ? C.ink : C.grey, 'center', true, tw - 12);
+      text(g, names[i][2], tx + tw / 2, ty + 76, 11, on ? C.muted : C.grey, 'center', false, tw - 12);
     }
+    return cols === 2 ? 2 * th + 12 : th;
   }
+  function y2(desktop, compact) { return COMPACT ? compact : desktop; }   
 
   
   var ROUTES = [
-    { id: 'scheme', name: 'From a structure to a prediction', sub: 'the two-stage scheme', intro:
+    { id: 'scheme', name: 'Two-stage scheme', sub: 'from a structure to a prediction', intro:
       'Think of two doors. At the first door a model asks: does this material take up CO₂ at all? Only the ones that do go through to the second door, where another model estimates how much. Every model of the thesis works this way.',
       steps: [
       { h: 'A structure arrives', t: 'The input is a crystal structure file (CIF): the atoms and where they sit. MX-Identifier turns it into two machine-readable descriptions: a fingerprint of 97 numbers and a graph of atoms and bonds.',
@@ -3955,15 +3988,16 @@ window.enhanceSweetening = function (host) {
         draw: function (g, p) {
           var slide = ease(sub(p, 0, 0.25)), cx0 = lerp(-120, 50, slide);
           card(g, cx0, 150, 110, 130, { title: '.cif' }); for (var i = 0; i < 5; i++) { g.fillStyle = C.soft; g.fillRect(cx0 + 18, 200 + i * 13, 74 - (i % 2) * 20, 6); }
-          text(g, 'the structure', cx0 + 55, 300, 12, C.muted, 'center');
+          text(g, 'the structure', cx0 + 55, 300, 12, C.muted, 'center', false, 120);
           arrow(g, 170, 215, 240, 215, C.muted, 2.5, ease(sub(p, 0.22, 0.38)));
           card(g, 250, 110, 290, 210, { band: C.navy, title: 'MX-IDENTIFIER' });
-          text(g, 'reads the file, labels every atom', 395, 162, 12, C.muted, 'center'); text(g, 'as M · X · T, finds the bonds', 395, 180, 12, C.muted, 'center');
-          barcode(g, 270, 205, 250, 50, 97, 3, ease(sub(p, 0.4, 0.85))); text(g, 'fingerprint · 97 numbers', 395, 282, 12, C.navy, 'center', true);
+          text(g, 'reads the file, labels every atom', 395, 162, 12, C.muted, 'center', false, 270); text(g, 'as M · X · T, finds the bonds', 395, 180, 12, C.muted, 'center', false, 270);
+          barcode(g, 270, 205, 250, 50, 97, 3, ease(sub(p, 0.4, 0.85))); text(g, 'fingerprint · 97 numbers', 395, 282, 12, C.navy, 'center', true, 270);
           arrow(g, 550, 215, 630, 215, C.muted, 2.5, ease(sub(p, 0.5, 0.65)));
           card(g, 640, 110, 300, 210, { band: C.teal, title: 'TWO DESCRIPTIONS' });
-          graphIcon(g, 700, 165, 58, ease(sub(p, 0.6, 1))); text(g, 'graph: atoms as dots,', 850, 200, 12, C.ink2, 'center'); text(g, 'bonds as lines', 850, 218, 12, C.ink2, 'center');
-          text(g, 'the same structure, two ways to describe it', 500, 400, 13, C.muted, 'center');
+          graphIcon(g, 735, 150, 58, ease(sub(p, 0.6, 1)));          
+          text(g, 'graph: atoms as dots,', 790, 274, 12, C.ink2, 'center', false, 280); text(g, 'bonds as lines', 790, 294, 12, C.ink2, 'center', false, 280);
+          note(g, 'the same structure, two ways to describe it', 500, 400, 13);
         } },
       { h: 'Door 1 · does it adsorb at all?', t: 'The first model is a classifier: it answers yes or no. It gives a probability between 0 and 1, and a fixed threshold at one half turns that into the decision "adsorber" or "non-adsorber".',
         f: 'p = P(adsorber | x) &nbsp;·&nbsp; adsorber if p ≥ 0.5', r: 'read: the chance that this structure adsorbs; at least a half means yes.', d: 5000,
@@ -3971,14 +4005,14 @@ window.enhanceSweetening = function (host) {
           card(g, 60, 80, 880, 400, { band: C.navy, title: 'STAGE 1 · CLASSIFICATION · "does it adsorb?"' });
           gauge(g, 330, 345, 130, 0.86, C.teal, ease(sub(p, 0.1, 0.7)), 'probability');
           var on = p > 0.75;
-          card(g, 580, 220, 320, 62, { fill: on ? C.tealSoft : C.white, stroke: on ? C.teal : C.rule, r: 31 }); text(g, on ? 'ADSORBER → to door 2' : 'deciding …', 740, 251, 16, on ? C.teal : C.grey, 'center', true);
-          card(g, 580, 300, 320, 62, { fill: C.white, stroke: C.rule, r: 31 }); text(g, 'NON-ADSORBER → stop', 740, 331, 15, C.grey, 'center', true);
-          text(g, 'the needle fills with the probability; the mark is the threshold', 740, 420, 12, C.muted, 'center');
+          card(g, 580, 220, 320, 62, { fill: on ? C.tealSoft : C.white, stroke: on ? C.teal : C.rule, r: 31 }); text(g, on ? 'ADSORBER → to door 2' : 'deciding …', 740, 251, 16, on ? C.teal : C.grey, 'center', true, 300);
+          card(g, 580, 300, 320, 62, { fill: C.white, stroke: C.rule, r: 31 }); text(g, 'NON-ADSORBER → stop', 740, 331, 15, C.grey, 'center', true, 300);
+          note(g, 'the needle fills with the probability; the mark is the threshold', 740, 420, 12, C.muted, 'center', 340);
         } },
       { h: 'Only adsorbers go on', t: 'Structures that adsorb nothing stop at the gate: no uptake is predicted for them. Only the adsorbers continue, so the second model never has to learn from materials that hold nothing.',
         f: 'if p &lt; 0.5: stop (no uptake predicted)', r: 'read: a "no" at door 1 ends the story for that structure.', d: 6000,
         draw: function (g, p) {
-          card(g, 430, 190, 150, 110, { band: C.navy, title: 'DOOR 1' }); text(g, 'adsorber?', 505, 262, 14, C.ink2, 'center', true);
+          card(g, 430, 190, 150, 110, { band: C.navy, title: 'DOOR 1' }); text(g, 'adsorber?', 505, 262, 14, C.ink2, 'center', true, 140);
           arrow(g, 590, 245, 900, 245, C.teal, 3); pill(g, 'adsorbers → door 2', 745, 212, C.teal);
           arrow(g, 505, 310, 505, 440, C.grey, 3); card(g, 440, 446, 130, 48, { fill: C.tint, stroke: C.rule, r: 24 }); text(g, 'stop', 505, 470, 14, C.grey, 'center', true);
           var r = rnd(21);
@@ -3996,8 +4030,8 @@ window.enhanceSweetening = function (host) {
         draw: function (g, p) {
           card(g, 60, 80, 880, 400, { band: C.teal, title: 'STAGE 2 · REGRESSION · "how much?"' });
           sixBars(g, 180, 160, 640, 230, p, 11);
-          legend(g, [[C.teal, 'CO₂ uptake'], [C.orange, 'CH₄ uptake']], 180, 455);
-          text(g, 'bar heights are schematic', 820, 455, 12, C.muted, 'right');
+          legend(g, [[C.teal, 'CO₂ uptake'], [C.orange, 'CH₄ uptake']], 180, 455, 400);
+          if (!COMPACT) text(g, 'bar heights are schematic', 820, 455, 12, C.muted, 'right');
         } },
       { h: 'What the numbers mean', t: 'From the six uptakes come the quantities an engineer asks for: how strongly the material prefers CO₂, how much comes out per cycle, how fully it lets go, and one combined score.',
         f: 'S = (x<sub>CO₂</sub>/x<sub>CH₄</sub>)·(y<sub>CH₄</sub>/y<sub>CO₂</sub>) &nbsp;·&nbsp; ΔN = N<sub>ads</sub> − N<sub>des</sub> &nbsp;·&nbsp; R = ΔN / N<sub>ads</sub> × 100 &nbsp;·&nbsp; APS = S × ΔN',
@@ -4005,9 +4039,9 @@ window.enhanceSweetening = function (host) {
         draw: function (g, p) {
           sixBars(g, 110, 90, 400, 150, 1, 11, true); text(g, 'six uptakes', 310, 262, 12, C.muted, 'center');
           arrow(g, 540, 170, 620, 170, C.muted, 2.5, ease(sub(p, 0, 0.3)));
-          card(g, 630, 100, 300, 140, { band: C.navy, title: 'DERIVED METRICS' }); text(g, 'at two pressures each:', 780, 158, 13, C.ink2, 'center'); text(g, 'PSA (10 → 1 bar)', 780, 182, 13, C.ink2, 'center'); text(g, 'VSA (1 → 0.1 bar)', 780, 204, 13, C.ink2, 'center');
-          metricTiles(g, 90, 300, 820, ease(sub(p, 0.3, 1)));
-          text(g, 'classify first, then measure only the adsorbers: every prediction stays physical', 500, 440, 13, C.muted, 'center');
+          card(g, 630, 100, 300, 140, { band: C.navy, title: 'DERIVED METRICS' }); text(g, 'at two pressures each:', 780, 158, 13, C.ink2, 'center', false, 280); text(g, 'PSA (10 → 1 bar)', 780, 182, 13, C.ink2, 'center', false, 280); text(g, 'VSA (1 → 0.1 bar)', 780, 204, 13, C.ink2, 'center', false, 280);
+          var hgt = metricTiles(g, 90, 300, 820, ease(sub(p, 0.3, 1)));
+          note(g, 'classify first, then measure only the adsorbers: every prediction stays physical', 500, 300 + hgt + 36, 13);
         } }
     ] },
     { id: 'forest', name: 'Random Forest', sub: 'many trees, one vote', intro:
@@ -4022,7 +4056,7 @@ window.enhanceSweetening = function (host) {
             for (var j = 0; j < cols; j++) { g.fillStyle = i < k ? mix(C.navySoft, C.navy, r() * 0.8) : C.soft; rrect(g, x0 + j * cw, y0 + i * ch, cw - 4, ch - 4, 3); g.fill(); }
             var ad = r() > 0.3; rrect(g, x0 + cols * cw + 16, y0 + i * ch, 60, ch - 4, 4); g.fillStyle = i < k ? (ad ? C.teal : C.grey) : C.soft; g.fill();
           }
-          text(g, 'one row', 100, y0 + 10, 12, C.muted, 'center'); text(g, '= one', 100, y0 + 28, 12, C.muted, 'center'); text(g, 'structure', 100, y0 + 46, 12, C.muted, 'center');
+          text(g, 'one row', 78, y0 + 10, 12, C.muted, 'center', false, 130); text(g, '= one', 78, y0 + 28, 12, C.muted, 'center', false, 130); text(g, 'structure', 78, y0 + 46, 12, C.muted, 'center', false, 130);
           legend(g, [[C.teal, 'adsorber'], [C.grey, 'non-adsorber']], 150, 450);
         } },
       { h: 'Each tree sees a different sample', t: 'Every tree gets its own random sample of the rows, drawn with replacement, and at each decision it may look only at a random handful of the columns. That is what makes the trees different from one another.',
@@ -4038,14 +4072,14 @@ window.enhanceSweetening = function (host) {
               g.fillStyle = show && picked ? (r() > 0.3 ? C.teal : C.grey) : C.soft; rrect(g, x0 + 204, y0 + i * 25, 26, 21, 4); g.fill();
             }
           }
-          text(g, 'dark rows: drawn into the sample · dark columns: the few descriptors a split may use', 500, 470, 12, C.muted, 'center');
+          note(g, 'dark rows: drawn into the sample · dark columns: the few descriptors a split may use', 500, 470);
         } },
       { h: 'Each sample grows a tree', t: 'A decision tree is a chain of simple questions: is this number large or small? Each question splits the structures into two purer groups, until the groups at the bottom (the leaves) mostly agree.',
         f: 'T<sub>b</sub>(x): at each node, the split that lowers the impurity most', r: 'read: pick the question that best separates adsorbers from non-adsorbers (or values from values).', d: 5500,
         draw: function (g, p) {
           for (var s = 0; s < 3; s++) { var x0 = 70 + s * 310; pill(g, 'tree ' + (s + 1), x0 + 130, 92, C.navy, 11, C.navySoft); tree(g, x0, 130, 260, 290, 3, ease(sub(p, s * 0.15, s * 0.15 + 0.6)), null, [C.teal, C.grey, C.teal, C.teal, C.grey, C.teal, C.grey, C.teal], s + 1); }
-          text(g, 'a dot is a question, a box is a leaf: the answer of that branch', 500, 460, 12, C.muted, 'center');
-          legend(g, [[C.teal, 'leaf says adsorber'], [C.grey, 'leaf says non-adsorber']], 300, 500);
+          note(g, 'a dot is a question, a box is a leaf: the answer of that branch', 500, 460);
+          legend(g, [[C.teal, 'leaf says adsorber'], [C.grey, 'leaf says non-adsorber']], y2(300, 200), y2(500, 520));
         } },
       { h: 'A new structure drops through', t: 'When a new structure arrives, it runs down every tree, answering the questions on its way, and lands in one leaf per tree. Each leaf is one tree’s vote.',
         f: 'tree b answers T<sub>b</sub>(x), b = 1 … B', r: 'read: B trees, B votes.', d: 5500,
@@ -4060,18 +4094,18 @@ window.enhanceSweetening = function (host) {
             var a = nodes[li][idx], b = li < 3 ? nodes[li + 1][idx * 2 + paths[s][li]] : a;
             token(g, lerp(a.x, b.x, fr), lerp(a.y, b.y, fr), C.orange, 20);
           }
-          text(g, 'the new structure (orange) takes its own path through every tree', 500, 460, 12, C.muted, 'center');
+          note(g, 'the new structure (orange) takes its own path through every tree', 500, 460);
         } },
       { h: 'The forest votes', t: 'For a yes/no question the forest takes the majority of the votes; for an amount it takes the average of the leaf values. Many slightly different opinions averaged are steadier than any single one.',
         f: 'classification: ŷ = majority of T<sub>1</sub>(x) … T<sub>B</sub>(x) &nbsp;·&nbsp; regression: ŷ = (1/B) Σ<sub>b</sub> T<sub>b</sub>(x)', r: 'read: count the votes, or average the values.', d: 5000,
         draw: function (g, p) {
-          var votes = [C.teal, C.teal, C.grey], names = ['adsorber', 'adsorber', 'non-adsorber'];
-          for (var s = 0; s < 3; s++) { var x = 220 + s * 280, q = ease(sub(p, 0.05 + s * 0.1, 0.4 + s * 0.1)); pill(g, 'tree ' + (s + 1), x, 110, C.navy, 11, C.navySoft); card(g, x - 60, 135, 120, 44, { fill: votes[s], stroke: votes[s], r: 22 }); text(g, names[s], x, 157, 13, C.white, 'center', true); arrow(g, x, 190, lerp(x, 500, q), lerp(190, 330, q), C.rule, 2.5, 1); }
+          var votes = [C.teal, C.teal, C.grey], names = ['adsorber', 'adsorber', 'non-adsorber'], vw = COMPACT ? 210 : 120;
+          for (var s = 0; s < 3; s++) { var x = 220 + s * 280, q = ease(sub(p, 0.05 + s * 0.1, 0.4 + s * 0.1)); pill(g, 'tree ' + (s + 1), x, 110, C.navy, 11, C.navySoft); card(g, x - vw / 2, 135, vw, 44, { fill: votes[s], stroke: votes[s], r: 22 }); text(g, names[s], x, 157, 13, C.white, 'center', true, vw - 10); arrow(g, x, 190, lerp(x, 500, q), lerp(190, 330, q), C.rule, 2.5, 1); }
           var fin = ease(sub(p, 0.5, 0.9)), tally = Math.round(3 * fin);
           card(g, 300, 340, 400, 120, { fill: fin > 0.9 ? C.tealSoft : C.white, stroke: fin > 0.9 ? C.teal : C.rule });
           for (var k = 0; k < 3; k++) { rrect(g, 420 + k * 56, 360, 44, 16, 6); g.fillStyle = k < tally ? votes[k] : C.soft; g.fill(); }
-          text(g, fin > 0.9 ? 'majority: ADSORBER' : 'counting the votes …', 500, 405, 18, fin > 0.9 ? C.teal : C.grey, 'center', true);
-          text(g, 'for amounts: the average of the leaf values', 500, 440, 12, C.muted, 'center');
+          text(g, fin > 0.9 ? 'majority: ADSORBER' : 'counting the votes …', 500, 405, 18, fin > 0.9 ? C.teal : C.grey, 'center', true, 380);
+          text(g, 'for amounts: the average of the leaf values', 500, 440, 12, C.muted, 'center', false, 380);
         } }
     ] },
     { id: 'boost', name: 'Gradient boosting', sub: 'XGBoost · LightGBM', intro:
@@ -4091,8 +4125,8 @@ window.enhanceSweetening = function (host) {
         draw: function (g, p) {
           pill(g, 'XGBoost · level-wise', 270, 96, C.navy, 12, C.navySoft); tree(g, 120, 135, 300, 215, 3, ease(sub(p, 0, 0.7)), null, [C.navySoft], 2);
           pill(g, 'LightGBM · leaf-wise', 730, 96, C.teal, 12, C.tealSoft); leafwise(g, 580, 135, 300, 215, ease(sub(p, 0, 0.7)));
-          card(g, 150, 395, 700, 60, { fill: C.tint, stroke: C.rule, r: 30 }); text(g, 'model = first guess + tree₁ + tree₂ + tree₃ + …', 500, 425, 15, C.navy, 'center', true);
-          text(g, 'step size and number of trees are settings of the models, not shown here', 500, 490, 12, C.muted, 'center');
+          card(g, 150, 395, 700, 60, { fill: C.tint, stroke: C.rule, r: 30 }); text(g, 'model = first guess + tree₁ + tree₂ + tree₃ + …', 500, 425, 15, C.navy, 'center', true, 680);
+          note(g, 'step size and number of trees are settings of the models, not shown here', 500, 490);
         } }
     ] },
     { id: 'cgcnn', name: 'CGCNN', sub: 'the crystal graph network', intro:
@@ -4145,15 +4179,15 @@ window.enhanceSweetening = function (host) {
     for (var u = 0; u <= 1.0001; u += 0.01) { var yy = lerp(fit(u), next(u), blend); if (u === 0) g.moveTo(X(u), Y(yy)); else g.lineTo(X(u), Y(yy)); }
     g.stroke();
     for (var j = 0; j < BOOST.length; j++) dot(g, X(BOOST[j].x), Y(BOOST[j].y), 7, C.teal, C.white);
-    legend(g, [[C.teal, 'known values (training)'], [C.navy, 'the model so far', 'line'], [C.orange, 'residual (error left)', 'line']], x0, 470);
+    legend(g, [[C.teal, 'known values (training)'], [C.navy, 'the model so far', 'line'], [C.orange, 'residual (error left)', 'line']], x0, 470, 860);
     card(g, 700, 100, 240, 300, { band: C.navy, title: step === 0 ? 'FIRST GUESS' : step === 1 ? 'TREE ON THE ERRORS' : 'ROUND ' + round + ' OF ' + rounds });
-    if (step === 0) { text(g, 'one value for all:', 820, 165, 13, C.ink2, 'center'); text(g, 'the average', 820, 188, 15, C.navy, 'center', true); if (showRes) { text(g, 'orange sticks:', 820, 250, 13, C.ink2, 'center'); text(g, 'what is still wrong', 820, 272, 13, C.ink2, 'center'); } }
-    if (step === 1) { var q = ease(sub(p, 0.2, 0.9)); tree(g, 720, 170, 200, 90, 2, q, null, [C.orange, C.orangeSoft, C.orangeSoft, C.orange], 4); text(g, 'leaves: "add" / "take off"', 820, 300, 12, C.muted, 'center'); text(g, 'fitted to the sticks, not the dots', 820, 325, 12, C.muted, 'center'); }
+    if (step === 0) { text(g, 'one value for all:', 820, 165, 13, C.ink2, 'center', false, 220); text(g, 'the average', 820, 188, 15, C.navy, 'center', true, 220); if (showRes) { text(g, 'orange sticks:', 820, 250, 13, C.ink2, 'center', false, 220); text(g, 'what is still wrong', 820, 272, 13, C.ink2, 'center', false, 220); } }
+    if (step === 1) { var q = ease(sub(p, 0.2, 0.9)); tree(g, 720, 170, 200, 90, 2, q, null, [C.orange, C.orangeSoft, C.orangeSoft, C.orange], 4); note(g, 'leaves: "add" / "take off"', 820, 300, 12, C.muted, 'center', 220); note(g, 'fitted to the sticks, not the dots', 820, 335, 12, C.muted, 'center', 220); }
     if (step === 2) {
       var full = stepFit(0), base = 0; for (var k = 0; k < BOOST.length; k++) base += Math.abs(BOOST[k].y - full(BOOST[k].x));
       var frac = clamp(resSum / base);
       text(g, 'error left', 820, 170, 13, C.ink2, 'center'); rrect(g, 740, 190, 160, 18, 9); g.fillStyle = C.soft; g.fill(); rrect(g, 740, 190, 160 * frac, 18, 9); g.fillStyle = C.orange; g.fill();
-      text(g, 'each round adds a fraction', 820, 250, 12, C.muted, 'center'); text(g, 'of the correction', 820, 270, 12, C.muted, 'center'); text(g, 'and the error shrinks', 820, 290, 12, C.muted, 'center');
+      note(g, 'each round adds a fraction of the correction and the error shrinks', 820, 250, 12, C.muted, 'center', 220);
     }
   }
   function leafwise(g, x, y, w, h, t) {
@@ -4162,8 +4196,8 @@ window.enhanceSweetening = function (host) {
     for (var e = 0; e < k; e++) { var a = pts[E[e][0]], b = pts[E[e][1]]; g.beginPath(); g.moveTo(x + a[0] * w, y + a[1] * h); g.lineTo(x + b[0] * w, y + b[1] * h); g.stroke(); }
     for (var i = 0; i < pts.length; i++) {
       var shown = i === 0 || E.some(function (ed, idx) { return idx < k && ed[1] === i; }); if (!shown) continue;
-      var leaf = i === 1 || i === 4 || i === 5 || i === 6;
-      if (leaf) { rrect(g, x + pts[i][0] * w - 11, y + pts[i][1] * h - 8, 22, 16, 5); g.fillStyle = C.tealSoft; g.fill(); g.strokeStyle = C.teal; g.lineWidth = 1.5; g.stroke(); }
+      var isLeaf = i === 1 || i === 4 || i === 5 || i === 6;
+      if (isLeaf) leaf(g, x + pts[i][0] * w, y + pts[i][1] * h, C.tealSoft, C.teal);
       else dot(g, x + pts[i][0] * w, y + pts[i][1] * h, 8, C.teal, C.white);
     }
   }
@@ -4176,6 +4210,10 @@ window.enhanceSweetening = function (host) {
     return { nodes: nodes, edges: edges };
   })();
   var GRPC = { M: C.navy, X: '#6B7280', T: C.orange };
+  function sideCard(g, title, band, lines) {
+    card(g, 700, 110, 240, 120, { band: band, title: title });
+    for (var i = 0; i < lines.length; i++) text(g, lines[i], 820, 170 + i * 20, 12, C.ink2, 'center', false, 220);
+  }
   function cgScene(g, p, step) {
     var N = CG.nodes, E = CG.edges, k = Math.floor(E.length * (step === 0 ? ease(sub(p, 0.4, 1)) : 1));
     var pooled = step === 3 ? ease(sub(p, 0.2, 0.9)) : step === 4 ? 1 : 0;
@@ -4183,151 +4221,153 @@ window.enhanceSweetening = function (host) {
     if (step === 2) {
       var layer = Math.min(2, Math.floor(p * 3)), q = (p * 3) % 1;
       for (var e2 = 0; e2 < E.length; e2++) { var A2 = N[E[e2][0]], B2 = N[E[e2][1]], dir = (e2 + layer) % 2 ? 1 : -1, s = dir > 0 ? q : 1 - q; dot(g, lerp(A2.x, B2.x, s), lerp(A2.y, B2.y, s), 5, C.teal, C.white); }
-      card(g, 700, 110, 240, 120, { band: C.teal, title: 'ROUND ' + (layer + 1) }); text(g, 'messages travel along', 820, 170, 12, C.ink2, 'center'); text(g, 'the bonds; colours blend', 820, 190, 12, C.ink2, 'center'); text(g, 'as neighbours are heard', 820, 210, 12, C.ink2, 'center');
+      sideCard(g, 'ROUND ' + (layer + 1), C.teal, ['messages travel along', 'the bonds; colours blend', 'as neighbours are heard']);
     }
     for (var i = 0; i < N.length; i++) {
       var n = N[i], base = GRPC[n.grp], col = base;
       if (step === 2) col = mix(base, C.teal, 0.12 + 0.5 * p); if (step >= 3) col = mix(base, C.teal, 0.62);
       var cx = lerp(n.x, 500, pooled), cy = lerp(n.y, 255, pooled);
       if (pooled < 1) { g.globalAlpha = 1 - pooled * 0.9; dot(g, cx, cy, 17, col, C.white); if (step === 0 && p < 0.4) text(g, n.grp, cx, cy, 12, C.white, 'center', true); g.globalAlpha = 1; }
-      if (step === 1 || step === 2) { var q2 = step === 1 ? ease(sub(p, i / N.length * 0.6, i / N.length * 0.6 + 0.4)) : 1; if (q2 > 0) barcode(g, cx + 21, cy - 10, 44, 20, 5, 100 + i, q2, step === 2 ? col : base); }
+      if (step === 1 || step === 2) { var q2 = step === 1 ? ease(sub(p, i / N.length * 0.6, i / N.length * 0.6 + 0.4)) : 1; if (q2 > 0) barcode(g, cx + y2(21, 31), cy - 10, y2(44, 28), 20, 5, 100 + i, q2, step === 2 ? col : base); }
     }
-    if (step === 0) { legend(g, [[GRPC.M, 'M · metal'], [GRPC.X, 'X · carbon / nitrogen'], [GRPC.T, 'T · surface group']], 160, 470); card(g, 700, 110, 240, 120, { band: C.navy, title: 'ATOMS → NODES' }); text(g, 'bonds → edges,', 820, 170, 12, C.ink2, 'center'); text(g, 'also to the next repeat', 820, 190, 12, C.ink2, 'center'); text(g, 'of the crystal', 820, 210, 12, C.ink2, 'center'); }
-    if (step === 1) { card(g, 700, 110, 240, 120, { band: C.navy, title: 'A VECTOR PER ATOM' }); text(g, 'a few numbers: element', 820, 170, 12, C.ink2, 'center'); text(g, 'and group (M, X or T)', 820, 190, 12, C.ink2, 'center'); text(g, 'drawn as small bars', 820, 210, 12, C.ink2, 'center'); }
+    if (step === 0) { legend(g, [[GRPC.M, 'M · metal'], [GRPC.X, 'X · carbon / nitrogen'], [GRPC.T, 'T · surface group']], 160, 470, 700); sideCard(g, 'ATOMS → NODES', C.navy, ['bonds → edges,', 'also to the next repeat', 'of the crystal']); }
+    if (step === 1) sideCard(g, 'A VECTOR PER ATOM', C.navy, ['a few numbers: element', 'and group (M, X or T)', 'drawn as small bars']);
     if (step >= 3) {
       var q3 = step === 3 ? pooled : 1;
       card(g, 390, 220, 220, 70, { fill: C.white, stroke: q3 > 0.9 ? C.teal : C.rule }); barcode(g, 404, 231, 192, 48, 24, 77, q3, C.teal); pill(g, 'crystal vector', 500, 312, C.teal, 12, C.tealSoft);
-      if (step === 3) { card(g, 700, 110, 240, 120, { band: C.teal, title: 'POOLING' }); text(g, 'all atom vectors', 820, 170, 12, C.ink2, 'center'); text(g, 'averaged into one', 820, 190, 12, C.ink2, 'center'); text(g, 'description of the crystal', 820, 210, 12, C.ink2, 'center'); }
+      if (step === 3) sideCard(g, 'POOLING', C.teal, ['all atom vectors', 'averaged into one', 'description of the crystal']);
       if (step === 4) {
         var a1 = ease(sub(p, 0.1, 0.5)), a2 = ease(sub(p, 0.5, 1));
         arrow(g, 610, 240, 700, 160, C.muted, 2.5, a1); card(g, 705, 100, 235, 110, { band: C.navy, title: 'DOOR 1 · adsorber?' }); gauge(g, 822, 205, 40, 0.86, C.teal, a1);
-        arrow(g, 610, 270, 700, 370, C.muted, 2.5, a2); card(g, 705, 300, 235, 170, { band: C.teal, title: 'DOOR 2 · six uptakes' }); sixBars(g, 725, 345, 195, 70, a2, 11, true); text(g, 'CO₂ · CH₄ at three pressures', 822, 440, 11, C.muted, 'center');
-        pill(g, 'adsorbers only', 650, 335, C.teal, 11, C.tealSoft);
+        arrow(g, 610, 270, 700, 370, C.muted, 2.5, a2); card(g, 705, 300, 235, 170, { band: C.teal, title: 'DOOR 2 · six uptakes' }); sixBars(g, 725, 345, 195, 70, a2, 11, true); text(g, 'CO₂ · CH₄ at three pressures', 822, 440, 11, C.muted, 'center', false, 220);
+        pill(g, 'adsorbers only', y2(640, 540), y2(402, 345), C.teal, 11, C.tealSoft);   
       }
     }
   }
 
   
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
-  function fmt(ms) { var s = Math.max(0, Math.round(ms / 1000)); return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function still() { try { return global.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } }
 
   function mount(host) {
     if (!host || host.__mxModels) return host && host.__mxModels;
-    var reduce = false; try { reduce = global.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-    var route = ROUTES[0], elapsed = 0, running = false, raf = 0, last = 0, speed = 1, total = 0;
-    try { var sf = +global.localStorage.getItem('mx-models-speed'); if (SPEEDS.some(function (x) { return x[1] === sf; })) speed = sf; } catch (e) {}
     host.innerHTML = '';
     var root = el('div', 'mxm'); root.setAttribute('tabindex', '-1'); host.appendChild(root);
-    var head = el('div', 'mxm-head'); root.appendChild(head);
-    head.appendChild(el('span', 'mxm-kicker', 'Interactive illustration'));
-    head.appendChild(el('h3', 'mxm-title', 'How the surrogate models work'));
-    head.appendChild(el('p', 'mxm-lead', 'Four short animated stories, written for a reader who has never met machine learning. Pick a model, press Run, or walk through the steps yourself.'));
-    var tabs = el('div', 'mxm-tabs'); tabs.setAttribute('role', 'tablist'); tabs.setAttribute('aria-label', 'Model'); root.appendChild(tabs);
-    ROUTES.forEach(function (r, i) {
-      var b = el('button', 'mxm-tab'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('data-route', r.id);
-      b.innerHTML = '<span class="mxm-tab-i">' + (i + 1) + '</span><span><span class="mxm-tab-n">' + r.name + '</span><span class="mxm-tab-s">' + r.sub + '</span></span>';
-      b.addEventListener('click', function () { setRoute(r); }); tabs.appendChild(b);
+    root.appendChild(el('p', 'mxm-lead', 'Four short animated stories, written for a reader who has never met machine learning. Pick a model and press Run, or walk through the steps yourself.'));
+    var methods = el('div', 'mxm-methods'); methods.setAttribute('role', 'group'); methods.setAttribute('aria-label', 'Model'); root.appendChild(methods);
+    ROUTES.forEach(function (r) {
+      var b = el('button', 'mxm-m'); b.type = 'button'; b.setAttribute('data-route', r.id); b.setAttribute('aria-pressed', 'false');
+      b.innerHTML = '<span class="mxm-mn">' + r.name + '</span><span class="mxm-ms">' + r.sub + '</span>';
+      b.addEventListener('click', function () { setRoute(r); }); methods.appendChild(b);
     });
-    var intro = el('p', 'mxm-intro'); root.appendChild(intro);
-    var stage = el('div', 'mxm-stage'); root.appendChild(stage);
-    var cv = document.createElement('canvas'); cv.setAttribute('role', 'img'); stage.appendChild(cv);
-    var chip = el('div', 'mxm-chip'); stage.appendChild(chip);
-    var segs = el('div', 'mxm-segs'); segs.setAttribute('aria-hidden', 'true'); root.appendChild(segs);
-    var expl = el('div', 'mxm-expl'); root.appendChild(expl);
-    var h4 = el('h4', 'mxm-h'); expl.appendChild(h4);
-    var cap = el('p', 'mxm-cap'); cap.setAttribute('aria-live', 'polite'); expl.appendChild(cap);
-    var fx = el('div', 'mxm-formula'); fx.innerHTML = '<span class="mxm-f-l">in symbols</span><span class="mxm-f-t"></span><span class="mxm-f-r"></span>'; expl.appendChild(fx);
+    var routeBox = el('div', 'mxm-route'); root.appendChild(routeBox);
+    var rName = el('h3', 'mxm-rn'); routeBox.appendChild(rName);
+    var intro = el('p', 'mxm-intro'); routeBox.appendChild(intro);
+    var stage = el('div', 'mxm-stage'); stage.setAttribute('role', 'img'); root.appendChild(stage);
+    var cv = document.createElement('canvas'); stage.appendChild(cv);
+    var prog = el('div', 'mxm-prog'); prog.setAttribute('aria-hidden', 'true'); root.appendChild(prog);
+    var seg = el('div', 'mxm-seg'); seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', 'Animation'); root.appendChild(seg);
+    var bRun = btn('Run', 'mxm-run'), bStep = btn('Step', 'mxm-step'), bReset = btn('Reset', 'mxm-reset');
+    seg.appendChild(bRun); seg.appendChild(bStep); seg.appendChild(bReset);
+    var sp = el('div', 'mxm-speed'); sp.setAttribute('role', 'group'); sp.setAttribute('aria-label', 'Animation speed'); root.appendChild(sp);
+    var spl = el('span', 'mxm-speed-l', 'Speed'); spl.setAttribute('aria-hidden', 'true'); sp.appendChild(spl);
+    var status = el('p', 'mxm-status'); status.setAttribute('aria-live', 'polite'); root.appendChild(status);
+    var now = el('div', 'mxm-now'); root.appendChild(now);
+    var h4 = el('h4', 'mxm-h'); now.appendChild(h4);
+    var cap = el('p', 'mxm-cap'); now.appendChild(cap);
+    var fx = el('div', 'mxm-formula'); fx.innerHTML = '<span class="mxm-f-l">in symbols</span><span class="mxm-f-t"></span><span class="mxm-f-r"></span>'; now.appendChild(fx);
     var fxt = fx.querySelector('.mxm-f-t'), fxr = fx.querySelector('.mxm-f-r');
-    var ctrl = el('div', 'mxm-ctrl'); root.appendChild(ctrl);
-    var row1 = el('div', 'mxm-row'); ctrl.appendChild(row1);
-    var bRun = btn('▶ Run', 'mxm-run'), bPrev = btn('‹ Previous', 'mxm-prev'), bNext = btn('Next ›', 'mxm-next'), bReset = btn('↺ Reset', 'mxm-reset');
-    bPrev.setAttribute('aria-label', 'Previous step'); bNext.setAttribute('aria-label', 'Next step');
-    row1.appendChild(bRun); row1.appendChild(bPrev); row1.appendChild(bNext); row1.appendChild(bReset);
-    var row2 = el('div', 'mxm-row mxm-time'); ctrl.appendChild(row2);
-    var tEl = el('span', 'mxm-t', '0:00'); row2.appendChild(tEl);
-    var slider = document.createElement('input'); slider.type = 'range'; slider.className = 'mxm-slider'; slider.min = 0; slider.step = 50; slider.setAttribute('aria-label', 'Position in the animation'); row2.appendChild(slider);
-    var tTot = el('span', 'mxm-t', '0:00'); row2.appendChild(tTot);
-    var sp = el('div', 'mxm-speed'); sp.setAttribute('role', 'group'); sp.setAttribute('aria-label', 'Speed'); row2.appendChild(sp);
-    sp.appendChild(el('span', 'mxm-speed-l', 'Speed'));
-    SPEEDS.forEach(function (s) { var b = btn(s[0], 'mxm-sp'); b.setAttribute('data-f', s[1]); b.addEventListener('click', function () { speed = s[1]; try { global.localStorage.setItem('mx-models-speed', s[1]); } catch (e) {} paintSpeed(); }); sp.appendChild(b); });
-    var pills = el('ol', 'mxm-steps'); pills.setAttribute('aria-label', 'The steps'); root.appendChild(pills);
+    var list = el('ol', 'mxm-steps'); list.setAttribute('aria-label', 'The steps'); root.appendChild(list);
     root.appendChild(el('p', 'mxm-note', NOTE));
-    if (reduce) { bRun.disabled = true; bRun.title = 'Reduced motion is on: use Previous / Next'; }
 
-    function btn(label, cls) { var b = el('button', 'mxm-btn ' + cls, label); b.type = 'button'; return b; }
-    function paintSpeed() { Array.prototype.forEach.call(sp.querySelectorAll('.mxm-sp'), function (b) { b.setAttribute('aria-pressed', +b.getAttribute('data-f') === speed ? 'true' : 'false'); }); }
-    function pos() {                                       
-      var acc = 0;
-      
-      for (var i = 0; i < route.steps.length; i++) { var d = route.steps[i].d; if (elapsed <= acc + d || i === route.steps.length - 1) return { step: i, prog: clamp((elapsed - acc) / d) }; acc += d; }
-      return { step: route.steps.length - 1, prog: 1 };
-    }
-    function startOf(i) { var acc = 0; for (var k = 0; k < i; k++) acc += route.steps[k].d; return acc; }
-    function setRoute(r) {
-      route = r; elapsed = 0; stop(); total = 0; r.steps.forEach(function (s) { total += s.d; });
-      slider.max = total; tTot.textContent = fmt(total);
-      Array.prototype.forEach.call(tabs.children, function (b) { var on = b.getAttribute('data-route') === r.id; b.setAttribute('aria-selected', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; });
-      intro.textContent = r.intro;
-      segs.innerHTML = ''; pills.innerHTML = '';
-      r.steps.forEach(function (s, i) {
-        var sg = el('span', 'mxm-seg'); sg.innerHTML = '<i></i>'; segs.appendChild(sg);
-        var li = el('li', 'mxm-st'); var b = el('button', 'mxm-st-b'); b.type = 'button'; b.innerHTML = '<span class="mxm-st-n">' + (i + 1) + '</span><span class="mxm-st-t">' + s.h + '</span>';
-        b.addEventListener('click', function () { stop(); elapsed = startOf(i) + s.d; paint(); }); li.appendChild(b); pills.appendChild(li);
-      });
-      root.setAttribute('data-route', r.id); paint();
-    }
-    function paint() {
-      var w = stage.clientWidth || 0, h = stage.clientHeight || 0, P = pos(), st = route.steps[P.step];
-      if (w && h) {
-        var dpr = Math.min(2, global.devicePixelRatio || 1);
-        if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
-        var g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.fillStyle = C.white; g.fillRect(0, 0, cv.width, cv.height);
-        var s = Math.min(cv.width / W, cv.height / H); g.setTransform(s, 0, 0, s, (cv.width - W * s) / 2, (cv.height - H * s) / 2);
-        try { st.draw(g, P.prog); } catch (e) {  }
-        g.setTransform(1, 0, 0, 1, 0, 0);
-      }
-      chip.textContent = 'Step ' + (P.step + 1) + ' of ' + route.steps.length;
-      h4.textContent = (P.step + 1) + ' · ' + st.h; cap.textContent = st.t;
-      fxt.innerHTML = st.f || ''; fxr.textContent = st.r || ''; fx.hidden = !st.f;
-      cv.setAttribute('aria-label', route.name + ', step ' + (P.step + 1) + ': ' + st.h + '. ' + st.t);
-      Array.prototype.forEach.call(segs.children, function (sg, i) { sg.firstChild.style.width = (i < P.step ? 100 : i === P.step ? P.prog * 100 : 0) + '%'; });
-      Array.prototype.forEach.call(pills.children, function (li, i) { li.setAttribute('aria-current', i === P.step ? 'step' : 'false'); });
-      var done = P.step === route.steps.length - 1 && P.prog >= 1;
-      bRun.textContent = running ? '❚❚ Pause' : done ? '↻ Replay' : '▶ Run';
-      bNext.disabled = done; bPrev.disabled = elapsed <= 0;
-      slider.value = Math.round(elapsed); slider.setAttribute('aria-valuetext', 'step ' + (P.step + 1) + ' of ' + route.steps.length + ', ' + fmt(elapsed) + ' of ' + fmt(total));
-      tEl.textContent = fmt(elapsed);
-    }
-    function frame(ts) {
-      if (!running) return;
-      var dt = last ? Math.min(100, ts - last) : 16; last = ts;
-      elapsed = Math.min(total, elapsed + dt * speed);
-      if (elapsed >= total) running = false;
-      paint(); if (running) raf = global.requestAnimationFrame(frame);
-    }
-    function start() { if (reduce || running) return; if (elapsed >= total) elapsed = 0; running = true; last = 0; raf = global.requestAnimationFrame(frame); paint(); }
-    function stop() { running = false; if (raf) global.cancelAnimationFrame(raf); raf = 0; last = 0; }
-    bRun.addEventListener('click', function () { if (running) { stop(); paint(); } else start(); });
-    bNext.addEventListener('click', function () { stop(); var P = pos(); elapsed = P.prog < 1 ? startOf(P.step) + route.steps[P.step].d : Math.min(total, startOf(P.step + 1) + route.steps[Math.min(P.step + 1, route.steps.length - 1)].d); paint(); });
-    bPrev.addEventListener('click', function () { stop(); var P = pos(); elapsed = (P.prog > 0.02 && P.prog < 1) ? startOf(P.step) : startOf(Math.max(0, P.step - 1)); if (P.prog >= 1) elapsed = startOf(P.step); paint(); });
-    bReset.addEventListener('click', function () { stop(); elapsed = 0; paint(); });
-    slider.addEventListener('input', function () { stop(); elapsed = +slider.value; paint(); });
-    root.addEventListener('keydown', function (ev) {
-      if (ev.target.tagName === 'INPUT' || ev.altKey || ev.ctrlKey || ev.metaKey) return;
-      if (ev.key === ' ' && ev.target.tagName !== 'BUTTON') { ev.preventDefault(); bRun.click(); }
-      else if (ev.key === 'ArrowRight' && ev.target.getAttribute('role') !== 'tab') { ev.preventDefault(); bNext.click(); }
-      else if (ev.key === 'ArrowLeft' && ev.target.getAttribute('role') !== 'tab') { ev.preventDefault(); bPrev.click(); }
+    var route = ROUTES[0], S = { k: 0, t: 1, running: false, anim: false, raf: 0, timer: 0, last: 0, f: 1 };
+    try { var sf = +global.localStorage.getItem('mx-models-speed'); if (SPEEDS.some(function (x) { return x[1] === sf; })) S.f = sf; } catch (e) {}
+    SPEEDS.forEach(function (s) {
+      var b = el('button', 'mxm-sp', s[0]); b.type = 'button'; b.setAttribute('data-f', s[1]); b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', function () { S.f = s[1]; try { global.localStorage.setItem('mx-models-speed', s[1]); } catch (e) {} speedUi(); }); sp.appendChild(b);
     });
-    tabs.addEventListener('keydown', function (ev) {
-      var i = ROUTES.indexOf(route), d = ev.key === 'ArrowRight' ? 1 : ev.key === 'ArrowLeft' ? -1 : 0; if (!d) return;
-      ev.preventDefault(); ev.stopPropagation(); var r = ROUTES[(i + d + ROUTES.length) % ROUTES.length]; setRoute(r); tabs.children[ROUTES.indexOf(r)].focus();
+    function btn(label, cls) { var b = el('button', 'mxm-btn ' + cls, label); b.type = 'button'; return b; }
+    function speedUi() { Array.prototype.forEach.call(sp.querySelectorAll('.mxm-sp'), function (b) { b.setAttribute('aria-pressed', +b.getAttribute('data-f') === S.f ? 'true' : 'false'); }); }
+    var last = function () { return route.steps.length - 1; };
+
+    function draw() {                                       
+      var w = stage.clientWidth || 0, h = stage.clientHeight || 0; if (!w || !h) return;
+      COMPACT = w < 560; SX = COMPACT ? 0.6 : 1; TS = COMPACT ? 1.4 : 1.3;
+      var ar = COMPACT ? '1 / 1' : '1000 / 560';                
+      if (stage.style.aspectRatio !== ar) { stage.style.aspectRatio = ar; h = stage.clientHeight || h; }
+      var VW = COMPACT ? 600 : W, VH = COMPACT ? 600 : H, dpr = Math.min(2, global.devicePixelRatio || 1);
+      if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+      var g = cv.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.fillStyle = C.white; g.fillRect(0, 0, cv.width, cv.height);
+      var s = Math.min(cv.width / VW, cv.height / VH);
+      g.setTransform(s * SX, 0, 0, s, (cv.width - VW * s) / 2, (cv.height - VH * s) / 2);
+      try { route.steps[S.k].draw(g, S.t); } catch (e) {  }
+      g.setTransform(1, 0, 0, 1, 0, 0);
+    }
+    function ui() {
+      var st = route.steps[S.k], k = S.k, n = route.steps.length;
+      status.textContent = 'Step ' + (k + 1) + ' of ' + n + ' · ' + st.h + (S.anim ? ' …' : '');
+      h4.textContent = (k + 1) + ' · ' + st.h; cap.textContent = st.t;
+      fxt.innerHTML = st.f || ''; fxr.textContent = st.r || ''; fx.hidden = !st.f;
+      cv.setAttribute('aria-label', route.name + ', step ' + (k + 1) + ' of ' + n + ': ' + st.h + '. ' + st.t);
+      Array.prototype.forEach.call(prog.children, function (sg, i) { sg.className = i < k ? 'on' : i === k ? (S.t >= 1 ? 'on' : 'cur') : ''; });
+      Array.prototype.forEach.call(list.querySelectorAll('.mxm-st'), function (b, i) { if (i === k) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+      bRun.textContent = S.running ? 'Pause' : 'Run';
+      bStep.disabled = k === last() && S.t >= 1 && !S.running;
+      if (bStep.disabled && document.activeElement === bStep) bReset.focus();
+    }
+    function frame(nowTs) {
+      S.raf = 0; if (!S.anim) return;
+      var dt = S.last ? Math.min(100, nowTs - S.last) : 16; S.last = nowTs;
+      S.t = Math.min(1, S.t + dt / (route.steps[S.k].d * S.f));
+      draw();
+      if (S.t >= 1) { S.anim = false; ui(); done(); } else S.raf = global.requestAnimationFrame(frame);
+    }
+    function halt() { if (S.raf) global.cancelAnimationFrame(S.raf); if (S.timer) clearTimeout(S.timer); S.raf = S.timer = 0; S.anim = false; }
+    function play(k) {                                      
+      halt(); S.k = k;
+      if (still()) { S.t = 1; draw(); ui(); done(); return; }
+      S.t = 0; S.anim = true; S.last = 0; ui(); draw(); S.raf = global.requestAnimationFrame(frame);
+    }
+    function done() {                                       
+      if (!S.running) return;
+      if (S.k < last()) S.timer = setTimeout(function () { S.timer = 0; if (S.running) play(S.k + 1); }, still() ? 1500 : 450);
+      else { S.running = false; ui(); }
+    }
+    function run() {
+      if (S.running) { S.running = false; halt(); ui(); return; }                        
+      S.running = true;
+      if (S.t < 1 && S.t > 0) { S.anim = true; S.last = 0; ui(); S.raf = global.requestAnimationFrame(frame); return; }   
+      if (S.k === last() || S.k === 0) play(0); else play(S.k + 1);
+    }
+    function step() { S.running = false; halt(); if (S.k < last()) play(S.k + 1); else { S.t = 1; draw(); ui(); } }
+    function reset() { S.running = false; halt(); S.k = 0; S.t = 1; draw(); ui(); }
+    function go(k) { S.running = false; play(k); }
+    function setRoute(r) {
+      route = r; S.running = false; halt();
+      Array.prototype.forEach.call(methods.children, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-route') === r.id ? 'true' : 'false'); });
+      rName.textContent = r.name + ' · ' + r.sub; intro.textContent = r.intro;
+      prog.innerHTML = ''; list.innerHTML = '';
+      r.steps.forEach(function (s, i) {
+        prog.appendChild(el('i'));
+        var li = el('li'); var b = el('button', 'mxm-st'); b.type = 'button'; b.setAttribute('data-k', i);
+        b.innerHTML = '<span class="mxm-sn">' + (i + 1) + '</span><span class="mxm-stt">' + s.h + '</span>';
+        b.addEventListener('click', function () { go(i); }); li.appendChild(b); list.appendChild(li);
+      });
+      root.setAttribute('data-route', r.id); S.k = 0; S.t = 1; draw(); ui();
+    }
+    bRun.addEventListener('click', run); bStep.addEventListener('click', step); bReset.addEventListener('click', reset);
+    root.addEventListener('keydown', function (ev) {
+      if (ev.altKey || ev.ctrlKey || ev.metaKey) return;
+      if (ev.key === ' ' && ev.target.tagName !== 'BUTTON') { ev.preventDefault(); run(); }
+      else if (ev.key === 'ArrowRight' && !ev.target.classList.contains('mxm-m')) { ev.preventDefault(); if (!bStep.disabled) step(); }
+      else if (ev.key === 'ArrowLeft' && !ev.target.classList.contains('mxm-m')) { ev.preventDefault(); S.running = false; halt(); S.k = Math.max(0, S.k - 1); S.t = 1; draw(); ui(); }
     });
     var ro = null;
-    if (global.ResizeObserver) { ro = new ResizeObserver(function () { paint(); }); ro.observe(stage); } else global.addEventListener('resize', paint);
-    document.addEventListener('visibilitychange', function () { if (document.hidden && running) { stop(); paint(); } });
-    paintSpeed(); setRoute(ROUTES[0]);
-    host.__mxModels = { destroy: function () { stop(); if (ro) ro.disconnect(); host.innerHTML = ''; host.__mxModels = null; },
-                        state: function () { var P = pos(); return { route: route.id, step: P.step, prog: P.prog, elapsed: elapsed, total: total, running: running, speed: speed }; } };
+    if (global.ResizeObserver) { ro = new ResizeObserver(function () { draw(); }); ro.observe(stage); } else global.addEventListener('resize', draw);
+    document.addEventListener('visibilitychange', function () { if (document.hidden && S.running) { S.running = false; halt(); ui(); } });
+    speedUi(); setRoute(ROUTES[0]);
+    host.__mxModels = { destroy: function () { halt(); if (ro) ro.disconnect(); host.innerHTML = ''; host.__mxModels = null; },
+                        state: function () { return { route: route.id, step: S.k, t: S.t, running: S.running, anim: S.anim, speed: S.f, steps: route.steps.length, compact: COMPACT }; } };
     return host.__mxModels;
   }
   global.MXModels = { mount: mount, routes: ROUTES.map(function (r) { return { id: r.id, name: r.name, steps: r.steps.length }; }) };
